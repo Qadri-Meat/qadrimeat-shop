@@ -16,7 +16,7 @@ const ProductGridSingleSix = ({
   cartItem,
   wishlistItem,
   compareItem,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
@@ -33,7 +33,7 @@ const ProductGridSingleSix = ({
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
             <img
               className="default-img img-fluid"
-              src={process.env.PUBLIC_URL + product.image[0]}
+              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
               alt=""
             />
           </Link>
@@ -173,7 +173,7 @@ ProductGridSingleSix.propTypes = {
   currency: PropTypes.shape({}),
   product: PropTypes.shape({}),
   spaceBottomClass: PropTypes.string,
-  wishlistItem: PropTypes.shape({})
+  wishlistItem: PropTypes.shape({}),
 };
 
 export default ProductGridSingleSix;

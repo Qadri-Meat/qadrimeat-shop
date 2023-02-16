@@ -17,7 +17,7 @@ const ProductGridSingleTwo = ({
   compareItem,
   spaceBottomClass,
   colorClass,
-  titlePriceClass
+  titlePriceClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
@@ -34,13 +34,13 @@ const ProductGridSingleTwo = ({
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
             <img
               className="default-img"
-              src={process.env.PUBLIC_URL + product.image[0]}
+              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
               alt=""
             />
             {product.image.length > 1 ? (
               <img
                 className="hover-img"
-                src={process.env.PUBLIC_URL + product.image[1]}
+                src={process.env.REACT_APP_IMAGE_URL + product.image[1]}
                 alt=""
               />
             ) : (
@@ -87,9 +87,7 @@ const ProductGridSingleTwo = ({
                     : ""
                 }
                 disabled={cartItem !== undefined && cartItem.quantity > 0}
-                title={
-                  cartItem !== undefined ? "Added to cart" : "Add to cart"
-                }
+                title={cartItem !== undefined ? "Added to cart" : "Add to cart"}
               >
                 {" "}
                 <i className="fa fa-shopping-cart"></i>{" "}
@@ -132,9 +130,7 @@ const ProductGridSingleTwo = ({
             <div className="price-2">
               {discountedPrice !== null ? (
                 <Fragment>
-                  <span>
-                    {currency.currencySymbol + finalDiscountedPrice}
-                  </span>{" "}
+                  <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                   <span className="old">
                     {currency.currencySymbol + finalProductPrice}
                   </span>

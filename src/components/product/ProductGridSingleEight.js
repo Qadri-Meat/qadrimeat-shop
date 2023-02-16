@@ -17,7 +17,7 @@ const ProductGridSingleEight = ({
   wishlistItem,
   compareItem,
   spaceBottomClass,
-  colorClass
+  colorClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
@@ -34,7 +34,7 @@ const ProductGridSingleEight = ({
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
             <img
               className="default-img img-fluid"
-              src={process.env.PUBLIC_URL + product.image[0]}
+              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
               alt=""
             />
           </Link>
@@ -173,7 +173,7 @@ ProductGridSingleEight.propTypes = {
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
   colorClass: PropTypes.string,
-  wishlistItem: PropTypes.shape({})
+  wishlistItem: PropTypes.shape({}),
 };
 
 export default ProductGridSingleEight;

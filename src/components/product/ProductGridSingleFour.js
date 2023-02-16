@@ -15,7 +15,7 @@ const ProductGridSingleFour = ({
   cartItem,
   wishlistItem,
   compareItem,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
 
@@ -33,7 +33,7 @@ const ProductGridSingleFour = ({
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
             <img
               className="default-img"
-              src={process.env.PUBLIC_URL + product.image[0]}
+              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
               alt=""
             />
           </Link>
@@ -170,7 +170,7 @@ ProductGridSingleFour.propTypes = {
   currency: PropTypes.shape({}),
   product: PropTypes.shape({}),
   spaceBottomClass: PropTypes.string,
-  wishlistItem: PropTypes.shape({})
+  wishlistItem: PropTypes.shape({}),
 };
 
 export default ProductGridSingleFour;

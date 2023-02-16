@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 
-
 const ProductImageFixed = ({ product }) => {
   return (
     <div className="product-large-image-wrapper">
@@ -20,7 +19,7 @@ const ProductImageFixed = ({ product }) => {
       <div className="product-fixed-image">
         {product.image ? (
           <img
-            src={process.env.PUBLIC_URL + product.image[0]}
+            src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
             alt=""
             className="img-fluid"
           />
@@ -33,7 +32,7 @@ const ProductImageFixed = ({ product }) => {
 };
 
 ProductImageFixed.propTypes = {
-  product: PropTypes.shape({})
+  product: PropTypes.shape({}),
 };
 
 export default ProductImageFixed;

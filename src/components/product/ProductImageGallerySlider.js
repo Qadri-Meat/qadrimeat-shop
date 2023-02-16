@@ -11,18 +11,18 @@ const ProductImageGallerySlider = ({ product }) => {
     navigation: true,
     breakpoints: {
       320: {
-        slidesPerView: 1
+        slidesPerView: 1,
       },
       640: {
-        slidesPerView: 2
+        slidesPerView: 2,
       },
       768: {
-        slidesPerView: 2
+        slidesPerView: 2,
       },
       1024: {
-        slidesPerView: 3
-      }
-    }
+        slidesPerView: 3,
+      },
+    },
   };
   return (
     <div className="product-large-image-wrapper product-large-image-wrapper--slider">
@@ -32,7 +32,7 @@ const ProductImageGallerySlider = ({ product }) => {
             <SwiperSlide key={key}>
               <div className="single-image">
                 <img
-                  src={process.env.PUBLIC_URL + single}
+                  src={process.env.REACT_APP_IMAGE_URL + single}
                   className="img-fluid"
                   alt=""
                 />
@@ -40,13 +40,13 @@ const ProductImageGallerySlider = ({ product }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-      ): null}
+      ) : null}
     </div>
   );
 };
 
 ProductImageGallerySlider.propTypes = {
-  product: PropTypes.shape({})
+  product: PropTypes.shape({}),
 };
 
 export default ProductImageGallerySlider;

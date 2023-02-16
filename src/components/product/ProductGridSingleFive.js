@@ -7,7 +7,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { addToCompare} from "../../store/slices/compare-slice";
+import { addToCompare } from "../../store/slices/compare-slice";
 
 const ProductGridSingleFive = ({
   product,
@@ -15,7 +15,7 @@ const ProductGridSingleFive = ({
   cartItem,
   wishlistItem,
   compareItem,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
@@ -32,7 +32,7 @@ const ProductGridSingleFive = ({
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
             <img
               className="default-img"
-              src={process.env.PUBLIC_URL + product.image[0]}
+              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
               alt=""
             />
           </Link>
@@ -53,9 +53,7 @@ const ProductGridSingleFive = ({
             <div className="product-content-3">
               <div className="product-title">
                 <h3>
-                  <Link
-                    to={process.env.PUBLIC_URL + "/product/" + product.id}
-                  >
+                  <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
                     {product.name}
                   </Link>
                 </h3>
@@ -115,13 +113,9 @@ const ProductGridSingleFive = ({
                           ? "active"
                           : ""
                       }
-                      disabled={
-                        cartItem !== undefined && cartItem.quantity > 0
-                      }
+                      disabled={cartItem !== undefined && cartItem.quantity > 0}
                       title={
-                        cartItem !== undefined
-                          ? "Added to cart"
-                          : "Add to cart"
+                        cartItem !== undefined ? "Added to cart" : "Add to cart"
                       }
                     >
                       {" "}
@@ -150,10 +144,7 @@ const ProductGridSingleFive = ({
                 </div>
 
                 <div className="pro-same-action pro-quickview">
-                  <button
-                    onClick={() => setModalShow(true)}
-                    title="Quick View"
-                  >
+                  <button onClick={() => setModalShow(true)} title="Quick View">
                     <i className="fa fa-eye"></i>
                   </button>
                 </div>
@@ -184,7 +175,7 @@ ProductGridSingleFive.propTypes = {
   wishlistItem: PropTypes.shape({}),
   currency: PropTypes.shape({}),
   product: PropTypes.shape({}),
-  spaceBottomClass: PropTypes.string
+  spaceBottomClass: PropTypes.string,
 };
 
 export default ProductGridSingleFive;

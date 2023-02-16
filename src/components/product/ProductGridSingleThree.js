@@ -15,7 +15,7 @@ const ProductGridSingleThree = ({
   cartItem,
   wishlistItem,
   compareItem,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
@@ -27,18 +27,20 @@ const ProductGridSingleThree = ({
 
   return (
     <Fragment>
-      <div className={clsx("product-wrap-2 pro-glaucous-color", spaceBottomClass)}>
+      <div
+        className={clsx("product-wrap-2 pro-glaucous-color", spaceBottomClass)}
+      >
         <div className="product-img">
           <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
             <img
               className="default-img"
-              src={process.env.PUBLIC_URL + product.image[0]}
+              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
               alt=""
             />
             {product.image.length > 1 ? (
               <img
                 className="hover-img"
-                src={process.env.PUBLIC_URL + product.image[1]}
+                src={process.env.REACT_APP_IMAGE_URL + product.image[1]}
                 alt=""
               />
             ) : (
@@ -85,9 +87,7 @@ const ProductGridSingleThree = ({
                     : ""
                 }
                 disabled={cartItem !== undefined && cartItem.quantity > 0}
-                title={
-                  cartItem !== undefined ? "Added to cart" : "Add to cart"
-                }
+                title={cartItem !== undefined ? "Added to cart" : "Add to cart"}
               >
                 {" "}
                 <i className="fa fa-shopping-cart"></i>{" "}
@@ -126,9 +126,7 @@ const ProductGridSingleThree = ({
             <div className="price-2">
               {discountedPrice !== null ? (
                 <Fragment>
-                  <span>
-                    {currency.currencySymbol + finalDiscountedPrice}
-                  </span>{" "}
+                  <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                   <span className="old">
                     {currency.currencySymbol + finalProductPrice}
                   </span>
@@ -176,7 +174,7 @@ ProductGridSingleThree.propTypes = {
   currency: PropTypes.shape({}),
   product: PropTypes.shape({}),
   spaceBottomClass: PropTypes.string,
-  wishlistItem: PropTypes.shape({})
+  wishlistItem: PropTypes.shape({}),
 };
 
 export default ProductGridSingleThree;

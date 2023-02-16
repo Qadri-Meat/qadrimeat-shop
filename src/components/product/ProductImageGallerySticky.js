@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 
-
 const productImageGallerySticky = ({ product }) => {
   return (
     <div className="product-large-image-wrapper product-large-image-wrapper--sticky">
@@ -20,7 +19,7 @@ const productImageGallerySticky = ({ product }) => {
         {product?.image?.map((single, key) => (
           <div className="product-sticky-image__single mb-10" key={key}>
             <img
-              src={process.env.PUBLIC_URL + single}
+              src={process.env.REACT_APP_IMAGE_URL + single}
               alt=""
               className="img-fluid"
             />
@@ -32,7 +31,7 @@ const productImageGallerySticky = ({ product }) => {
 };
 
 productImageGallerySticky.propTypes = {
-  product: PropTypes.shape({})
+  product: PropTypes.shape({}),
 };
 
 export default productImageGallerySticky;
