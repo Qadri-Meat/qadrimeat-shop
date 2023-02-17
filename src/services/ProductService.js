@@ -1,9 +1,8 @@
-import createQuery from "helpers/create-query";
 import { HTTPBaseService } from "./HTTPBaseService";
 
 class ProductService extends HTTPBaseService {
   getAll(params) {
-    return this.instance.get("/v1/products", { params: createQuery(params) });
+    return this.instance.get("/v1/products", { params: { limit: 1000 } });
   }
 
   get(id) {
