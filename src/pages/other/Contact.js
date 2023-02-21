@@ -24,9 +24,9 @@ const Contact = () => {
         />
         <div className="contact-area pt-100 pb-100">
           <div className="container">
-            <div className="contact-map mb-10">
+            {/* <div className="contact-map mb-10">
               <GoogleMap lat={47.444} lng={-122.176} />
-            </div>
+            </div> */}
             <div className="custom-row-2">
               <div className="col-12 col-lg-4 col-md-5">
                 <div className="contact-info-wrap">
@@ -74,23 +74,8 @@ const Contact = () => {
                         </a>
                       </li>
                       <li>
-                        <a href="//pinterest.com">
-                          <i className="fa fa-pinterest-p" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//thumblr.com">
-                          <i className="fa fa-tumblr" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//vimeo.com">
-                          <i className="fa fa-vimeo" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//twitter.com">
-                          <i className="fa fa-twitter" />
+                        <a href="//www.instagram.com">
+                          <i className="fa fa-instagram" />
                         </a>
                       </li>
                     </ul>

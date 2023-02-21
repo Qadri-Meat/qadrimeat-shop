@@ -36,8 +36,8 @@ const FooterOne = ({
             }`}
           >
             <p className="my-2"><i className="fa fa-phone me-2" /> +92 304 4014345</p>
-            <p className="my-2"><i className="fa fa-inbox me-2" />qadrimeat@gmail.com</p>
-            <p className="my-2"><i className="fa fa-location-arrow me-2" />Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
+            <p className="my-2"><i className="fa fa-globe me-2" />qadrimeat@gmail.com</p>
+            <p className="my-2"><i className="fa fa-map-marker me-2" />Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
               Pakistan.
             </p>
             <Logo imageUrl="/assets/images/logo/logo.png" logoClass="logo" />
