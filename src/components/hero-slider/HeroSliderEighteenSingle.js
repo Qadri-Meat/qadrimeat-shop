@@ -9,8 +9,8 @@ const HeroSliderEighteenSingle = ({ data }) => {
     >
       <div className="container">
         <div className="row">
-          <div className="col-xl-6 col-lg-7 col-md-8 col-12 ms-auto">
-            <div className="slider-content-2 slider-content-2--white slider-animated-1">
+          <div className="col-xl-6 col-lg-7 col-md-8 col-12 me-auto">
+            <div className="slider-content-2 slider-content-2--black slider-animated-1">
               <h3 className="animated no-style">{data.title}</h3>
               <h1
                 className="animated"
@@ -18,7 +18,7 @@ const HeroSliderEighteenSingle = ({ data }) => {
               />
               <div className="slider-btn btn-hover">
                 <Link
-                  className="animated rounden-btn"
+                  className="animated rounden-btn bg-transparent"
                   to={process.env.PUBLIC_URL + data.url}
                 >
                   SHOP NOW
