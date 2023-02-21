@@ -115,7 +115,16 @@
         }
       }
     }
-
+    &.banner-dark {
+      a {
+        color: $theme-color;
+        border: 2px solid  $theme-color;
+        &:hover {
+          color: $theme-color;
+          border: 2px solid $theme-color;
+        }
+      }
+    }
     &--style2 {
       h3 {
         color: #1c1c1c;
