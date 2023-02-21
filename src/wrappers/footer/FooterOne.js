@@ -1,9 +1,7 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import FooterCopyright from "../../components/footer/FooterCopyright";
-import FooterNewsletter from "../../components/footer/FooterNewsletter";
-
+import Logo from "components/header/Logo";
 
 const FooterOne = ({
   backgroundColorClass,
@@ -13,22 +11,39 @@ const FooterOne = ({
   spaceRightClass,
   containerClass,
   extraFooterClass,
-  sideMenu
+  sideMenu,
 }) => {
   return (
-    <footer className={clsx("footer-area", backgroundColorClass, spaceTopClass, spaceBottomClass, extraFooterClass, spaceLeftClass, spaceRightClass )}>
+    <footer
+      className={clsx(
+        "footer-area",
+        backgroundColorClass,
+        spaceTopClass,
+        spaceBottomClass,
+        extraFooterClass,
+        spaceLeftClass,
+        spaceRightClass
+      )}
+    >
       <div className={`${containerClass ? containerClass : "container"}`}>
         <div className="row">
           <div
+            // className={`${
+            //   sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
+            // }`}
             className={`${
-              sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
+              sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
             }`}
           >
-            {/* footer copyright */}
-            <FooterCopyright
-              footerLogo="/assets/img/logo/logo.png"
-              spaceBottomClass="mb-30"
-            />
+            <p className="my-2"><i className="fa fa-phone me-2" /> +92 304 4014345</p>
+            <p className="my-2"><i className="fa fa-inbox me-2" />qadrimeat@gmail.com</p>
+            <p className="my-2"><i className="fa fa-location-arrow me-2" />Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
+              Pakistan.
+            </p>
+            <Logo imageUrl="/assets/images/logo/logo.png" logoClass="logo" />
+            <p className="my-2">
+              &copy; {new Date().getFullYear()} Qadri Meat. All Rights Reserved
+            </p>
           </div>
           <div
             className={`${
@@ -45,18 +60,8 @@ const FooterOne = ({
                     <Link to={process.env.PUBLIC_URL + "/about"}>About us</Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>
-                      Store location
-                    </Link>
-                  </li>
-                  <li>
                     <Link to={process.env.PUBLIC_URL + "/contact"}>
                       Contact
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>
-                      Orders tracking
                     </Link>
                   </li>
                 </ul>
@@ -89,67 +94,7 @@ const FooterOne = ({
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>Size guide</Link>
-                  </li>
-                  <li>
                     <Link to={process.env.PUBLIC_URL + "#/"}>FAQs</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            className={`${
-              sideMenu ? "col-xl-3 col-sm-4" : "col-lg-2 col-sm-6"
-            }`}
-          >
-            <div
-              className={`${
-                sideMenu
-                  ? "footer-widget mb-30 ml-145"
-                  : "footer-widget mb-30 ml-75"
-              }`}
-            >
-              <div className="footer-title">
-                <h3>FOLLOW US</h3>
-              </div>
-              <div className="footer-list">
-                <ul>
-                  <li>
-                    <a
-                      href="//www.facebook.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Facebook
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="//www.twitter.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Twitter
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="//www.instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Instagram
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="//www.youtube.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Youtube
-                    </a>
                   </li>
                 </ul>
               </div>
@@ -160,12 +105,40 @@ const FooterOne = ({
               sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
             }`}
           >
-            {/* footer newsletter */}
-            <FooterNewsletter
-              spaceBottomClass="mb-30"
-              spaceLeftClass="ml-70"
-              sideMenu={sideMenu}
-            />
+            <div className="container d-flex flex-column justify-content-center align-items-center h-100">
+              <div className="footer-title">
+                <h3>FOLLOW US</h3>
+              </div>
+              <div className="footer-social">
+                <ul className="d-flex gap-4 justify-content-center">
+                  <li>
+                    <a href="//www.facebook.com">
+                      <i className="fa fa-facebook" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//www.dribbble.com">
+                      <i className="fa fa-dribbble" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//www.pinterest.com">
+                      <i className="fa fa-pinterest-p" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//www.twitter.com">
+                      <i className="fa fa-twitter" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="//www.linkedin.com">
+                      <i className="fa fa-linkedin" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -181,7 +154,7 @@ FooterOne.propTypes = {
   spaceBottomClass: PropTypes.string,
   spaceTopClass: PropTypes.string,
   spaceLeftClass: PropTypes.string,
-  spaceRightClass: PropTypes.string
+  spaceRightClass: PropTypes.string,
 };
 
 export default FooterOne;
