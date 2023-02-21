@@ -117,23 +117,8 @@ const FooterOne = ({
                     </a>
                   </li>
                   <li>
-                    <a href="//www.dribbble.com">
-                      <i className="fa fa-dribbble" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="//www.pinterest.com">
-                      <i className="fa fa-pinterest-p" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="//www.twitter.com">
-                      <i className="fa fa-twitter" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="//www.linkedin.com">
-                      <i className="fa fa-linkedin" />
+                    <a href="//www.instagram.com/">
+                      <i className="fa fa-instagram" />
                     </a>
                   </li>
                 </ul>
