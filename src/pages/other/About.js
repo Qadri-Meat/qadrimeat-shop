@@ -4,11 +4,6 @@ import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
-import BannerOne from "../../wrappers/banner/BannerOne";
-import TextGridOne from "../../wrappers/text-grid/TextGridOne";
-import FunFactOne from "../../wrappers/fun-fact/FunFactOne";
-import TeamMemberOne from "../../wrappers/team-member/TeamMemberOne";
-import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
 import AboutQadriDetails from "./components/AboutQadriDetails";
 import FirmDetails from "./components/FirmDetails";
 import AboutFeature from "./components/AboutFeature";
@@ -45,28 +40,10 @@ const About = () => {
           <FirmDetails />
         </div>
 
+        {/* About Feature */}
         <AboutFeature />
-        {/* <FeedBackDetails /> */}
+        {/* <Feed Back Details /> */}
         <FeedBackDetails />
-
-        {/* banner */}
-        <BannerOne spaceBottomClass="pb-70" />
-
-        {/* text grid */}
-        <TextGridOne spaceBottomClass="pb-70" />
-
-        {/* fun fact */}
-        <FunFactOne
-          spaceTopClass="pt-100"
-          spaceBottomClass="pb-70"
-          bgClass="bg-gray-3"
-        />
-
-        {/* team member */}
-        <TeamMemberOne spaceTopClass="pt-95" spaceBottomClass="pb-70" />
-
-        {/* brand logo slider */}
-        <BrandLogoSliderOne spaceBottomClass="pb-70" />
       </LayoutOne>
     </Fragment>
   );
