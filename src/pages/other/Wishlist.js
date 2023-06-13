@@ -11,9 +11,11 @@ import {
   deleteAllFromWishlist,
 } from "../../store/slices/wishlist-slice";
 
-const Wishlist = () => {
+const Wishlist = ({ customProp }) => {
   const dispatch = useDispatch();
   let { pathname } = useLocation();
+
+  console.log("Props....", customProp);
 
   const currency = useSelector((state) => state.currency);
   const { wishlistItems } = useSelector((state) => state.wishlist);

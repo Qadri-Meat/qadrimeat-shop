@@ -384,7 +384,7 @@ const App = () => {
             />
             <Route
               path={process.env.PUBLIC_URL + "/wishlist"}
-              element={<Wishlist />}
+              element={<Wishlist customProp={"chicken"} />}
             />
             <Route
               path={process.env.PUBLIC_URL + "/compare"}
