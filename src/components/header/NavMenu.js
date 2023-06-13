@@ -32,19 +32,19 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/cart"}>{t("cart")}</Link>
+                <Link to={process.env.PUBLIC_URL + "/cart"}>{t("Beef")}</Link>
               </li>
               <li>
                 <Link to={process.env.PUBLIC_URL + "/checkout"}>
-                  {t("checkout")}
+                  {t("Mutton")}
                 </Link>
               </li>
               <li>
                 <Link to={process.env.PUBLIC_URL + "/wishlist"}>
-                  {t("wishlist")}
+                  {t("Chicken")}
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to={process.env.PUBLIC_URL + "/compare"}>
                   {t("compare")}
                 </Link>
@@ -73,46 +73,11 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
                 <Link to={process.env.PUBLIC_URL + "/not-found"}>
                   {t("404_page")}
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop"}>{t("collection")}</Link>
-          </li>
-
-          <li>
-            <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-              {t("blog")}
-              {sidebarMenu ? (
-                <span>
-                  <i className="fa fa-angle-right"></i>
-                </span>
-              ) : (
-                <i className="fa fa-angle-down" />
-              )}
-            </Link>
-            <ul className="submenu">
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/blog-standard"}>
-                  {t("blog_standard")}
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/blog-no-sidebar"}>
-                  {t("blog_no_sidebar")}
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/blog-right-sidebar"}>
-                  {t("blog_right_sidebar")}
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/blog-details-standard"}>
-                  {t("blog_details_standard")}
-                </Link>
-              </li>
-            </ul>
+            <Link to={process.env.PUBLIC_URL + "/about"}>{t("About")}</Link>
           </li>
           <li>
             <Link to={process.env.PUBLIC_URL + "/contact"}>
