@@ -32,14 +32,6 @@ const ProductFixedImage = lazy(() =>
   import("./pages/shop-product/ProductFixedImage")
 );
 
-// blog pages
-const BlogStandard = lazy(() => import("./pages/blog/BlogStandard"));
-const BlogNoSidebar = lazy(() => import("./pages/blog/BlogNoSidebar"));
-const BlogRightSidebar = lazy(() => import("./pages/blog/BlogRightSidebar"));
-const BlogDetailsStandard = lazy(() =>
-  import("./pages/blog/BlogDetailsStandard")
-);
-
 // other pages
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
@@ -135,24 +127,6 @@ const App = () => {
             <Route
               path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
               element={<ProductFixedImage />}
-            />
-
-            {/* Blog pages */}
-            <Route
-              path={process.env.PUBLIC_URL + "/blog-standard"}
-              element={<BlogStandard />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
-              element={<BlogNoSidebar />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
-              element={<BlogRightSidebar />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + "/blog-details-standard"}
-              element={<BlogDetailsStandard />}
             />
 
             {/* Other pages */}
