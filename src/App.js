@@ -392,7 +392,7 @@ const App = () => {
             />
             <Route
               path={process.env.PUBLIC_URL + "/checkout"}
-              element={<Checkout />}
+              element={<Checkout customProp={"mutton"} />}
             />
 
             <Route path="*" element={<NotFound />} />
