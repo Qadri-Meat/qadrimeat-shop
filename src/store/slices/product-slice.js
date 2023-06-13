@@ -17,35 +17,15 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
-export const getProduct = createAsyncThunk(
-  "products/get",
-  async (id, { rejectWithValue }) => {
-    try {
-      const res = await ProductService.get(id);
-      return { details: res.data };
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  }
-);
-
 const productSlice = createSlice({
   name: "products",
   initialState,
   extraReducers: (builder) => {
+    builder.addMatcher(isAnyOf(getAllProducts.pending), (state, action) => {
+      state.loading = true;
+    });
     builder.addMatcher(
-      isAnyOf(getAllProducts.pending, getProduct.pending),
-      (state, action) => {
-        state.loading = true;
-      }
-    );
-    builder.addMatcher(
-      isAnyOf(
-        getAllProducts.fulfilled,
-        getProduct.fulfilled,
-        getAllProducts.rejected,
-        getProduct.rejected
-      ),
+      isAnyOf(getAllProducts.fulfilled, getAllProducts.rejected),
       (state, action) => {
         return action.payload;
       }

@@ -5,12 +5,14 @@ import clsx from "clsx";
 
 const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
   const { t } = useTranslation();
-  
+
   return (
     <div
-      className={clsx(sidebarMenu
+      className={clsx(
+        sidebarMenu
           ? "sidebar-menu"
-          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`)}
+          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`
+      )}
     >
       <nav>
         <ul>
@@ -254,7 +256,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </ul>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+            <Link to={process.env.PUBLIC_URL + "/shop"}>
               {" "}
               {t("shop")}
               {sidebarMenu ? (
@@ -269,12 +271,12 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
               <li>
                 <ul>
                   <li className="mega-menu-title">
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                    <Link to={process.env.PUBLIC_URL + "/shop"}>
                       {t("shop_layout")}
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                    <Link to={process.env.PUBLIC_URL + "/shop"}>
                       {t("shop_grid_standard")}
                     </Link>
                   </li>
@@ -381,7 +383,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
               <li>
                 <ul>
                   <li className="mega-menu-img">
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                    <Link to={process.env.PUBLIC_URL + "/shop"}>
                       <img
                         src={
                           process.env.PUBLIC_URL +
@@ -396,9 +398,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </ul>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-              {t("collection")}
-            </Link>
+            <Link to={process.env.PUBLIC_URL + "/shop"}>{t("collection")}</Link>
           </li>
           <li>
             <Link to={process.env.PUBLIC_URL + "/"}>
@@ -413,9 +413,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/cart"}>
-                  {t("cart")}
-                </Link>
+                <Link to={process.env.PUBLIC_URL + "/cart"}>{t("cart")}</Link>
               </li>
               <li>
                 <Link to={process.env.PUBLIC_URL + "/checkout"}>

@@ -25,11 +25,11 @@ const Compare = () => {
       />
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb 
+        <Breadcrumb
           pages={[
-            {label: "Home", path: process.env.PUBLIC_URL + "/" },
-            {label: "Compare", path: process.env.PUBLIC_URL + pathname }
-          ]} 
+            { label: "Home", path: process.env.PUBLIC_URL + "/" },
+            { label: "Compare", path: process.env.PUBLIC_URL + pathname },
+          ]}
         />
         <div className="compare-main-area pt-90 pb-100">
           <div className="container">
@@ -44,14 +44,16 @@ const Compare = () => {
                             <th className="title-column">Product Info</th>
                             {compareItems.map((compareItem, key) => {
                               const cartItem = cartItems.find(
-                                item => item.id === compareItem.id
+                                (item) => item.id === compareItem.id
                               );
                               return (
                                 <td className="product-image-title" key={key}>
                                   <div className="compare-remove">
                                     <button
                                       onClick={() =>
-                                        dispatch(deleteFromCompare(compareItem.id))
+                                        dispatch(
+                                          deleteFromCompare(compareItem.id)
+                                        )
                                       }
                                     >
                                       <i className="pe-7s-trash" />
@@ -216,7 +218,7 @@ const Compare = () => {
                     </div>
                     <div className="item-empty-area__text">
                       No items found in compare <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                      <Link to={process.env.PUBLIC_URL + "/shop"}>
                         Add Items
                       </Link>
                     </div>
@@ -232,4 +234,3 @@ const Compare = () => {
 };
 
 export default Compare;
-

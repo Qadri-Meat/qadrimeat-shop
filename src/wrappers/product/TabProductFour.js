@@ -17,7 +17,10 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
         <Tab.Container defaultActiveKey="bestSeller">
           <Nav
             variant="pills"
-            className={clsx("product-tab-list pt-35 pb-60 text-center", productTabClass)}
+            className={clsx(
+              "product-tab-list pt-35 pb-60 text-center",
+              productTabClass
+            )}
           >
             <Nav.Item>
               <Nav.Link eventKey="newArrival">
@@ -69,10 +72,7 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
           </Tab.Content>
         </Tab.Container>
         <div className="view-more text-center mt-20 toggle-btn6 col-12">
-          <Link
-            className="loadMore6"
-            to={process.env.PUBLIC_URL + "/shop-grid-standard"}
-          >
+          <Link className="loadMore6" to={process.env.PUBLIC_URL + "/shop"}>
             VIEW MORE PRODUCTS
           </Link>
         </div>
@@ -83,7 +83,7 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
 
 TabProductFour.propTypes = {
   category: PropTypes.string,
-  spaceBottomClass: PropTypes.string
+  spaceBottomClass: PropTypes.string,
 };
 
 export default TabProductFour;

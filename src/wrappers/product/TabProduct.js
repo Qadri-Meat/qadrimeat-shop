@@ -10,11 +10,16 @@ const TabProduct = ({
   spaceTopClass,
   spaceBottomClass,
   bgColorClass,
-  category
+  category,
 }) => {
   return (
     <div
-      className={clsx("product-area", spaceTopClass, spaceBottomClass, bgColorClass)}
+      className={clsx(
+        "product-area",
+        spaceTopClass,
+        spaceBottomClass,
+        bgColorClass
+      )}
     >
       <div className="container">
         <SectionTitle titleText="DAILY DEALS!" positionClass="text-center" />
@@ -73,10 +78,7 @@ const TabProduct = ({
           </Tab.Content>
         </Tab.Container>
         <div className="view-more text-center mt-20 toggle-btn6 col-12">
-          <Link
-            className="loadMore6"
-            to={process.env.PUBLIC_URL + "/shop-grid-standard"}
-          >
+          <Link className="loadMore6" to={process.env.PUBLIC_URL + "/shop"}>
             VIEW MORE PRODUCTS
           </Link>
         </div>
@@ -89,7 +91,7 @@ TabProduct.propTypes = {
   bgColorClass: PropTypes.string,
   category: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
+  spaceTopClass: PropTypes.string,
 };
 
 export default TabProduct;

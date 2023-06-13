@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import clsx from "clsx"
+import clsx from "clsx";
 import { Link } from "react-router-dom";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
@@ -11,7 +11,7 @@ const TabProductNineteen = ({
   spaceBottomClass,
   category,
   productTabClass,
-  productGridStyleClass
+  productGridStyleClass,
 }) => {
   return (
     <div className={clsx("product-area", spaceTopClass, spaceBottomClass)}>
@@ -26,7 +26,10 @@ const TabProductNineteen = ({
         <Tab.Container defaultActiveKey="bestSeller">
           <Nav
             variant="pills"
-            className={clsx("product-tab-list-6 justify-content-center mb-60", productTabClass)}
+            className={clsx(
+              "product-tab-list-6 justify-content-center mb-60",
+              productTabClass
+            )}
           >
             <Nav.Item>
               <Nav.Link eventKey="newArrival">
@@ -81,10 +84,7 @@ const TabProductNineteen = ({
           </Tab.Content>
         </Tab.Container>
         <div className="view-more text-center mt-20 toggle-btn6 col-12">
-          <Link
-            className="loadMore6"
-            to={process.env.PUBLIC_URL + "/shop-grid-standard"}
-          >
+          <Link className="loadMore6" to={process.env.PUBLIC_URL + "/shop"}>
             VIEW MORE PRODUCTS
           </Link>
         </div>
@@ -98,7 +98,7 @@ TabProductNineteen.propTypes = {
   productTabClass: PropTypes.string,
   productGridStyleClass: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
+  spaceTopClass: PropTypes.string,
 };
 
 export default TabProductNineteen;
