@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import Swiper, { SwiperSlide } from "../../components/swiper";
-import testimonialData from "../../data/testimonial/testimonial-one.json";
-import TestimonialOneSingle from "../../components/testimonial/TestimonialOneSingle.js";
+import Swiper, { SwiperSlide } from "../../../components/swiper";
+import testimonialData from "../../../data/testimonial/testimonial-one.json";
+import FeedBackCard from "./FeedBackCard";
 
 // swiper slider settings
 const settings = {
@@ -34,7 +34,7 @@ const FeedBackDetails = ({
                   <Swiper options={settings}>
                     {testimonialData.map((single, key) => (
                       <SwiperSlide key={key}>
-                        <TestimonialOneSingle
+                        <FeedBackCard
                           data={single}
                           testimonialClass={testimonialClass}
                         />

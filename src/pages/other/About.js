@@ -12,6 +12,7 @@ import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
 import AboutQadriDetails from "./components/AboutQadriDetails";
 import FirmDetails from "./components/FirmDetails";
 import AboutFeature from "./components/AboutFeature";
+import FeedBackDetails from "./components/FeedBackDetails";
 
 const About = () => {
   let { pathname } = useLocation();
@@ -43,8 +44,10 @@ const About = () => {
         <div style={{ paddingBottom: "40px" }}>
           <FirmDetails />
         </div>
-        {/* <FeedBackDetails /> */}
+
         <AboutFeature />
+        {/* <FeedBackDetails /> */}
+        <FeedBackDetails />
 
         {/* banner */}
         <BannerOne spaceBottomClass="pb-70" />
