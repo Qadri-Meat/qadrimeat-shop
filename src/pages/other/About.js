@@ -32,9 +32,17 @@ const About = () => {
 
         {/* section title with text */}
         <SectionTitleWithText spaceTopClass="pt-100" spaceBottomClass="pb-95" />
+
         {/* About Qadri meat Details */}
-        <AboutQadriDetails />
-        <FirmDetails />
+        <div style={{ paddingBottom: "40px" }}>
+          <AboutQadriDetails />
+        </div>
+
+        {/* About Qadri meat Firm Details */}
+        <div style={{ paddingBottom: "40px" }}>
+          <FirmDetails />
+        </div>
+
         {/* banner */}
         <BannerOne spaceBottomClass="pb-70" />
 
