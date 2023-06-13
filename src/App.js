@@ -378,7 +378,10 @@ const App = () => {
               element={<LoginRegister />}
             />
 
-            <Route path={process.env.PUBLIC_URL + "/cart"} element={<Cart />} />
+            <Route
+              path={process.env.PUBLIC_URL + "/cart"}
+              element={<Cart customProp={"beef"} />}
+            />
             <Route
               path={process.env.PUBLIC_URL + "/wishlist"}
               element={<Wishlist />}

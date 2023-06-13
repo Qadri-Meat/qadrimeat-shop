@@ -13,8 +13,9 @@ import {
 } from "../../store/slices/cart-slice";
 import { cartItemStock } from "../../helpers/product";
 
-const Cart = () => {
+const Cart = ({ customProp }) => {
   let cartTotalPrice = 0;
+  console.log("Props....", customProp);
 
   const [quantityCount] = useState(1);
   const dispatch = useDispatch();
