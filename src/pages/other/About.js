@@ -11,6 +11,7 @@ import TeamMemberOne from "../../wrappers/team-member/TeamMemberOne";
 import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
 import AboutQadriDetails from "./components/AboutQadriDetails";
 import FirmDetails from "./components/FirmDetails";
+import AboutFeature from "./components/AboutFeature";
 
 const About = () => {
   let { pathname } = useLocation();
@@ -42,6 +43,8 @@ const About = () => {
         <div style={{ paddingBottom: "40px" }}>
           <FirmDetails />
         </div>
+        {/* <FeedBackDetails /> */}
+        <AboutFeature />
 
         {/* banner */}
         <BannerOne spaceBottomClass="pb-70" />
