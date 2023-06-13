@@ -10,6 +10,7 @@ import FunFactOne from "../../wrappers/fun-fact/FunFactOne";
 import TeamMemberOne from "../../wrappers/team-member/TeamMemberOne";
 import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
 import AboutQadriDetails from "./components/AboutQadriDetails";
+import FirmDetails from "./components/FirmDetails";
 
 const About = () => {
   let { pathname } = useLocation();
@@ -31,7 +32,9 @@ const About = () => {
 
         {/* section title with text */}
         <SectionTitleWithText spaceTopClass="pt-100" spaceBottomClass="pb-95" />
+        {/* About Qadri meat Details */}
         <AboutQadriDetails />
+        <FirmDetails />
         {/* banner */}
         <BannerOne spaceBottomClass="pb-70" />
 
