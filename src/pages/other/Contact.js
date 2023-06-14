@@ -31,8 +31,8 @@ const Contact = () => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>+012 345 678 102</p>
-                      <p>+012 345 678 102</p>
+                      <p>+92 304 4014345</p>
+                      <p>+92 304 4014345</p>
                     </div>
                   </div>
                   <div className="single-contact-info">
@@ -41,8 +41,8 @@ const Contact = () => {
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        <a href="mailto:yourname@email.com">
-                          yourname@email.com
+                        <a href="mailto:qadrimeat@gmail.com">
+                          qadrimeat@gmail.com
                         </a>
                       </p>
                       <p>
@@ -58,7 +58,10 @@ const Contact = () => {
                     </div>
                     <div className="contact-info-dec">
                       <p>Address goes here, </p>
-                      <p>street, Crossroad 123.</p>
+                      <p>
+                        Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
+                        Pakistan.
+                      </p>
                     </div>
                   </div>
                   <div className="contact-social text-center">
