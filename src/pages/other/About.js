@@ -41,7 +41,9 @@ const About = () => {
         </div>
 
         {/* About Feature */}
-        <AboutFeature />
+        <div style={{ paddingBottom: "40px" }}>
+          <AboutFeature />
+        </div>
         {/* <Feed Back Details /> */}
         <FeedBackDetails />
       </LayoutOne>
