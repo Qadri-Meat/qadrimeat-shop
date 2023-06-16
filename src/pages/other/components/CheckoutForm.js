@@ -1,4 +1,5 @@
 import React from "react";
+import BillingForm from "./BillingForm";
 
 const CheckoutForm = () => {
   return (
@@ -7,78 +8,7 @@ const CheckoutForm = () => {
         <div className="billing-info-wrap">
           <h3>Billing Details</h3>
           <div className="row">
-            <div className="col-lg-6 col-md-6">
-              <div className="billing-info mb-20">
-                <label>First Name</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="col-lg-6 col-md-6">
-              <div className="billing-info mb-20">
-                <label>Last Name</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="col-lg-12">
-              <div className="billing-info mb-20">
-                <label>Company Name</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="col-lg-12">
-              <div className="billing-select mb-20">
-                <label>Country</label>
-                <select>
-                  <option>Select a country</option>
-                  <option>Azerbaijan</option>
-                  <option>Bahamas</option>
-                  <option>Bahrain</option>
-                  <option>Bangladesh</option>
-                  <option>Barbados</option>
-                </select>
-              </div>
-            </div>
-            <div className="col-lg-12">
-              <div className="billing-info mb-20">
-                <label>Street Address</label>
-                <input
-                  className="billing-address"
-                  placeholder="House number and street name"
-                  type="text"
-                />
-                <input placeholder="Apartment, suite, unit etc." type="text" />
-              </div>
-            </div>
-            <div className="col-lg-12">
-              <div className="billing-info mb-20">
-                <label>Town / City</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="col-lg-6 col-md-6">
-              <div className="billing-info mb-20">
-                <label>State / County</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="col-lg-6 col-md-6">
-              <div className="billing-info mb-20">
-                <label>Postcode / ZIP</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="col-lg-6 col-md-6">
-              <div className="billing-info mb-20">
-                <label>Phone</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="col-lg-6 col-md-6">
-              <div className="billing-info mb-20">
-                <label>Email Address</label>
-                <input type="text" />
-              </div>
-            </div>
+            <BillingForm />
           </div>
 
           <div className="additional-info-wrap">
