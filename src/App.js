@@ -25,7 +25,6 @@ const ProductFixedImage = lazy(() =>
 // other pages
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
-const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
@@ -93,10 +92,6 @@ const App = () => {
             <Route
               path={process.env.PUBLIC_URL + "/contact"}
               element={<Contact />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + "/my-account"}
-              element={<MyAccount />}
             />
 
             <Route
