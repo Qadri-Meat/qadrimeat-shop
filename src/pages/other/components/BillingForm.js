@@ -1,56 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Form } from "react-bootstrap";
 
 const schema = yup.object().shape({
-  firstName: yup.string().required("First Name is required"),
-  lastName: yup.string().required("Last Name is required"),
-  company: yup.string().required("Company Name is required"),
-  country: yup.string().required("Please Select Country"),
+  firstName: yup.string().required("First Name is Required"),
+  lastName: yup.string().required("Last Name is Required"),
+  company: yup.string().required("Company Name is Required"),
+  country: yup
+    .string()
+    .required("Please Select Country")
+    .matches(/^[A-Za-z ]*$/, "Please enter a valid country"), // Validate that the country name contains only letters and spaces
   address: yup.string().required("Please enter Address"),
-  phone: yup.string().required("Please enter Phone Number"),
+  phone: yup
+    .string()
+    .required("Please enter Phone Number")
+    .matches(/^\+[0-9]{1,3}-[0-9]{1,14}$/, "Please enter a valid phone number"), // Validate phone number with international format, e.g., +1-123456789
   email: yup.string().required("Please enter Email").email(),
-  postal: yup.number("Number").required(),
-  state: yup.string().required("Please enter Phone Number"),
+  postal: yup
+    .string()
+    .required("Postal is Required")
+    .matches(/^[0-9]{5}$/, "Please enter a valid postal code"), // Validate postal code with 5 digits
+  state: yup.string().required("State is Required"),
   city: yup.string().required(),
-  password: yup.string().min(8).max(32).required(),
 });
 
 function BillingForm() {
-  const onSubmit = (data) => {
-    console.log(data);
-    // You can perform further actions with the form data object, such as sending it to a server via API, etc.
-  };
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    companyName: "",
-    country: "",
-    streetAddress: "",
-    apartment: "",
-    city: "",
-    state: "",
-    postcode: "",
-    phone: "",
-    email: "",
-  });
   const {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmitHandler = (data) => {
+  const onSubmitHandler = () => {
+    const data = getValues(); // Retrieve the form data using getValues()
     console.log(data);
-  };
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
-    // You can perform further actions with the form data object, such as sending it to a server via API, etc.
   };
 
   return (
@@ -97,11 +84,7 @@ function BillingForm() {
         <div className="col-lg-12">
           <div className="billing-select mb-20">
             <label>Country</label>
-            <select
-              name="country"
-              value={formData.country}
-              {...register("country")}
-            >
+            <select name="country" {...register("country")}>
               <option value="">Select a country</option>
               <option value="Azerbaijan">Azerbaijan</option>
               <option value="Bahamas">Bahamas</option>
