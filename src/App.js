@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
 
+// shop pages
+const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
+
 // product pages
 const Product = lazy(() => import("./pages/shop-product/Product"));
 const ProductTabLeft = lazy(() =>
@@ -22,8 +25,6 @@ const ProductFixedImage = lazy(() =>
 // other pages
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
-const MyAccount = lazy(() => import("./pages/other/MyAccount"));
-const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
 
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
@@ -50,6 +51,11 @@ const App = () => {
             <Route
               path={process.env.PUBLIC_URL + "/"}
               element={<HomeFashion />}
+            />
+            {/* Shop pages */}
+            <Route
+              path={process.env.PUBLIC_URL + "/shop"}
+              element={<ShopGridStandard />}
             />
 
             {/* Shop product pages */}
@@ -86,14 +92,6 @@ const App = () => {
             <Route
               path={process.env.PUBLIC_URL + "/contact"}
               element={<Contact />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + "/my-account"}
-              element={<MyAccount />}
-            />
-            <Route
-              path={process.env.PUBLIC_URL + "/login-register"}
-              element={<LoginRegister />}
             />
 
             <Route
