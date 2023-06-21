@@ -4,10 +4,8 @@ import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
-import AboutQadriDetails from "./components/AboutQadriDetails";
-import FirmDetails from "./components/FirmDetails";
-import AboutFeature from "./components/AboutFeature";
-import FeedBackDetails from "./components/FeedBackDetails";
+import BannerOne from "wrappers/banner/BannerOne";
+import TextGridOne from "wrappers/text-grid/TextGridOne";
 
 const About = () => {
   let { pathname } = useLocation();
@@ -29,23 +27,9 @@ const About = () => {
 
         {/* section title with text */}
         <SectionTitleWithText spaceTopClass="pt-100" spaceBottomClass="pb-95" />
+        <BannerOne spaceTopClass="pt-60" spaceBottomClass="pb-65" />
 
-        {/* About Qadri meat Details */}
-        <div style={{ paddingBottom: "40px" }}>
-          <AboutQadriDetails />
-        </div>
-
-        {/* About Qadri meat Firm Details */}
-        <div style={{ paddingBottom: "40px" }}>
-          <FirmDetails />
-        </div>
-
-        {/* About Feature */}
-        <div style={{ paddingBottom: "40px" }}>
-          <AboutFeature />
-        </div>
-        {/* <Feed Back Details /> */}
-        <FeedBackDetails />
+        <TextGridOne spaceBottomClass="mb-30" />
       </LayoutOne>
     </Fragment>
   );
