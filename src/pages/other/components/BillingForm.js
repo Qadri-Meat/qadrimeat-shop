@@ -31,12 +31,10 @@ function BillingForm() {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmitHandler = () => {
-    const data = getValues(); // Retrieve the form data using getValues()
+  const onSubmitHandler = (data) => {
     console.log(data);
   };
 
@@ -51,7 +49,7 @@ function BillingForm() {
                 <Form.Control
                   {...register("firstName")}
                   placeholder="First Name"
-                ></Form.Control>
+                />
               </Form.Group>
             </div>
             <p>{errors.firstName?.message}</p>
