@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Form } from "react-bootstrap";
+import TextField from "./TextField";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is Required"),
@@ -43,41 +43,33 @@ function BillingForm() {
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <div className="row">
           <div className="col-lg-6 col-md-6">
-            <div className="billing-info mb-20">
-              <Form.Group controlId="firstName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control
-                  {...register("firstName")}
-                  placeholder="First Name"
-                />
-              </Form.Group>
-            </div>
-            <p>{errors.firstName?.message}</p>
+            <TextField
+              {...register("firstName")}
+              controlId="firstName"
+              label="First Name"
+              placeholder="First Name"
+              error={errors.firstName?.message}
+            />
           </div>
+
           <div className="col-lg-6 col-md-6">
-            <div className="billing-info mb-20">
-              <Form.Group controlId="lastName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control
-                  {...register("lastName")}
-                  placeholder="Last Name"
-                ></Form.Control>
-              </Form.Group>
-            </div>
-            <p>{errors.lastName?.message}</p>
+            <TextField
+              {...register("lastName")}
+              controlId="lastName"
+              label="Last Name"
+              placeholder="Last Name"
+              error={errors.lastName?.message}
+            />
           </div>
         </div>
         <div className="col-lg-12">
-          <div className="billing-info mb-20">
-            <Form.Group controlId="company">
-              <Form.Label>Company Name</Form.Label>
-              <Form.Control
-                {...register("company")}
-                placeholder="Company Name"
-              ></Form.Control>
-            </Form.Group>
-          </div>
-          <p>{errors.company?.message}</p>
+          <TextField
+            {...register("company")}
+            controlId="company"
+            label="Company"
+            placeholder="Company"
+            error={errors.company?.message}
+          />
         </div>
         <div className="col-lg-12">
           <div className="billing-select mb-20">
@@ -94,79 +86,63 @@ function BillingForm() {
           <p>{errors.country?.message}</p>
         </div>
         <div className="col-lg-12">
-          <div className="billing-info mb-20">
-            <Form.Group controlId="address">
-              <Form.Label>Address</Form.Label>
-              <Form.Control
-                {...register("address")}
-                placeholder="Address"
-              ></Form.Control>
-            </Form.Group>
-          </div>
-          <p>{errors.address?.message}</p>
+          <TextField
+            {...register("address")}
+            controlId="address"
+            label="Address"
+            placeholder="Address"
+            error={errors.address?.message}
+          />
         </div>
         <div className="col-lg-12">
-          <div className="billing-info mb-20">
-            <Form.Group controlId="address">
-              <Form.Label>City/Town</Form.Label>
-              <Form.Control
-                {...register("city")}
-                placeholder="City/Town"
-              ></Form.Control>
-            </Form.Group>
-          </div>
-          <p>{errors.city?.message}</p>
+          <TextField
+            {...register("city")}
+            controlId="city"
+            label="City"
+            placeholder="City"
+            error={errors.city?.message}
+          />
         </div>
         <div className="row">
           <div className="col-lg-6 col-md-6">
-            <div className="billing-info mb-20">
-              <Form.Group controlId="address">
-                <Form.Label>State/Country</Form.Label>
-                <Form.Control
-                  {...register("state")}
-                  placeholder="State/Country"
-                ></Form.Control>
-              </Form.Group>
-            </div>
-            <p>{errors.state?.message}</p>
+            <TextField
+              {...register("state")}
+              controlId="address"
+              label="State/Country"
+              placeholder="State/Country"
+              error={errors.state?.message}
+            />
           </div>
+
           <div className="col-lg-6 col-md-6">
-            <div className="billing-info mb-20">
-              <Form.Group controlId="address">
-                <Form.Label>Postal/ Zip code</Form.Label>
-                <Form.Control
-                  {...register("postal")}
-                  placeholder="Postal/ Zip code"
-                ></Form.Control>
-              </Form.Group>
-            </div>
-            <p>{errors.postal?.message}</p>
+            <TextField
+              {...register("postal")}
+              controlId="address"
+              label="Postal/ Zip code"
+              placeholder="Postal/ Zip code"
+              error={errors.postal?.message}
+            />
           </div>
         </div>
         <div className="row">
           <div className="col-lg-6 col-md-6">
-            <div className="billing-info mb-20">
-              <Form.Group controlId="address">
-                <Form.Label>Phone</Form.Label>
-                <Form.Control
-                  {...register("phone")}
-                  placeholder="Phone"
-                ></Form.Control>
-              </Form.Group>
-            </div>
-            <p>{errors.phone?.message}</p>
+            <TextField
+              {...register("phone")}
+              controlId="address"
+              label="Phone"
+              placeholder="Phone"
+              error={errors.phone?.message}
+            />
           </div>
+
           <div className="col-lg-6 col-md-6">
-            <div className="billing-info mb-20">
-              <Form.Group controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  {...register("email")}
-                  placeholder="Email"
-                ></Form.Control>
-              </Form.Group>
-            </div>
-            <p>{errors.email?.message}</p>
+            <TextField
+              {...register("email")}
+              controlId="email"
+              label="Email"
+              placeholder="Email"
+              error={errors.email?.message}
+            />
           </div>
         </div>
 
