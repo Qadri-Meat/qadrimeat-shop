@@ -2,7 +2,7 @@
   {
     "id": 1,
     "image": "/assets/img/banner/chicken3.jpg",
-    "title": "Watches",
+    "title": "Chicken",
     "subtitle": "Starting at",
     "price": "$99.00",
     "link": "/shop"
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "image": "/assets/img/banner/beef.jpg",
-    "title": "Plo Bag",
+    "title": "Beef",
     "subtitle": "Starting at",
     "price": "$79.00",
     "link": "/shop"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "image": "/assets/img/banner/mutton.jpg",
-    "title": "Sunglass",
+    "title": "Mutton",
     "subtitle": "Starting at",
     "price": "$29.00",
     "link": "/shop"
