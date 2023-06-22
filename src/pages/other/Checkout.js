@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
@@ -9,6 +9,7 @@ import TextField from "./components/TextField";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { createOrder } from "store/slices/order-slice";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is Required"),
@@ -33,6 +34,9 @@ const schema = yup.object().shape({
 });
 
 const Checkout = ({ customProp }) => {
+  const currency = useSelector((state) => state.currency);
+  const { cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -41,7 +45,30 @@ const Checkout = ({ customProp }) => {
     resolver: yupResolver(schema),
   });
   const onSubmitHandler = (data) => {
+    console.log("in submit function");
     console.log(data);
+    const newData = {
+      phone: data.phone,
+      shippingPrice: "0",
+      totalPrice: cartTotalPrice.toFixed(2),
+      deliveryTime: Date.now(),
+      orderItems: [
+        {
+          name: data.firstName,
+          quantity: cartItems.quantity,
+          weight: "",
+          price: 100,
+          discount: "",
+          image: [""],
+          product: "testing",
+        },
+      ],
+      type: "online",
+      discount: "0",
+    };
+    console.log(newData);
+
+    dispatch(createOrder(newData));
   };
 
   let cartTotalPrice = 0;
@@ -49,8 +76,6 @@ const Checkout = ({ customProp }) => {
   console.log("Props....", customProp);
 
   let { pathname } = useLocation();
-  const currency = useSelector((state) => state.currency);
-  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <Fragment>
@@ -75,6 +100,134 @@ const Checkout = ({ customProp }) => {
                     <h3>Billing Details</h3>
                     <div className="row">
                       <form onSubmit={handleSubmit(onSubmitHandler)}>
+                        <div className="row">
+                          <div className="col-lg-6 col-md-6">
+                            <label htmlFor="firstName">First Name</label>
+                            <input
+                              type="text"
+                              id="firstName"
+                              {...register("firstName")}
+                              placeholder="First Name"
+                            />
+                            <p>{errors.firstName?.message}</p>
+                          </div>
+
+                          <div className="col-lg-6 col-md-6">
+                            <label htmlFor="lastName">Last Name</label>
+                            <input
+                              type="text"
+                              id="lastName"
+                              {...register("lastName")}
+                              placeholder="Last Name"
+                            />
+                            <p>{errors.lastName?.message}</p>
+                          </div>
+                        </div>
+
+                        <div className="col-lg-12">
+                          <label htmlFor="company">Company</label>
+                          <input
+                            type="text"
+                            id="company"
+                            {...register("company")}
+                            placeholder="Company"
+                          />
+                          <p>{errors.company?.message}</p>
+                        </div>
+
+                        <div className="col-lg-12">
+                          <div className="billing-select mb-20">
+                            <label htmlFor="country">Country</label>
+                            <select
+                              id="country"
+                              name="country"
+                              {...register("country")}
+                            >
+                              <option value="">Select a country</option>
+                              <option value="Azerbaijan">Azerbaijan</option>
+                              <option value="Bahamas">Bahamas</option>
+                              <option value="Bahrain">Bahrain</option>
+                              <option value="Bangladesh">Bangladesh</option>
+                              <option value="Barbados">Barbados</option>
+                            </select>
+                          </div>
+                          <p>{errors.country?.message}</p>
+                        </div>
+
+                        <div className="col-lg-12">
+                          <label htmlFor="address">Address</label>
+                          <input
+                            type="text"
+                            id="address"
+                            {...register("address")}
+                            placeholder="Address"
+                          />
+                          <p>{errors.address?.message}</p>
+                        </div>
+
+                        <div className="col-lg-12">
+                          <label htmlFor="city">City</label>
+                          <input
+                            type="text"
+                            id="city"
+                            {...register("city")}
+                            placeholder="City"
+                          />
+                          <p>{errors.city?.message}</p>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-lg-6 col-md-6">
+                            <label htmlFor="state">State/Country</label>
+                            <input
+                              type="text"
+                              id="state"
+                              {...register("state")}
+                              placeholder="State/Country"
+                            />
+                            <p>{errors.state?.message}</p>
+                          </div>
+
+                          <div className="col-lg-6 col-md-6">
+                            <label htmlFor="postal">Postal/Zip code</label>
+                            <input
+                              type="text"
+                              id="postal"
+                              {...register("postal")}
+                              placeholder="Postal/Zip code"
+                            />
+                            <p>{errors.postal?.message}</p>
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-lg-6 col-md-6">
+                            <label htmlFor="phone">Phone</label>
+                            <input
+                              type="text"
+                              id="phone"
+                              {...register("phone")}
+                              placeholder="Phone"
+                            />
+                            <p>{errors.phone?.message}</p>
+                          </div>
+
+                          <div className="col-lg-6 col-md-6">
+                            <label htmlFor="email">Email</label>
+                            <input
+                              type="text"
+                              id="email"
+                              {...register("email")}
+                              placeholder="Email"
+                            />
+                            <p>{errors.email?.message}</p>
+                          </div>
+                        </div>
+
+                        <input type="submit" value="Submit" />
+                      </form>
+
+                      {/* <form onSubmit={handleSubmit(onSubmitHandler)}>
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
                             <TextField
@@ -141,7 +294,7 @@ const Checkout = ({ customProp }) => {
                           <div className="col-lg-6 col-md-6">
                             <TextField
                               {...register("state")}
-                              controlId="address"
+                              controlId="state"
                               label="State/Country"
                               placeholder="State/Country"
                               error={errors.state?.message}
@@ -151,7 +304,7 @@ const Checkout = ({ customProp }) => {
                           <div className="col-lg-6 col-md-6">
                             <TextField
                               {...register("postal")}
-                              controlId="address"
+                              controlId="postal"
                               label="Postal/ Zip code"
                               placeholder="Postal/ Zip code"
                               error={errors.postal?.message}
@@ -162,7 +315,7 @@ const Checkout = ({ customProp }) => {
                           <div className="col-lg-6 col-md-6">
                             <TextField
                               {...register("phone")}
-                              controlId="address"
+                              controlId="phone"
                               label="Phone"
                               placeholder="Phone"
                               error={errors.phone?.message}
@@ -181,7 +334,7 @@ const Checkout = ({ customProp }) => {
                         </div>
 
                         <input type="submit" value="Submit" />
-                      </form>
+                      </form> */}
                     </div>
 
                     <div className="additional-info-wrap">
