@@ -99,7 +99,7 @@ const Checkout = ({ customProp }) => {
                   <div className="billing-info-wrap">
                     <h3>Billing Details</h3>
                     <div className="row">
-                      <form onSubmit={handleSubmit(onSubmitHandler)}>
+                      {/* <form onSubmit={handleSubmit(onSubmitHandler)}>
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
                             <label htmlFor="firstName">First Name</label>
@@ -225,9 +225,8 @@ const Checkout = ({ customProp }) => {
                         </div>
 
                         <input type="submit" value="Submit" />
-                      </form>
-
-                      {/* <form onSubmit={handleSubmit(onSubmitHandler)}>
+                      </form> */}
+                      <form onSubmit={handleSubmit(onSubmitHandler)}>
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
                             <TextField
@@ -334,7 +333,7 @@ const Checkout = ({ customProp }) => {
                         </div>
 
                         <input type="submit" value="Submit" />
-                      </form> */}
+                      </form>
                     </div>
 
                     <div className="additional-info-wrap">
