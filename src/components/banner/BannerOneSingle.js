@@ -8,13 +8,16 @@ const BannerOneSingle = ({ data, spaceBottomClass }) => {
       <Link to={process.env.PUBLIC_URL + data.link}>
         <img src={process.env.PUBLIC_URL + data.image} alt="" />
       </Link>
-      <div className="banner-content">
-        <h3>{data.title}</h3>
-        <h4>
-          {data.subtitle} <span>{data.price}</span>
+      <div style={{ color: "black" }} className="banner-content">
+        <h3 style={{ color: "black" }}>{data.title}</h3>
+        <h4 style={{ color: "black" }}>
+          {data.subtitle} <span style={{ color: "black" }}>{data.price}</span>
         </h4>
-        <Link to={process.env.PUBLIC_URL + data.link}>
-          <i className="fa fa-long-arrow-right" />
+        <Link
+          style={{ color: "black" }}
+          to={process.env.PUBLIC_URL + data.link}
+        >
+          <i style={{ color: "black" }} className="fa fa-long-arrow-right" />
         </Link>
       </div>
     </div>
