@@ -6,7 +6,11 @@ const BannerOneSingle = ({ data, spaceBottomClass }) => {
   return (
     <div className={clsx("single-banner", spaceBottomClass)}>
       <Link to={process.env.PUBLIC_URL + data.link}>
-        <img src={process.env.PUBLIC_URL + data.image} alt="" />
+        <img
+          src={process.env.PUBLIC_URL + data.image}
+          alt=""
+          style={{ width: "376px", height: "250.656px" }}
+        />
       </Link>
       <div style={{ color: "black" }} className="banner-content">
         <h3 style={{ color: "black" }}>{data.title}</h3>
