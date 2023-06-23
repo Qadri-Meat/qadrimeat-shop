@@ -32,7 +32,6 @@ const HomeFashion = () => {
 
         {/* image slider */}
         <ImageSliderOne />
-
       </LayoutOne>
     </Fragment>
   );

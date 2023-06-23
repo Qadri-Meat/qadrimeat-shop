@@ -12,7 +12,7 @@ const ImageSliderOneSingle = ({ data }) => {
 };
 
 ImageSliderOneSingle.propTypes = {
-  data: PropTypes.shape({})
+  data: PropTypes.shape({}),
 };
 
 export default ImageSliderOneSingle;
