@@ -13,24 +13,24 @@ import { createOrder } from "store/slices/order-slice";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is Required"),
-  // lastName: yup.string().required("Last Name is Required"),
-  // company: yup.string().required("Company Name is Required"),
-  // country: yup
-  //   .string()
-  //   .required("Please Select Country")
-  //   .matches(/^[A-Za-z ]*$/, "Please enter a valid country"), // Validate that the country name contains only letters and spaces
-  // address: yup.string().required("Please enter Address"),
-  // phone: yup
-  //   .string()
-  //   .required("Please enter Phone Number")
-  //   .matches(/^\+[0-9]{1,3}-[0-9]{1,14}$/, "Please enter a valid phone number"), // Validate phone number with international format, e.g., +1-123456789
-  // email: yup.string().required("Please enter Email").email(),
-  // postal: yup
-  //   .string()
-  //   .required("Postal is Required")
-  //   .matches(/^[0-9]{5}$/, "Please enter a valid postal code"), // Validate postal code with 5 digits
-  // state: yup.string().required("State is Required"),
-  // city: yup.string().required(),
+  lastName: yup.string().required("Last Name is Required"),
+  company: yup.string().required("Company Name is Required"),
+  country: yup
+    .string()
+    .required("Please Select Country")
+    .matches(/^[A-Za-z ]*$/, "Please enter a valid country"), // Validate that the country name contains only letters and spaces
+  address: yup.string().required("Please enter Address"),
+  phone: yup
+    .string()
+    .required("Please enter Phone Number")
+    .matches(/^\+[0-9]{1,3}-[0-9]{1,14}$/, "Please enter a valid phone number"), // Validate phone number with international format, e.g., +1-123456789
+  email: yup.string().required("Please enter Email").email(),
+  postal: yup
+    .string()
+    .required("Postal is Required")
+    .matches(/^[0-9]{5}$/, "Please enter a valid postal code"), // Validate postal code with 5 digits
+  state: yup.string().required("State is Required"),
+  city: yup.string().required(),
 });
 
 const Checkout = ({ customProp }) => {

@@ -12,7 +12,7 @@ const BannerOneSingle = ({ data, spaceBottomClass }) => {
           style={{ width: "376px", height: "250.656px" }}
         />
       </Link>
-      <div style={{ color: "black" }} className="banner-content">
+      <div style={{ color: "black" }} className="banner-content banner-dark">
         <h3 style={{ color: "black" }}>{data.title}</h3>
         <h4 style={{ color: "black" }}>
           {data.subtitle} <span style={{ color: "black" }}>{data.price}</span>
