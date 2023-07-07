@@ -59,15 +59,22 @@ const Checkout = ({ customProp }) => {
       deliveryTime: Date.now(),
       orderItems: [
         {
-          name: cartItems.name,
-          quantity: cartItems.quantity,
-          price: cartItems.price,
-          discount: cartItems.discount,
-          image: cartItems.image,
-          product: cartItems.id,
+          name: cartItems[0].name, // Assuming cartItems is an array and you want to access the first item
+          quantity: cartItems[0].quantity,
+          price: cartItems[0].price,
+          discount: cartItems[0].discount,
+          image: cartItems[0].image,
+          product: cartItems[0].id,
         },
       ],
-      shippingDetails: data,
+      shippingDetails: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        phone: data.phone,
+        address: data.address,
+        city: data.city,
+        country: data.country,
+      },
       type: "online",
       discount: 0,
     };
