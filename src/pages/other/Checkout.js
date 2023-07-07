@@ -5,11 +5,11 @@ import { getDiscountPrice } from "../../helpers/product";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import TextField from "./components/TextField";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { createOrder } from "store/slices/order-slice";
+import { Form } from "react-bootstrap";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is Required"),
@@ -73,7 +73,7 @@ const Checkout = ({ customProp }) => {
     };
     console.log(newData);
 
-    // dispatch(createOrder(newData));
+    dispatch(createOrder(newData));
   };
 
   let cartTotalPrice = 0;
@@ -106,18 +106,39 @@ const Checkout = ({ customProp }) => {
                       <h3>Billing Details</h3>
                       <div className="row">
                         <div className="row">
+                          {/* <CheckoutForm /> */}
                           <div className="col-lg-6 col-md-6">
+                            <Form.Group controlId="firstName">
+                              <Form.Label>{["First Name"]}</Form.Label>
+                              <Form.Control
+                                {...register("firstName")}
+                                placeholder="firstName"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.firstName?.message}
+                            </p>
                             {/* <TextField
-                              ref={register}
-                              name="firstName"
-                              id="firstName"
-                              label="First Name"
-                              placeholder="First Name"
-                              error={errors.firstName?.message}
+                            ref={register}
+                            name="firstName"
+                            id="firstName"
+                            label="First Name"
+                            placeholder="First Name"
+                            error={errors.firstName?.message}
                             /> */}
                           </div>
 
                           <div className="col-lg-6 col-md-6">
+                            <Form.Group controlId="firstName">
+                              <Form.Label>{["First Name"]}</Form.Label>
+                              <Form.Control
+                                {...register("firstName")}
+                                placeholder="firstName"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.firstName?.message}
+                            </p>
                             {/* <TextField
                               ref={register}
                               id="lastName"
@@ -127,14 +148,24 @@ const Checkout = ({ customProp }) => {
                             /> */}
                           </div>
                         </div>
-                        {/* <div className="col-lg-12">
-                          <TextField
+                        <div className="col-lg-12">
+                          <Form.Group controlId="company">
+                            <Form.Label>{["Company Name"]}</Form.Label>
+                            <Form.Control
+                              {...register("company")}
+                              placeholder="company"
+                            ></Form.Control>
+                          </Form.Group>
+                          <p className="validation-color">
+                            {errors.company?.message}
+                          </p>
+                          {/* <TextField
                             ref={register}
                             controlId="company"
                             label="Company"
                             placeholder="Company"
                             error={errors.company?.message}
-                          />
+                          /> */}
                         </div>
                         <div className="col-lg-12">
                           <div className="billing-select mb-20">
@@ -151,65 +182,125 @@ const Checkout = ({ customProp }) => {
                           <p>{errors.country?.message}</p>
                         </div>
                         <div className="col-lg-12">
-                          <TextField
+                          <Form.Group controlId="address">
+                            <Form.Label>{["Address"]}</Form.Label>
+                            <Form.Control
+                              {...register("address")}
+                              placeholder="Address"
+                            ></Form.Control>
+                          </Form.Group>
+                          <p className="validation-color">
+                            {errors.address?.message}
+                          </p>
+                          {/* <TextField
                             ref={register}
                             controlId="address"
                             label="Address"
                             placeholder="Address"
                             error={errors.address?.message}
-                          />
+                          /> */}
                         </div>
                         <div className="col-lg-12">
-                          <TextField
+                          <Form.Group controlId="city">
+                            <Form.Label>{["City"]}</Form.Label>
+                            <Form.Control
+                              {...register("city")}
+                              placeholder="City"
+                            ></Form.Control>
+                          </Form.Group>
+                          <p className="validation-color">
+                            {errors.city?.message}
+                          </p>
+                          {/* <TextField
                             ref={register}
                             controlId="city"
                             label="City"
                             placeholder="City"
                             error={errors.city?.message}
-                          />
+                          /> */}
                         </div>
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
-                            <TextField
+                            <Form.Group controlId="state">
+                              <Form.Label>{["State/Country"]}</Form.Label>
+                              <Form.Control
+                                {...register("state")}
+                                placeholder="State/Country"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.state?.message}
+                            </p>
+                            {/* <TextField
                               ref={register}
                               controlId="state"
                               label="State/Country"
                               placeholder="State/Country"
                               error={errors.state?.message}
-                            />
+                            /> */}
                           </div>
 
                           <div className="col-lg-6 col-md-6">
-                            <TextField
+                            <Form.Group controlId="postal">
+                              <Form.Label>{["Postal/ Zip code"]}</Form.Label>
+                              <Form.Control
+                                {...register("postal")}
+                                placeholder="Postal/ Zip code"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.postal?.message}
+                            </p>
+                            {/* <TextField
                               ref={register}
                               controlId="postal"
                               label="Postal/ Zip code"
                               placeholder="Postal/ Zip code"
                               error={errors.postal?.message}
-                            />
+                            /> */}
                           </div>
                         </div>
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
-                            <TextField
+                            <Form.Group controlId="phone">
+                              <Form.Label>{["Phone"]}</Form.Label>
+                              <Form.Control
+                                {...register("phone")}
+                                placeholder="Phone"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.phone?.message}
+                            </p>
+                            {/* <TextField
                               ref={register}
                               controlId="phone"
                               label="Phone"
                               placeholder="Phone"
                               error={errors.phone?.message}
-                            />
+                            /> */}
                           </div>
 
                           <div className="col-lg-6 col-md-6">
-                            <TextField
+                            <Form.Group controlId="email">
+                              <Form.Label>{["Email"]}</Form.Label>
+                              <Form.Control
+                                {...register("email")}
+                                placeholder="Email"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.email?.message}
+                            </p>
+                            {/* <TextField
                               ref={register}
                               controlId="email"
                               label="Email"
                               placeholder="Email"
                               error={errors.email?.message}
-                            />
+                            /> */}
                           </div>
-                        </div> */}
+                        </div>
                       </div>
 
                       <div className="additional-info-wrap">
@@ -249,7 +340,6 @@ const Checkout = ({ customProp }) => {
                                 const finalDiscountedPrice = (
                                   discountedPrice * currency.currencyRate
                                 ).toFixed(2);
-
                                 discountedPrice != null
                                   ? (cartTotalPrice +=
                                       finalDiscountedPrice * cartItem.quantity)
@@ -328,5 +418,4 @@ const Checkout = ({ customProp }) => {
     </Fragment>
   );
 };
-
 export default Checkout;
