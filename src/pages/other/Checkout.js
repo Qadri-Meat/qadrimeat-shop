@@ -113,7 +113,6 @@ const Checkout = ({ customProp }) => {
                       <h3>Billing Details</h3>
                       <div className="row">
                         <div className="row">
-                          {/* <CheckoutForm /> */}
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="firstName">
                               <Form.Label>{["First Name"]}</Form.Label>
@@ -125,14 +124,6 @@ const Checkout = ({ customProp }) => {
                             <p className="validation-color">
                               {errors.firstName?.message}
                             </p>
-                            {/* <TextField
-                            ref={register}
-                            name="firstName"
-                            id="firstName"
-                            label="First Name"
-                            placeholder="First Name"
-                            error={errors.firstName?.message}
-                            /> */}
                           </div>
 
                           <div className="col-lg-6 col-md-6">
@@ -146,13 +137,6 @@ const Checkout = ({ customProp }) => {
                             <p className="validation-color">
                               {errors.firstName?.message}
                             </p>
-                            {/* <TextField
-                              ref={register}
-                              id="lastName"
-                              label="Last Name"
-                              placeholder="Last Name"
-                              error={errors.lastName?.message}
-                            /> */}
                           </div>
                         </div>
                         <div className="col-lg-12">
@@ -166,13 +150,6 @@ const Checkout = ({ customProp }) => {
                           <p className="validation-color">
                             {errors.company?.message}
                           </p>
-                          {/* <TextField
-                            ref={register}
-                            controlId="company"
-                            label="Company"
-                            placeholder="Company"
-                            error={errors.company?.message}
-                          /> */}
                         </div>
                         <div className="col-lg-12">
                           <div className="billing-select mb-20">
@@ -199,13 +176,6 @@ const Checkout = ({ customProp }) => {
                           <p className="validation-color">
                             {errors.address?.message}
                           </p>
-                          {/* <TextField
-                            ref={register}
-                            controlId="address"
-                            label="Address"
-                            placeholder="Address"
-                            error={errors.address?.message}
-                          /> */}
                         </div>
                         <div className="col-lg-12">
                           <Form.Group controlId="city">
@@ -218,13 +188,6 @@ const Checkout = ({ customProp }) => {
                           <p className="validation-color">
                             {errors.city?.message}
                           </p>
-                          {/* <TextField
-                            ref={register}
-                            controlId="city"
-                            label="City"
-                            placeholder="City"
-                            error={errors.city?.message}
-                          /> */}
                         </div>
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
@@ -238,13 +201,6 @@ const Checkout = ({ customProp }) => {
                             <p className="validation-color">
                               {errors.state?.message}
                             </p>
-                            {/* <TextField
-                              ref={register}
-                              controlId="state"
-                              label="State/Country"
-                              placeholder="State/Country"
-                              error={errors.state?.message}
-                            /> */}
                           </div>
 
                           <div className="col-lg-6 col-md-6">
@@ -258,13 +214,6 @@ const Checkout = ({ customProp }) => {
                             <p className="validation-color">
                               {errors.postal?.message}
                             </p>
-                            {/* <TextField
-                              ref={register}
-                              controlId="postal"
-                              label="Postal/ Zip code"
-                              placeholder="Postal/ Zip code"
-                              error={errors.postal?.message}
-                            /> */}
                           </div>
                         </div>
                         <div className="row">
@@ -279,13 +228,6 @@ const Checkout = ({ customProp }) => {
                             <p className="validation-color">
                               {errors.phone?.message}
                             </p>
-                            {/* <TextField
-                              ref={register}
-                              controlId="phone"
-                              label="Phone"
-                              placeholder="Phone"
-                              error={errors.phone?.message}
-                            /> */}
                           </div>
 
                           <div className="col-lg-6 col-md-6">
@@ -299,13 +241,6 @@ const Checkout = ({ customProp }) => {
                             <p className="validation-color">
                               {errors.email?.message}
                             </p>
-                            {/* <TextField
-                              ref={register}
-                              controlId="email"
-                              label="Email"
-                              placeholder="Email"
-                              error={errors.email?.message}
-                            /> */}
                           </div>
                         </div>
                       </div>
