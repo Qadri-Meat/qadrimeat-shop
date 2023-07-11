@@ -37,9 +37,7 @@ const MobileLangCurrChange = () => {
       <div className="lang-curr-style">
         <span className="title mb-2">Choose Currency</span>
         <select value={currency.currencyName} onChange={setCurrencyTrigger}>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="GBP">GBP</option>
+          <option value="PKR">PKR</option>
         </select>
       </div>
     </div>
