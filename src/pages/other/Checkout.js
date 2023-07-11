@@ -43,8 +43,8 @@ const Checkout = ({ customProp }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "Zubair",
-      lastName: "Sheikh",
+      country: "Pakistan",
+      postal: "54660",
     },
     resolver: yupResolver(schema),
   });
@@ -116,7 +116,7 @@ const Checkout = ({ customProp }) => {
                               <Form.Label>{["First Name"]}</Form.Label>
                               <Form.Control
                                 {...register("firstName")}
-                                placeholder="firstName"
+                                placeholder="First Name"
                               ></Form.Control>
                             </Form.Group>
                             <p className="validation-color">
@@ -125,80 +125,15 @@ const Checkout = ({ customProp }) => {
                           </div>
 
                           <div className="col-lg-6 col-md-6">
-                            <Form.Group controlId="firstName">
-                              <Form.Label>{["First Name"]}</Form.Label>
+                            <Form.Group controlId="lastName">
+                              <Form.Label>{["Last Name"]}</Form.Label>
                               <Form.Control
-                                {...register("firstName")}
-                                placeholder="firstName"
+                                {...register("lastName")}
+                                placeholder="Last Name"
                               ></Form.Control>
                             </Form.Group>
                             <p className="validation-color">
-                              {errors.firstName?.message}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <div className="billing-select mb-20">
-                            <label>Country</label>
-                            <select name="country" {...register("country")}>
-                              <option value="">Select a country</option>
-                              <option value="Azerbaijan">Azerbaijan</option>
-                              <option value="Bahamas">Bahamas</option>
-                              <option value="Bahrain">Bahrain</option>
-                              <option value="Bangladesh">Bangladesh</option>
-                              <option value="Barbados">Barbados</option>
-                            </select>
-                          </div>
-                          <p>{errors.country?.message}</p>
-                        </div>
-                        <div className="col-lg-12">
-                          <Form.Group controlId="address">
-                            <Form.Label>{["Address"]}</Form.Label>
-                            <Form.Control
-                              {...register("address")}
-                              placeholder="Address"
-                            ></Form.Control>
-                          </Form.Group>
-                          <p className="validation-color">
-                            {errors.address?.message}
-                          </p>
-                        </div>
-                        <div className="col-lg-12">
-                          <Form.Group controlId="city">
-                            <Form.Label>{["City"]}</Form.Label>
-                            <Form.Control
-                              {...register("city")}
-                              placeholder="City"
-                            ></Form.Control>
-                          </Form.Group>
-                          <p className="validation-color">
-                            {errors.city?.message}
-                          </p>
-                        </div>
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6">
-                            <Form.Group controlId="state">
-                              <Form.Label>{["State/Country"]}</Form.Label>
-                              <Form.Control
-                                {...register("state")}
-                                placeholder="State/Country"
-                              ></Form.Control>
-                            </Form.Group>
-                            <p className="validation-color">
-                              {errors.state?.message}
-                            </p>
-                          </div>
-
-                          <div className="col-lg-6 col-md-6">
-                            <Form.Group controlId="postal">
-                              <Form.Label>{["Postal/ Zip code"]}</Form.Label>
-                              <Form.Control
-                                {...register("postal")}
-                                placeholder="Postal/ Zip code"
-                              ></Form.Control>
-                            </Form.Group>
-                            <p className="validation-color">
-                              {errors.postal?.message}
+                              {errors.lastName?.message}
                             </p>
                           </div>
                         </div>
@@ -215,6 +150,75 @@ const Checkout = ({ customProp }) => {
                               {errors.phone?.message}
                             </p>
                           </div>
+                          <div className="col-lg-6 col-md-6">
+                            <Form.Group controlId="city">
+                              <Form.Label>{["City"]}</Form.Label>
+                              <Form.Control
+                                {...register("city")}
+                                placeholder="City"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.city?.message}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-lg-6 col-md-6">
+                            <Form.Group controlId="state">
+                              <Form.Label>{["State/Country"]}</Form.Label>
+                              <Form.Control
+                                {...register("state")}
+                                placeholder="State/Country"
+                                disabled
+                                defaultValue="Punjab"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.state?.message}
+                            </p>
+                          </div>
+
+                          <div className="col-lg-6 col-md-6">
+                            <Form.Group controlId="postal">
+                              <Form.Label>{["Postal/ Zip code"]}</Form.Label>
+                              <Form.Control
+                                {...register("postal")}
+                                placeholder="Postal/ Zip code"
+                                disabled
+                                defaultValue="54660"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.postal?.message}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="col-lg-12">
+                          <Form.Group controlId="address">
+                            <Form.Label>{["Address"]}</Form.Label>
+                            <Form.Control
+                              {...register("address")}
+                              placeholder="Address"
+                            ></Form.Control>
+                          </Form.Group>
+                          <p className="validation-color">
+                            {errors.address?.message}
+                          </p>
+                        </div>
+                        <div className="col-lg-12">
+                          <Form.Group controlId="country">
+                            <Form.Label>{["Country"]}</Form.Label>
+                            <Form.Control
+                              {...register("country")}
+                              placeholder="Country"
+                              disabled
+                              defaultValue="Pakistan"
+                            ></Form.Control>
+                          </Form.Group>
+                          <p className="validation-color">
+                            {errors.country?.message}
+                          </p>
                         </div>
                       </div>
 
