@@ -14,7 +14,6 @@ import { Form } from "react-bootstrap";
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is Required"),
   lastName: yup.string().required("Last Name is Required"),
-  company: yup.string().required("Company Name is Required"),
   country: yup
     .string()
     .required("Please Select Country")
@@ -24,7 +23,6 @@ const schema = yup.object().shape({
     .string()
     .required("Please enter Phone Number")
     .matches(/^\+[0-9]{1,3}-[0-9]{1,14}$/, "Please enter a valid phone number"), // Validate phone number with international format, e.g., +1-123456789
-  email: yup.string().required("Please enter Email").email(),
   postal: yup
     .string()
     .required("Postal is Required")
@@ -140,18 +138,6 @@ const Checkout = ({ customProp }) => {
                           </div>
                         </div>
                         <div className="col-lg-12">
-                          <Form.Group controlId="company">
-                            <Form.Label>{["Company Name"]}</Form.Label>
-                            <Form.Control
-                              {...register("company")}
-                              placeholder="company"
-                            ></Form.Control>
-                          </Form.Group>
-                          <p className="validation-color">
-                            {errors.company?.message}
-                          </p>
-                        </div>
-                        <div className="col-lg-12">
                           <div className="billing-select mb-20">
                             <label>Country</label>
                             <select name="country" {...register("country")}>
@@ -227,19 +213,6 @@ const Checkout = ({ customProp }) => {
                             </Form.Group>
                             <p className="validation-color">
                               {errors.phone?.message}
-                            </p>
-                          </div>
-
-                          <div className="col-lg-6 col-md-6">
-                            <Form.Group controlId="email">
-                              <Form.Label>{["Email"]}</Form.Label>
-                              <Form.Control
-                                {...register("email")}
-                                placeholder="Email"
-                              ></Form.Control>
-                            </Form.Group>
-                            <p className="validation-color">
-                              {errors.email?.message}
                             </p>
                           </div>
                         </div>
