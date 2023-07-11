@@ -30,16 +30,6 @@ const LanguageCurrencyChanger = ({ currency }) => {
                 English
               </button>
             </li>
-            {/* <li>
-              <button value="fn" onClick={(e) => changeLanguageTrigger(e)}>
-                French
-              </button>
-            </li>
-            <li>
-              <button value="de" onClick={(e) => changeLanguageTrigger(e)}>
-                Germany
-              </button>
-            </li> */}
           </ul>
         </div>
       </div>
@@ -68,7 +58,7 @@ const LanguageCurrencyChanger = ({ currency }) => {
         </div>
       </div>
       <div className="same-language-currency">
-        <p>Call Us 3965410</p>
+        <p>Call Us +92 304 4014345</p>
       </div>
     </div>
   );
