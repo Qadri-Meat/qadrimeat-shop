@@ -30,6 +30,7 @@ const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const Compare = lazy(() => import("./pages/other/Compare"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
+const PlaceOrder = lazy(() => import("./pages/other/Shipping"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
@@ -109,6 +110,10 @@ const App = () => {
             <Route
               path={process.env.PUBLIC_URL + "/checkout"}
               element={<Checkout customProp={"mutton"} />}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/placeorder"}
+              element={<PlaceOrder />}
             />
 
             <Route path="*" element={<NotFound />} />

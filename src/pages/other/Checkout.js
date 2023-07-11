@@ -27,7 +27,7 @@ const schema = yup.object().shape({
     .string()
     .required("Postal is Required")
     .matches(/^[0-9]{5}$/, "Please enter a valid postal code"), // Validate postal code with 5 digits
-  state: yup.string().required("State is Required"),
+  state: yup.string(),
   city: yup.string().required(),
 });
 
@@ -79,6 +79,7 @@ const Checkout = ({ customProp }) => {
     console.log(newData);
 
     dispatch(createOrder(newData));
+    window.location.href = process.env.PUBLIC_URL + "/placeorder";
   };
 
   let cartTotalPrice = 0;
