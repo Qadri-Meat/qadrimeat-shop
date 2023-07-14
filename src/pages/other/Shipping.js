@@ -16,6 +16,9 @@ const Shipping = ({ customProp }) => {
   console.log("Props....", customProp);
 
   let { pathname } = useLocation();
+  function handlesubmit() {
+    window.location.href = process.env.PUBLIC_URL + "/";
+  }
 
   return (
     <Fragment>
@@ -154,7 +157,11 @@ const Shipping = ({ customProp }) => {
                         <div className="payment-method"></div>
                       </div>
                       <div className="place-order mt-25">
-                        <button className="btn-hover" type="submit">
+                        <button
+                          className="btn-hover"
+                          type="submit"
+                          onClick={handlesubmit}
+                        >
                           Continue to shipping
                         </button>
                       </div>
