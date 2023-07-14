@@ -1,94 +1,157 @@
 import { Fragment } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getDiscountPrice } from "../../helpers/product";
+import { Link, useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
+import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
 const Shipping = ({ customProp }) => {
+  let cartTotalPrice = 0;
+  console.log("Props....", customProp);
+  let { pathname } = useLocation();
+
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
-  const { shippingDetails } = useSelector((state) => state.order.selectedOrder);
-
-  let cartTotalPrice = 0;
-
-  console.log("Props....", customProp);
-
-  let { pathname } = useLocation();
-  function handlesubmit() {
-    window.location.href = process.env.PUBLIC_URL + "/";
-  }
 
   return (
     <Fragment>
       <SEO
-        titleTemplate="Checkout"
-        description="Checkout page of flone react minimalist eCommerce template."
+        titleTemplate="Cart"
+        description="Cart page of flone react minimalist eCommerce template."
       />
+
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
             { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Checkout", path: process.env.PUBLIC_URL + pathname },
+            { label: "Cart", path: process.env.PUBLIC_URL + pathname },
           ]}
         />
-        <div className="checkout-area pt-95 pb-100">
+        <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
-              <form>
+              <Fragment>
+                <h3 className="cart-page-title">Your cart items</h3>
                 <div className="row">
-                  <div className="col-lg-7">
-                    <div className="billing-info-wrap">
-                      <h3>Shipping Order Details</h3>
-                      <div className="col-lg-8">
-                        <div className="your-order-area">
-                          <div className="your-order-wrap gray-bg-4">
-                            <div className="your-order-product-info">
-                              <div className="your-order-top">
-                                <ul>
-                                  <li className="your-order-shipping">Name</li>
-                                  <li>
-                                    {shippingDetails.firstName}{" "}
-                                    {shippingDetails.lastName}
-                                  </li>
-                                </ul>
-                              </div>
-                              <div className="your-order-total">
-                                <ul>
-                                  <li className="your-order-shipping">Phone</li>
-                                  <li>{shippingDetails.phone}</li>
-                                </ul>
-                                <ul>
-                                  <li className="your-order-shipping">
-                                    Address
-                                  </li>
-                                  <li>{shippingDetails.address}</li>
-                                </ul>
-                              </div>
+                  <div className="col-7">
+                    <div className="table-content table-responsive cart-table-content">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Image</th>
+                            <th>Product Name</th>
+                            <th>Unit Price</th>
+                            {/* <th>Qty</th> */}
+                            <th>Subtotal</th>
+                            {/* <th>action</th> */}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {cartItems.map((cartItem, key) => {
+                            const discountedPrice = getDiscountPrice(
+                              cartItem.price,
+                              cartItem.discount
+                            );
+                            const finalProductPrice = (
+                              cartItem.price * currency.currencyRate
+                            ).toFixed(2);
+                            const finalDiscountedPrice = (
+                              discountedPrice * currency.currencyRate
+                            ).toFixed(2);
 
-                              <div className="your-order-total">
-                                <ul>
-                                  <li className="your-order-shipping">City</li>
-                                  <li>{shippingDetails.city}</li>
-                                </ul>
-                                <ul>
-                                  <li className="your-order-shipping">
-                                    Country
-                                  </li>
-                                  <li>{shippingDetails.country}</li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                            discountedPrice != null
+                              ? (cartTotalPrice +=
+                                  finalDiscountedPrice * cartItem.quantity)
+                              : (cartTotalPrice +=
+                                  finalProductPrice * cartItem.quantity);
+                            return (
+                              <tr key={key}>
+                                <td className="product-thumbnail">
+                                  <Link
+                                    to={
+                                      process.env.PUBLIC_URL +
+                                      "/product/" +
+                                      cartItem.id
+                                    }
+                                  >
+                                    <img
+                                      className="img-fluid"
+                                      src={
+                                        process.env.REACT_APP_IMAGE_URL +
+                                        cartItem.image[0]
+                                      }
+                                      alt=""
+                                    />
+                                  </Link>
+                                </td>
+
+                                <td className="product-name">
+                                  <Link
+                                    to={
+                                      process.env.PUBLIC_URL +
+                                      "/product/" +
+                                      cartItem.id
+                                    }
+                                  >
+                                    {cartItem.name}
+                                  </Link>
+                                  {cartItem.selectedProductColor &&
+                                  cartItem.selectedProductSize ? (
+                                    <div className="cart-item-variation">
+                                      <span>
+                                        Color: {cartItem.selectedProductColor}
+                                      </span>
+                                      <span>
+                                        Size: {cartItem.selectedProductSize}
+                                      </span>
+                                    </div>
+                                  ) : (
+                                    ""
+                                  )}
+                                </td>
+
+                                <td className="product-price-cart">
+                                  {discountedPrice !== null ? (
+                                    <Fragment>
+                                      <span className="amount old">
+                                        {currency.currencySymbol +
+                                          finalProductPrice}
+                                      </span>
+                                      <span className="amount">
+                                        {currency.currencySymbol +
+                                          finalDiscountedPrice}
+                                      </span>
+                                    </Fragment>
+                                  ) : (
+                                    <span className="amount">
+                                      {currency.currencySymbol +
+                                        finalProductPrice}
+                                    </span>
+                                  )}
+                                </td>
+                                <td className="product-subtotal">
+                                  {discountedPrice !== null
+                                    ? currency.currencySymbol +
+                                      (
+                                        finalDiscountedPrice * cartItem.quantity
+                                      ).toFixed(2)
+                                    : currency.currencySymbol +
+                                      (
+                                        finalProductPrice * cartItem.quantity
+                                      ).toFixed(2)}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                  <div className="col-lg-5">
+                  <div className="col-5">
                     <div className="your-order-area">
-                      <h3>Your order Details</h3>
+                      {/* <h3>Your order</h3> */}
                       <div className="your-order-wrap gray-bg-4">
                         <div className="your-order-product-info">
                           <div className="your-order-top">
@@ -156,28 +219,19 @@ const Shipping = ({ customProp }) => {
                         </div>
                         <div className="payment-method"></div>
                       </div>
-                      <div className="place-order mt-25">
-                        <button
-                          className="btn-hover"
-                          type="submit"
-                          onClick={handlesubmit}
-                        >
-                          Continue to shipping
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
-              </form>
+              </Fragment>
             ) : (
               <div className="row">
                 <div className="col-lg-12">
                   <div className="item-empty-area text-center">
                     <div className="item-empty-area__icon mb-30">
-                      <i className="pe-7s-cash"></i>
+                      <i className="pe-7s-cart"></i>
                     </div>
                     <div className="item-empty-area__text">
-                      No items found in cart to checkout <br />{" "}
+                      No items found in cart <br />{" "}
                       <Link to={process.env.PUBLIC_URL + "/shop"}>
                         Shop Now
                       </Link>
@@ -192,4 +246,5 @@ const Shipping = ({ customProp }) => {
     </Fragment>
   );
 };
+
 export default Shipping;
