@@ -13,6 +13,7 @@ const Shipping = ({ customProp }) => {
 
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
+  const { shippingDetails } = useSelector((state) => state.order.selectedOrder);
 
   return (
     <Fragment>
@@ -43,9 +44,7 @@ const Shipping = ({ customProp }) => {
                             <th>Image</th>
                             <th>Product Name</th>
                             <th>Unit Price</th>
-                            {/* <th>Qty</th> */}
                             <th>Subtotal</th>
-                            {/* <th>action</th> */}
                           </tr>
                         </thead>
                         <tbody>
@@ -151,60 +150,27 @@ const Shipping = ({ customProp }) => {
                   </div>
                   <div className="col-5">
                     <div className="your-order-area">
-                      {/* <h3>Your order</h3> */}
                       <div className="your-order-wrap gray-bg-4">
                         <div className="your-order-product-info">
                           <div className="your-order-top">
                             <ul>
-                              <li>Product</li>
-                              <li>Total</li>
+                              <li>Recipient</li>
+                              <li>
+                                {shippingDetails.firstName}{" "}
+                                {shippingDetails.lastName}
+                              </li>
                             </ul>
                           </div>
                           <div className="your-order-middle">
                             <ul>
-                              {cartItems.map((cartItem, key) => {
-                                const discountedPrice = getDiscountPrice(
-                                  cartItem.price,
-                                  cartItem.discount
-                                );
-                                const finalProductPrice = (
-                                  cartItem.price * currency.currencyRate
-                                ).toFixed(2);
-                                const finalDiscountedPrice = (
-                                  discountedPrice * currency.currencyRate
-                                ).toFixed(2);
-                                discountedPrice != null
-                                  ? (cartTotalPrice +=
-                                      finalDiscountedPrice * cartItem.quantity)
-                                  : (cartTotalPrice +=
-                                      finalProductPrice * cartItem.quantity);
-                                return (
-                                  <li key={key}>
-                                    <span className="order-middle-left">
-                                      {cartItem.name} X {cartItem.quantity}
-                                    </span>{" "}
-                                    <span className="order-price">
-                                      {discountedPrice !== null
-                                        ? currency.currencySymbol +
-                                          (
-                                            finalDiscountedPrice *
-                                            cartItem.quantity
-                                          ).toFixed(2)
-                                        : currency.currencySymbol +
-                                          (
-                                            finalProductPrice *
-                                            cartItem.quantity
-                                          ).toFixed(2)}
-                                    </span>
-                                  </li>
-                                );
-                              })}
+                              <li>Phone Number</li>
+                              <li>{shippingDetails.phone}</li>
                             </ul>
                           </div>
-                          <div className="your-order-bottom">
+                          <div className="your-order-middle">
                             <ul>
-                              <li className="your-order-shipping">Shipping</li>
-                              <li>Free shipping</li>
+                              <li>Shipping Address</li>
+                              <li>{shippingDetails.address}</li>
                             </ul>
                           </div>
                           <div className="your-order-total">
