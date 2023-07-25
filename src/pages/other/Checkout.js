@@ -1,5 +1,5 @@
-import { Fragment } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
 import SEO from "../../components/seo";
@@ -8,8 +8,9 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { createOrder } from "store/slices/order-slice";
+import { createOrder, resetOrder } from "store/slices/order-slice";
 import { Form } from "react-bootstrap";
+import { deleteAllFromCart } from "store/slices/cart-slice";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First Name is Required"),
@@ -33,9 +34,11 @@ const schema = yup.object().shape({
 
 const Checkout = ({ customProp }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
+  const { success, details: order } = useSelector((state) => state.order);
 
   const {
     register,
@@ -47,6 +50,15 @@ const Checkout = ({ customProp }) => {
       postal: "54660",
     },
     resolver: yupResolver(schema),
+  });
+
+  useEffect(() => {
+    if (success) {
+      const orderId = order.id;
+      dispatch(deleteAllFromCart());
+      dispatch(resetOrder());
+      navigate(`/order/${orderId}`);
+    }
   });
 
   const onSubmitHandler = (data) => {
@@ -76,15 +88,11 @@ const Checkout = ({ customProp }) => {
       type: "online",
       discount: 0,
     };
-    console.log(newData);
 
     dispatch(createOrder(newData));
-    window.location.href = process.env.PUBLIC_URL + "/placeorder";
   };
 
   let cartTotalPrice = 0;
-
-  console.log("Props....", customProp);
 
   let { pathname } = useLocation();
 

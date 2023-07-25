@@ -1,12 +1,15 @@
-import { createSlice, createAsyncThunk, isAnyOf } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  isAnyOf,
+  createAction,
+} from "@reduxjs/toolkit";
 import OrderService from "services/OrderService";
 
-const initialState = {
-  products: [],
-};
+const initialState = {};
 
 export const createOrder = createAsyncThunk(
-  "Order/create",
+  "orders/create",
   async (data, { rejectWithValue }) => {
     console.log("=====Data of store===== ", data);
     try {
@@ -17,7 +20,7 @@ export const createOrder = createAsyncThunk(
       }, 0);
       return {
         loading: false,
-        selectedOrder: { ...res.data, totalPaid: totalPaid1 || 0 },
+        details: { ...res.data, totalPaid: totalPaid1 || 0 },
         success: true,
       };
     } catch (err) {
@@ -26,16 +29,46 @@ export const createOrder = createAsyncThunk(
     }
   }
 );
+export const getOrder = createAsyncThunk(
+  "orders/get",
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await OrderService.get(id);
+
+      const totalPaid1 = res.data.transactions.reduce(function (a, b) {
+        return a + b.amount;
+      }, 0);
+      return {
+        loading: false,
+        details: { ...res.data, totalPaid: totalPaid1 || 0 },
+      };
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const resetOrder = createAction("orders/reset");
 
 const orderSlice = createSlice({
   name: "orders",
   initialState,
   extraReducers: (builder) => {
-    builder.addMatcher(isAnyOf(createOrder.pending), (state, action) => {
-      state.loading = true;
+    builder.addCase(resetOrder, (state, action) => {
+      return {};
     });
     builder.addMatcher(
-      isAnyOf(createOrder.fulfilled, createOrder.rejected),
+      isAnyOf(createOrder.pending, getOrder.pending),
+      (state, action) => {
+        state.loading = true;
+      }
+    );
+    builder.addMatcher(
+      isAnyOf(
+        createOrder.fulfilled,
+        getOrder.fulfilled,
+        getOrder.rejected,
+        createOrder.rejected
+      ),
       (state, action) => {
         return action.payload;
       }

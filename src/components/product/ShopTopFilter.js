@@ -5,7 +5,7 @@ import {
   getIndividualTags,
   getIndividualColors,
   getProductsIndividualSizes,
-  setActiveSort
+  setActiveSort,
 } from "../../helpers/product";
 
 const ShopTopFilter = ({ products, getSortParams }) => {
@@ -28,7 +28,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                     return (
                       <li key={key}>
                         <button
-                          onClick={e => {
+                          onClick={(e) => {
                             getSortParams("category", category);
                             setActiveSort(e);
                           }}
@@ -55,7 +55,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                     return (
                       <li key={key}>
                         <button
-                          onClick={e => {
+                          onClick={(e) => {
                             getSortParams("color", color);
                             setActiveSort(e);
                           }}
@@ -82,7 +82,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                       <li key={key}>
                         <button
                           className="text-uppercase"
-                          onClick={e => {
+                          onClick={(e) => {
                             getSortParams("size", size);
                             setActiveSort(e);
                           }}
@@ -108,7 +108,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                     return (
                       <li key={key}>
                         <button
-                          onClick={e => {
+                          onClick={(e) => {
                             getSortParams("tag", tag);
                             setActiveSort(e);
                           }}
@@ -132,7 +132,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
 
 ShopTopFilter.propTypes = {
   getSortParams: PropTypes.func,
-  products: PropTypes.array
+  products: PropTypes.array,
 };
 
 export default ShopTopFilter;
