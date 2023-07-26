@@ -32,7 +32,6 @@ const Contact = () => {
                     </div>
                     <div className="contact-info-dec">
                       <p>+92 304 4014345</p>
-                      <p>+92 304 4014345</p>
                     </div>
                   </div>
                   <div className="single-contact-info">
@@ -45,11 +44,6 @@ const Contact = () => {
                           qadrimeat@gmail.com
                         </a>
                       </p>
-                      <p>
-                        <a href="https://yourwebsitename.com">
-                          yourwebsitename.com
-                        </a>
-                      </p>
                     </div>
                   </div>
                   <div className="single-contact-info">
@@ -57,7 +51,6 @@ const Contact = () => {
                       <i className="fa fa-map-marker" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>Address goes here, </p>
                       <p>
                         Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
                         Pakistan.
@@ -73,23 +66,8 @@ const Contact = () => {
                         </a>
                       </li>
                       <li>
-                        <a href="//pinterest.com">
-                          <i className="fa fa-pinterest-p" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//thumblr.com">
-                          <i className="fa fa-tumblr" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//vimeo.com">
-                          <i className="fa fa-vimeo" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//twitter.com">
-                          <i className="fa fa-twitter" />
+                        <a href="//facebook.com">
+                          <i className="fa fa-instagram" />
                         </a>
                       </li>
                     </ul>
