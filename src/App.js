@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // home pages
 const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
 
+const Faqs = lazy(() => import("./pages/other/Faqs"));
+
 // shop pages
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
 
@@ -59,6 +61,7 @@ const App = () => {
               element={<ShopGridStandard />}
             />
 
+            <Route path={process.env.PUBLIC_URL + "/faqs"} element={<Faqs />} />
             {/* Shop product pages */}
             <Route
               path={process.env.PUBLIC_URL + "/product/:id"}
