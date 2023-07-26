@@ -4,7 +4,6 @@ import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
-import BannerOne from "wrappers/banner/BannerOne";
 import TextGridOne from "wrappers/text-grid/TextGridOne";
 
 const About = () => {
@@ -27,7 +26,6 @@ const About = () => {
 
         {/* section title with text */}
         <SectionTitleWithText spaceTopClass="pt-100" spaceBottomClass="pb-95" />
-        <BannerOne spaceTopClass="pt-60" spaceBottomClass="pb-65" />
 
         <TextGridOne spaceBottomClass="mb-30" />
       </LayoutOne>
