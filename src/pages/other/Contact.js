@@ -36,8 +36,9 @@ const Contact = () => {
                   </div>
                   <div className="single-contact-info">
                     <div className="contact-icon">
-                      <i className="fa fa-globe" />
+                      <i className="fa fa-envelope" />
                     </div>
+
                     <div className="contact-info-dec">
                       <p>
                         <a href="mailto:qadrimeat@gmail.com">
