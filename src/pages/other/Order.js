@@ -34,22 +34,22 @@ const Order = () => {
             { label: "Order", path: process.env.PUBLIC_URL + pathname },
           ]}
         />
-        <div className="cart-main-area pt-90 pb-100">
+        <div className="cart-main-area">
           <div className="container">
             <Fragment>
               {order && order.orderItems.length >= 1 ? (
-                <div className="cart-main-area pt-90 pb-100">
+                <div className="cart-main-area pb-100">
                   <div className="container">
                     <Fragment>
                       <h3 className="cart-page-title">
-                        {order.shippingDetails.firstName}{" "}
+                        <b>Name:</b> {order.shippingDetails.firstName}{" "}
                         {order.shippingDetails.lastName}
                       </h3>
                       <h5 className="cart-page-title">
-                        Address {order.shippingDetails.address}
+                        <b>Address:</b> {order.shippingDetails.address}
                       </h5>
                       <h5 className="cart-page-title">
-                        Phone {order.shippingDetails.phone}
+                        <b>Phone:</b> {order.shippingDetails.phone}
                       </h5>
                       <div className="row">
                         <div className="col-12">
@@ -170,7 +170,7 @@ const Order = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="row">
+                      <div className="row pt-20">
                         <div className="col-lg-4 col-md-12">
                           <div className="grand-totall">
                             <div className="title-wrap">
