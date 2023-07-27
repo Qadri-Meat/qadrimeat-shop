@@ -37,7 +37,7 @@ const Order = () => {
         <div className="cart-main-area">
           <div className="container">
             <Fragment>
-              {order && order.orderItems.length >= 1 ? (
+              {order && order.orderItems.length >= 1 && (
                 <div className="cart-main-area pb-100">
                   <div className="container">
                     <Fragment>
@@ -64,7 +64,7 @@ const Order = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {order.orderItems.map((orderItem, key) => {
+                                {order.orderItems.map((orderItem) => {
                                   const discountedPrice = getDiscountPrice(
                                     orderItem.price,
                                     orderItem.discount
@@ -83,7 +83,7 @@ const Order = () => {
                                     : (cartTotalPrice +=
                                         finalProductPrice * orderItem.quantity);
                                   return (
-                                    <tr key={key}>
+                                    <tr key={orderItem.id}>
                                       <td className="product-thumbnail">
                                         <Link
                                           to={
@@ -199,8 +199,6 @@ const Order = () => {
                     </Fragment>
                   </div>
                 </div>
-              ) : (
-                {}
               )}
             </Fragment>
           </div>
