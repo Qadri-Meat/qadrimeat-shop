@@ -17,10 +17,13 @@ const MobileWidgets = () => {
       </div>
       {/*Off Canvas Widget Social Start*/}
       <div className="off-canvas-widget-social">
-        <a href="//instagram.com" title="Instagram">
+        <a href="https://www.instagram.com/qadrimeat/" title="Instagram">
           <i className="fa fa-instagram"></i>
         </a>
-        <a href="//facebook.com" title="Facebook">
+        <a
+          href="https://www.facebook.com/people/Qadri_Meat/100093388459885/"
+          title="Facebook"
+        >
           <i className="fa fa-facebook"></i>
         </a>
       </div>
