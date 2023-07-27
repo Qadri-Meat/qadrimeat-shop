@@ -120,6 +120,19 @@ const Checkout = ({ customProp }) => {
                       <h3>Billing Details</h3>
                       <div className="row">
                         <div className="row">
+                          <div className="col-lg-12">
+                            <Form.Group controlId="phone">
+                              <Form.Label>{["Phone"]}</Form.Label>
+                              <Form.Control
+                                {...register("phone")}
+                                placeholder="Phone"
+                              ></Form.Control>
+                            </Form.Group>
+
+                            <p className="validation-color">
+                              {errors.phone?.message}
+                            </p>
+                          </div>
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="firstName">
                               <Form.Label>{["First Name"]}</Form.Label>
@@ -147,38 +160,41 @@ const Checkout = ({ customProp }) => {
                           </div>
                         </div>
                         <div className="row">
-                          <div className="col-lg-6 col-md-6">
-                            <Form.Group controlId="phone">
-                              <Form.Label>{["Phone"]}</Form.Label>
+                          <div className="col-lg-12">
+                            <Form.Group controlId="address">
+                              <Form.Label>{["Address"]}</Form.Label>
                               <Form.Control
-                                {...register("phone")}
-                                placeholder="Phone"
+                                {...register("address")}
+                                placeholder="Address"
                               ></Form.Control>
                             </Form.Group>
                             <p className="validation-color">
-                              {errors.phone?.message}
+                              {errors.address?.message}
                             </p>
                           </div>
+                        </div>
+
+                        <div className="row">
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="city">
                               <Form.Label>{["City"]}</Form.Label>
                               <Form.Control
                                 {...register("city")}
-                                placeholder="City"
+                                disabled
+                                defaultValue="Lahore"
                               ></Form.Control>
                             </Form.Group>
                             <p className="validation-color">
                               {errors.city?.message}
                             </p>
                           </div>
-                        </div>
-                        <div className="row">
+
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="state">
-                              <Form.Label>{["State/Country"]}</Form.Label>
+                              <Form.Label>{["State"]}</Form.Label>
                               <Form.Control
                                 {...register("state")}
-                                placeholder="State/Country"
+                                placeholder="State"
                                 disabled
                                 defaultValue="Punjab"
                               ></Form.Control>
@@ -187,7 +203,8 @@ const Checkout = ({ customProp }) => {
                               {errors.state?.message}
                             </p>
                           </div>
-
+                        </div>
+                        <div className="row">
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="postal">
                               <Form.Label>{["Postal/ Zip code"]}</Form.Label>
@@ -202,35 +219,22 @@ const Checkout = ({ customProp }) => {
                               {errors.postal?.message}
                             </p>
                           </div>
-                        </div>
-                        <div className="col-lg-12">
-                          <Form.Group controlId="address">
-                            <Form.Label>{["Address"]}</Form.Label>
-                            <Form.Control
-                              {...register("address")}
-                              placeholder="Address"
-                            ></Form.Control>
-                          </Form.Group>
-                          <p className="validation-color">
-                            {errors.address?.message}
-                          </p>
-                        </div>
-                        <div className="col-lg-12">
-                          <Form.Group controlId="country">
-                            <Form.Label>{["Country"]}</Form.Label>
-                            <Form.Control
-                              {...register("country")}
-                              placeholder="Country"
-                              disabled
-                              defaultValue="Pakistan"
-                            ></Form.Control>
-                          </Form.Group>
-                          <p className="validation-color">
-                            {errors.country?.message}
-                          </p>
+                          <div className="col-lg-6 col-md-6">
+                            <Form.Group controlId="country">
+                              <Form.Label>{["Country"]}</Form.Label>
+                              <Form.Control
+                                {...register("country")}
+                                placeholder="Country"
+                                disabled
+                                defaultValue="Pakistan"
+                              ></Form.Control>
+                            </Form.Group>
+                            <p className="validation-color">
+                              {errors.country?.message}
+                            </p>
+                          </div>
                         </div>
                       </div>
-
                       <div className="additional-info-wrap">
                         <h4>Additional information</h4>
                         <div className="additional-info">
