@@ -48,6 +48,7 @@ const Checkout = ({ customProp }) => {
     defaultValues: {
       country: "Pakistan",
       postal: "54660",
+      city: "Lahore",
     },
     resolver: yupResolver(schema),
   });
