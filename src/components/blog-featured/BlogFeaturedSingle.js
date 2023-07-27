@@ -26,7 +26,7 @@ const BlogFeaturedSingle = ({ singlePost }) => {
             </Link>
           </h3>
           <span>
-            By{" "}
+            {" "}
             <Link to={process.env.PUBLIC_URL + singlePost.authorUrl}>
               {singlePost.author}
             </Link>
@@ -38,7 +38,7 @@ const BlogFeaturedSingle = ({ singlePost }) => {
 };
 
 BlogFeaturedSingle.propTypes = {
-  singlePost: PropTypes.shape({})
+  singlePost: PropTypes.shape({}),
 };
 
 export default BlogFeaturedSingle;

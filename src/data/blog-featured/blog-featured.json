@@ -1,29 +1,29 @@
 [
   {
     "id": 1,
-    "image": "/assets/img/blog/blog-1.jpg",
-    "category": ["lifestyle", "men"],
-    "title": "A guide to latest trends",
+    "image": "/assets/img/blog/chicken.jpg",
+    "category": ["Chicken"],
+    "title": "Fresh and hygenic meat for you",
     "url": "/blog-details-standard",
-    "author": "Admin",
+    "author": "",
     "authorUrl": "/blog-standard"
   },
   {
     "id": 2,
-    "image": "/assets/img/blog/blog-2.jpg",
-    "category": ["lifestyle"],
-    "title": "Five ways to lead a happy life",
+    "image": "/assets/img/blog/mutton.jpg",
+    "category": ["Mutton"],
+    "title": "Superb taste with the best meat in town",
     "url": "/blog-details-standard",
-    "author": "Admin",
+    "author": "",
     "authorUrl": "/blog-standard"
   },
   {
     "id": 3,
-    "image": "/assets/img/blog/blog-3.jpg",
-    "category": ["lifestyle"],
-    "title": "Tips on having a happy life",
+    "image": "/assets/img/blog/beef.jpg",
+    "category": ["Beef"],
+    "title": "Fresh meat with cashback guarantee",
     "url": "/blog-details-standard",
-    "author": "Admin",
+    "author": "",
     "authorUrl": "/blog-standard"
   }
 ]
