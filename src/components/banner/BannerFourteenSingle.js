@@ -9,10 +9,7 @@ const BannerFourteenSingle = ({ data, spaceBottomClass }) => {
         <img src={process.env.PUBLIC_URL + data.image} alt="" />
       </Link>
       <div className="banner-content banner-dark h-50 d-flex flex-column justify-content-between">
-        <h3 className="text-dark">{data.title}</h3>
-        {/* <h4>
-          {data.subtitle} <span>{data.price}</span>
-        </h4> */}
+        <h3 style={{ color: "white" }}>{data.title}</h3>
         <Link to={data.link}>
           <i className="fa fa-long-arrow-right" />
         </Link>
