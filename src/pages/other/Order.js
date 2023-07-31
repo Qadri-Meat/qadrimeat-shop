@@ -34,7 +34,7 @@ const Order = () => {
             { label: "Order", path: process.env.PUBLIC_URL + pathname },
           ]}
         />
-        <div className="cart-main-area">
+        <div className="cart-main-area pt-40">
           <div className="container">
             <Fragment>
               {order && order.orderItems.length >= 1 && (
@@ -171,7 +171,7 @@ const Order = () => {
                         </div>
                       </div>
                       <div className="row pt-20">
-                        <div className="col-lg-4 col-md-12">
+                        <div className="col-lg-4 col-md-12 offset-lg-8">
                           <div className="grand-totall">
                             <div className="title-wrap">
                               <h4 className="cart-bottom-title section-bg-gary-cart">
