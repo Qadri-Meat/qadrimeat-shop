@@ -232,7 +232,7 @@ const Cart = ({ customProp }) => {
                 </div>
 
                 <div className="row">
-                  <div className="col-lg-4 col-md-12">
+                  <div className="col-lg-4 col-md-12 offset-lg-8">
                     <div className="grand-totall">
                       <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gary-cart">
