@@ -11,8 +11,8 @@ const Home = () => {
   return (
     <Fragment>
       <SEO
-        titleTemplate="Fashion Home"
-        description="Fashion home of flone react minimalist eCommerce template."
+        titleTemplate="Your Trusted Bucher Shop for Premium Halal Meats"
+        description="Welcome to Qadri Meat, your one-stop destination for the finest selection of halal meats. Explore our premium cuts of beef, lamb, chicken, and more, carefully sourced and handpicked to ensure unmatched quality and freshness. Shop with confidence and savor the taste of authentic halal meats that meet our stringent standards. Order online and experience the convenience of doorstep delivery."
       />
       <LayoutOne
         headerContainerClass="container-fluid"

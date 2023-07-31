@@ -63,21 +63,22 @@ const Checkout = ({ customProp }) => {
   });
 
   const onSubmitHandler = (data) => {
+    const orderItems = cartItems.map((i) => {
+      return {
+        name: i.name, // Assuming cartItems is an array and you want to access the first item
+        quantity: i.quantity,
+        price: i.price,
+        discount: i.discount,
+        image: i.image,
+        product: i.id,
+      };
+    });
     const newData = {
       phone: data.phone,
       shippingPrice: 0,
       totalPrice: cartTotalPrice.toFixed(2),
       deliveryTime: Date.now(),
-      orderItems: [
-        {
-          name: cartItems[0].name, // Assuming cartItems is an array and you want to access the first item
-          quantity: cartItems[0].quantity,
-          price: cartItems[0].price,
-          discount: cartItems[0].discount,
-          image: cartItems[0].image,
-          product: cartItems[0].id,
-        },
-      ],
+      orderItems,
       shippingDetails: {
         firstName: data.firstName,
         lastName: data.lastName,
