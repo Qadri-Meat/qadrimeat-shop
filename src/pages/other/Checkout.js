@@ -20,10 +20,7 @@ const schema = yup.object().shape({
     .required("Please Select Country")
     .matches(/^[A-Za-z ]*$/, "Please enter a valid country"), // Validate that the country name contains only letters and spaces
   address: yup.string().required("Please enter Address"),
-  phone: yup
-    .string()
-    .required("Please enter Phone Number")
-    .matches(/^\+[0-9]{1,3}-[0-9]{1,14}$/, "Please enter a valid phone number"), // Validate phone number with international format, e.g., +1-123456789
+  phone: yup.string().required("Please enter Phone Number"),
   postal: yup
     .string()
     .required("Postal is Required")
