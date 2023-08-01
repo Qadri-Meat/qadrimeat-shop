@@ -115,8 +115,9 @@ const Faqs = () => {
                             <h5>
                               We do not charge you for any excess fat and bones.
                               We weigh the meat after removing them. Almost
-                              12%-15% fat is removed so you more meat compared
-                              to others, giving you 100% value for your money!
+                              12%-15% fat is removed so you have more meat
+                              compared to others, giving you 100% value for your
+                              money!
                             </h5>
                           </div>
                         </div>
