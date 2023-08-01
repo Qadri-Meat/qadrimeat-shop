@@ -36,7 +36,57 @@ const Contact = () => {
         <div className="contact-area pt-100 pb-100">
           <div className="container">
             <div className="custom-row-2">
-              {/* ... The rest of the code remains unchanged ... */}
+              <div className="col-12 col-lg-4 col-md-5">
+                <div className="contact-info-wrap">
+                  <div className="single-contact-info">
+                    <div className="contact-icon">
+                      <i className="fa fa-phone" />
+                    </div>
+                    <div className="contact-info-dec">
+                      <p>+92 304 4014345</p>
+                    </div>
+                  </div>
+                  <div className="single-contact-info">
+                    <div className="contact-icon">
+                      <i className="fa fa-envelope" />
+                    </div>
+
+                    <div className="contact-info-dec">
+                      <p>
+                        <a href="mailto:qadrimeat@gmail.com">
+                          qadrimeat@gmail.com
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="single-contact-info">
+                    <div className="contact-icon">
+                      <i className="fa fa-map-marker" />
+                    </div>
+                    <div className="contact-info-dec">
+                      <p>
+                        Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
+                        Pakistan.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="contact-social text-center">
+                    <h3>Follow Us</h3>
+                    <ul>
+                      <li>
+                        <a href="https://www.facebook.com/people/Qadri_Meat/100093388459885/">
+                          <i className="fa fa-facebook" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://www.instagram.com/qadrimeat/">
+                          <i className="fa fa-instagram" />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
               <div className="col-12 col-lg-8 col-md-7">
                 <div className="contact-form">
                   <div className="contact-title mb-30">
