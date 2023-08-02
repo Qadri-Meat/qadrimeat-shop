@@ -128,7 +128,7 @@ const Checkout = ({ customProp }) => {
                               ></Form.Control>
                             </Form.Group>
 
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.phone?.message}
                             </p>
                           </div>
@@ -140,7 +140,7 @@ const Checkout = ({ customProp }) => {
                                 placeholder="First Name"
                               ></Form.Control>
                             </Form.Group>
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.firstName?.message}
                             </p>
                           </div>
@@ -153,7 +153,7 @@ const Checkout = ({ customProp }) => {
                                 placeholder="Last Name"
                               ></Form.Control>
                             </Form.Group>
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.lastName?.message}
                             </p>
                           </div>
@@ -167,7 +167,7 @@ const Checkout = ({ customProp }) => {
                                 placeholder="Address"
                               ></Form.Control>
                             </Form.Group>
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.address?.message}
                             </p>
                           </div>
@@ -183,7 +183,7 @@ const Checkout = ({ customProp }) => {
                                 defaultValue="Lahore"
                               ></Form.Control>
                             </Form.Group>
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.city?.message}
                             </p>
                           </div>
@@ -198,7 +198,7 @@ const Checkout = ({ customProp }) => {
                                 defaultValue="Punjab"
                               ></Form.Control>
                             </Form.Group>
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.state?.message}
                             </p>
                           </div>
@@ -214,7 +214,7 @@ const Checkout = ({ customProp }) => {
                                 defaultValue="54660"
                               ></Form.Control>
                             </Form.Group>
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.postal?.message}
                             </p>
                           </div>
@@ -228,7 +228,7 @@ const Checkout = ({ customProp }) => {
                                 defaultValue="Pakistan"
                               ></Form.Control>
                             </Form.Group>
-                            <p className="validation-color">
+                            <p style={{ color: "red" }}>
                               {errors.country?.message}
                             </p>
                           </div>

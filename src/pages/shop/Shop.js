@@ -11,9 +11,15 @@ import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 
 const Shop = () => {
+  const pageLimit = 15;
+  let { pathname, search } = useLocation();
+
+  const queryParams = new URLSearchParams(search);
+  const category = queryParams.get("category") || "";
+
   const [layout, setLayout] = useState("grid three-column");
-  const [sortType, setSortType] = useState("");
-  const [sortValue, setSortValue] = useState("");
+  const [sortType, setSortType] = useState("category");
+  const [sortValue, setSortValue] = useState(category);
   const [filterSortType, setFilterSortType] = useState("");
   const [filterSortValue, setFilterSortValue] = useState("");
   const [offset, setOffset] = useState(0);
@@ -21,9 +27,6 @@ const Shop = () => {
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const { products } = useSelector((state) => state.product);
-
-  const pageLimit = 15;
-  let { pathname } = useLocation();
 
   const getLayout = (layout) => {
     setLayout(layout);
@@ -50,6 +53,18 @@ const Shop = () => {
     setSortedProducts(sortedProducts);
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
+
+  useEffect(() => {
+    let sortedProducts = getSortedProducts(products, "category", category);
+    const filterSortedProducts = getSortedProducts(
+      sortedProducts,
+      filterSortType,
+      filterSortValue
+    );
+    sortedProducts = filterSortedProducts;
+    setSortedProducts(sortedProducts);
+    setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
+  }, [offset, products, category, filterSortType, filterSortValue]);
 
   return (
     <Fragment>
