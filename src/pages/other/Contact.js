@@ -98,6 +98,9 @@ const Contact = () => {
                   >
                     <div className="row">
                       <div className="col-lg-6">
+                        {errors.name && (
+                          <p style={{ color: "red" }}>{errors.name.message}</p>
+                        )}
                         <Controller
                           name="name"
                           control={control}
@@ -107,11 +110,11 @@ const Contact = () => {
                             <input {...field} placeholder="Name*" type="text" />
                           )}
                         />
-                        {errors.name && (
-                          <p style={{ color: "red" }}>{errors.name.message}</p>
-                        )}
                       </div>
                       <div className="col-lg-6">
+                        {errors.email && (
+                          <p style={{ color: "red" }}>{errors.email.message}</p>
+                        )}
                         <Controller
                           name="email"
                           control={control}
@@ -131,11 +134,13 @@ const Contact = () => {
                             />
                           )}
                         />
-                        {errors.email && (
-                          <p style={{ color: "red" }}>{errors.email.message}</p>
-                        )}
                       </div>
                       <div className="col-lg-12">
+                        {errors.subject && (
+                          <p style={{ color: "red" }}>
+                            {errors.subject.message}
+                          </p>
+                        )}
                         <Controller
                           name="subject"
                           control={control}
@@ -149,13 +154,13 @@ const Contact = () => {
                             />
                           )}
                         />
-                        {errors.subject && (
-                          <p style={{ color: "red" }}>
-                            {errors.subject.message}
-                          </p>
-                        )}
                       </div>
                       <div className="col-lg-12">
+                        {errors.message && (
+                          <p style={{ color: "red" }}>
+                            {errors.message.message}
+                          </p>
+                        )}
                         <Controller
                           name="message"
                           control={control}
@@ -165,11 +170,7 @@ const Contact = () => {
                             <textarea {...field} placeholder="Your Message*" />
                           )}
                         />
-                        {errors.message && (
-                          <p style={{ color: "red" }}>
-                            {errors.message.message}
-                          </p>
-                        )}
+
                         <button className="submit" type="submit">
                           SEND
                         </button>
