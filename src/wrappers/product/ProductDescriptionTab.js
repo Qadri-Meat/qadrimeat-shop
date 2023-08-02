@@ -29,6 +29,7 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                 </div>
               </Tab.Pane>
               <Tab.Pane eventKey="productDescription">
+                <h3>Description</h3>
                 {productFullDesc}
               </Tab.Pane>
               <Tab.Pane eventKey="productReviews">
