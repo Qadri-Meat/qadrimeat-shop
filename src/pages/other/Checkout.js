@@ -21,13 +21,13 @@ const schema = yup.object().shape({
     .matches(/^[A-Za-z ]*$/, "Please enter a valid country"), // Validate that the country name contains only letters and spaces
   address: yup.string().required("Please enter Address"),
   phone: yup.string().required("Please enter Phone Number"),
-  postal: yup
+  postalCode: yup
     .string()
     .required("Postal is Required")
-    .matches(/^[0-9]{5}$/, "Please enter a valid postal code"), // Validate postal code with 5 digits
+    .matches(/^[0-9]{5}$/, "Please enter a valid postalCode code"), // Validate postalCode code with 5 digits
   state: yup.string(),
   city: yup.string().required(),
-  message: yup.string().max(200, "Message must be at most 200 characters"),
+  notes: yup.string().max(200, "Message must be at most 200 characters"),
 });
 
 const Checkout = ({ customProp }) => {
@@ -45,7 +45,7 @@ const Checkout = ({ customProp }) => {
   } = useForm({
     defaultValues: {
       country: "Pakistan",
-      postal: "54660",
+      postalCode: "54660",
       city: "Lahore",
     },
     resolver: yupResolver(schema),
@@ -77,14 +77,7 @@ const Checkout = ({ customProp }) => {
       totalPrice: cartTotalPrice.toFixed(2),
       deliveryTime: Date.now(),
       orderItems,
-      shippingDetails: {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        phone: data.phone,
-        address: data.address,
-        city: data.city,
-        country: data.country,
-      },
+      shippingDetails: data,
       type: "online",
       discount: 0,
     };
@@ -206,17 +199,17 @@ const Checkout = ({ customProp }) => {
                         </div>
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
-                            <Form.Group controlId="postal">
+                            <Form.Group controlId="postalCode">
                               <Form.Label>{["Postal/ Zip code"]}</Form.Label>
                               <Form.Control
-                                {...register("postal")}
+                                {...register("postalCode")}
                                 placeholder="Postal/ Zip code"
                                 disabled
                                 defaultValue="54660"
                               ></Form.Control>
                             </Form.Group>
                             <p style={{ color: "red" }}>
-                              {errors.postal?.message}
+                              {errors.postalCode?.message}
                             </p>
                           </div>
                           <div className="col-lg-6 col-md-6">
@@ -240,15 +233,13 @@ const Checkout = ({ customProp }) => {
                         <div className="additional-info">
                           <label>Order notes</label>
                           <textarea
-                            {...register("message")}
+                            {...register("notes")}
                             placeholder="Notes about your order, e.g. special notes for delivery. "
-                            name="message"
+                            name="notes"
                             defaultValue={""}
                           />
                         </div>
-                        <p style={{ color: "red" }}>
-                          {errors.message?.message}
-                        </p>
+                        <p style={{ color: "red" }}>{errors.notes?.message}</p>
                       </div>
                     </div>
                   </div>
