@@ -21,19 +21,6 @@ const IconGroup = ({ iconWhiteClass }) => {
 
   return (
     <div className={clsx("header-right-wrap", iconWhiteClass)}>
-      <div className="same-style header-search d-none d-lg-block">
-        <button className="search-active" onClick={(e) => handleClick(e)}>
-          <i className="pe-7s-search" />
-        </button>
-        <div className="search-content">
-          <form action="#">
-            <input type="text" placeholder="Search" />
-            <button className="button-search">
-              <i className="pe-7s-search" />
-            </button>
-          </form>
-        </div>
-      </div>
       <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
