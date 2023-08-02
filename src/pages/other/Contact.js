@@ -107,7 +107,9 @@ const Contact = () => {
                             <input {...field} placeholder="Name*" type="text" />
                           )}
                         />
-                        {errors.name && <p>{errors.name.message}</p>}
+                        {errors.name && (
+                          <p style={{ color: "red" }}>{errors.name.message}</p>
+                        )}
                       </div>
                       <div className="col-lg-6">
                         <Controller
@@ -129,7 +131,9 @@ const Contact = () => {
                             />
                           )}
                         />
-                        {errors.email && <p>{errors.email.message}</p>}
+                        {errors.email && (
+                          <p style={{ color: "red" }}>{errors.email.message}</p>
+                        )}
                       </div>
                       <div className="col-lg-12">
                         <Controller
@@ -145,7 +149,11 @@ const Contact = () => {
                             />
                           )}
                         />
-                        {errors.subject && <p>{errors.subject.message}</p>}
+                        {errors.subject && (
+                          <p style={{ color: "red" }}>
+                            {errors.subject.message}
+                          </p>
+                        )}
                       </div>
                       <div className="col-lg-12">
                         <Controller
@@ -157,7 +165,11 @@ const Contact = () => {
                             <textarea {...field} placeholder="Your Message*" />
                           )}
                         />
-                        {errors.message && <p>{errors.message.message}</p>}
+                        {errors.message && (
+                          <p style={{ color: "red" }}>
+                            {errors.message.message}
+                          </p>
+                        )}
                         <button className="submit" type="submit">
                           SEND
                         </button>
