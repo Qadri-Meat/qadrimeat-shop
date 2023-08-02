@@ -27,6 +27,7 @@ const schema = yup.object().shape({
     .matches(/^[0-9]{5}$/, "Please enter a valid postal code"), // Validate postal code with 5 digits
   state: yup.string(),
   city: yup.string().required(),
+  message: yup.string().max(200, "Message must be at most 200 characters"),
 });
 
 const Checkout = ({ customProp }) => {
@@ -239,11 +240,15 @@ const Checkout = ({ customProp }) => {
                         <div className="additional-info">
                           <label>Order notes</label>
                           <textarea
+                            {...register("message")}
                             placeholder="Notes about your order, e.g. special notes for delivery. "
                             name="message"
                             defaultValue={""}
                           />
                         </div>
+                        <p style={{ color: "red" }}>
+                          {errors.message?.message}
+                        </p>
                       </div>
                     </div>
                   </div>
