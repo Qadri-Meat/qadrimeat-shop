@@ -32,12 +32,12 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/shop?category=cow"}>
+                <Link to={process.env.PUBLIC_URL + "/shop?category=beef"}>
                   {t("Beef")}
                 </Link>
               </li>
               <li>
-                <Link to={process.env.PUBLIC_URL + "/shop?category=goat"}>
+                <Link to={process.env.PUBLIC_URL + "/shop?category=mutton"}>
                   {t("Mutton")}
                 </Link>
               </li>

@@ -13,7 +13,7 @@
     "title": "Mutton",
     "subtitle": "Starting at",
     "price": "$79.00",
-    "link": "/shop?category=goat"
+    "link": "/shop?category=mutton"
   },
   {
     "id": 3,
@@ -21,6 +21,6 @@
     "title": "Beef",
     "subtitle": "Starting at",
     "price": "$29.00",
-    "link": "/shop?category=cow"
+    "link": "/shop?category=beef"
   }
 ]
