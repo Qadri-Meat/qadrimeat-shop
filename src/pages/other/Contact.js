@@ -65,8 +65,8 @@ const Contact = () => {
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
-                        Pakistan.
+                        11-N Commercial, DHA Phase 1, Near Qadri Catering,
+                        Lahore, Punjab 54030, Pakistan.
                       </p>
                     </div>
                   </div>
