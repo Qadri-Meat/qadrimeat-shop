@@ -36,7 +36,7 @@ const FooterOne = ({
             }`}
           >
             <p className="my-2">
-              <i className="fa fa-phone me-2" /> +92 304 4014345
+              <i className="fa fa-phone me-2" /> 03024000719/04238651881
             </p>
             <p className="my-2">
               <i className="fa fa-inbox me-2" />
