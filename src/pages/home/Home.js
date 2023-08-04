@@ -25,7 +25,7 @@ const Home = () => {
         <BannerFourteen spaceTopClass="pt-95" spaceBottomClass="pb-70" />
 
         {/* product grid */}
-        <NewProductGrid limit={30} />
+        <NewProductGrid limit={5} />
 
         {/* feature icon */}
         <FeatureIconTwo spaceTopClass="pt-100" spaceBottomClass="pb-60" />
