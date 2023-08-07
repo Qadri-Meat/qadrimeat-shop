@@ -114,12 +114,18 @@ const FooterOne = ({
               <div className="footer-social">
                 <ul className="d-flex gap-4 justify-content-center">
                   <li>
-                    <a href="https://www.facebook.com/people/Qadri_Meat/100093388459885/">
+                    <a
+                      target="_blank"
+                      href="https://www.facebook.com/people/Qadri_Meat/100093388459885/"
+                    >
                       <i className="fa fa-facebook" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/qadrimeat/">
+                    <a
+                      target="_blank"
+                      href="https://www.instagram.com/qadrimeat/"
+                    >
                       <i className="fa fa-instagram" />
                     </a>
                   </li>
