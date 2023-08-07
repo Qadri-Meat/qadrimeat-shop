@@ -54,6 +54,7 @@ const Cart = ({ customProp }) => {
                             <th>Product Name</th>
                             <th>Unit Price</th>
                             <th>Qty</th>
+                            <th>Weight(KG)</th>
                             <th>Subtotal</th>
                             <th>action</th>
                           </tr>
@@ -182,6 +183,11 @@ const Cart = ({ customProp }) => {
                                       +
                                     </button>
                                   </div>
+                                </td>
+                                <td className="product-subtotal">
+                                  {discountedPrice !== null
+                                    ? (0.25 * cartItem.quantity).toFixed(2)
+                                    : (0.25 * cartItem.quantity).toFixed(2)}
                                 </td>
                                 <td className="product-subtotal">
                                   {discountedPrice !== null

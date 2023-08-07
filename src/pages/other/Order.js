@@ -59,6 +59,7 @@ const Order = () => {
                                 <tr>
                                   <th>Image</th>
                                   <th>Product Name</th>
+                                  <th>Weight(kg)</th>
                                   <th>Unit Price</th>
                                   <th>Subtotal</th>
                                 </tr>
@@ -102,7 +103,6 @@ const Order = () => {
                                           />
                                         </Link>
                                       </td>
-
                                       <td className="product-name">
                                         <Link
                                           to={
@@ -129,7 +129,15 @@ const Order = () => {
                                           ""
                                         )}
                                       </td>
-
+                                      <td className="product-subtotal">
+                                        {discountedPrice !== null
+                                          ? (0.25 * orderItem.quantity).toFixed(
+                                              2
+                                            )
+                                          : (0.25 * orderItem.quantity).toFixed(
+                                              2
+                                            )}
+                                      </td>
                                       <td className="product-price-cart">
                                         {discountedPrice !== null ? (
                                           <Fragment>
