@@ -8,14 +8,20 @@ import ShopSearch from "../../components/product/ShopSearch";
 import ShopCategories from "../../components/product/ShopCategories";
 import ShopTag from "../../components/product/ShopTag";
 
-const ShopSidebar = ({ products, getSortParams, sideSpaceClass }) => {
+const ShopSidebar = ({
+  products,
+  getSortParams,
+  sideSpaceClass,
+  searchValue,
+}) => {
   const uniqueCategories = getIndividualCategories(products);
+  // const searchedProducts = searchProducts(products, value);
   const uniqueTags = getIndividualTags(products);
 
   return (
     <div className={clsx("sidebar-style", sideSpaceClass)}>
       {/* shop search */}
-      <ShopSearch />
+      <ShopSearch searchedProducts={searchValue} />
 
       {/* filter by categories */}
       <ShopCategories

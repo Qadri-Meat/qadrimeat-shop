@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import Paginator from "react-hooks-paginator";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { getSortedProducts } from "../../helpers/product";
+import { getSortedProducts, searchProducts } from "../../helpers/product";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
@@ -27,6 +27,7 @@ const Shop = () => {
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const { products } = useSelector((state) => state.product);
+  const [name, setName] = useState("");
 
   const getLayout = (layout) => {
     setLayout(layout);
@@ -40,6 +41,9 @@ const Shop = () => {
   const getFilterSortParams = (sortType, sortValue) => {
     setFilterSortType(sortType);
     setFilterSortValue(sortValue);
+  };
+  const handleSearchName = (newMessage) => {
+    setName(newMessage);
   };
 
   useEffect(() => {
@@ -61,10 +65,19 @@ const Shop = () => {
       filterSortType,
       filterSortValue
     );
+    let searchedProducts = searchProducts(products, name);
+    console.log(searchedProducts, name);
     sortedProducts = filterSortedProducts;
     setSortedProducts(sortedProducts);
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-  }, [offset, products, category, filterSortType, filterSortValue]);
+  }, [offset, products, category, filterSortType, filterSortValue, name]);
+
+  useEffect(() => {
+    let searchedProducts = searchProducts(products, name);
+    console.log(searchedProducts, name);
+    setSortedProducts(searchedProducts);
+    setCurrentData(searchedProducts.slice(offset, offset + pageLimit));
+  }, [products, name, offset]);
 
   return (
     <Fragment>
@@ -91,6 +104,7 @@ const Shop = () => {
                   products={products}
                   getSortParams={getSortParams}
                   sideSpaceClass="mr-30"
+                  searchValue={handleSearchName}
                 />
               </div>
               <div className="col-lg-9 order-1 order-lg-2">
