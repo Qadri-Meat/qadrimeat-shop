@@ -1,4 +1,3 @@
-
 import Logo from "../../components/header/Logo";
 import IconGroup from "../../components/header/IconGroup";
 import MobileMenu from "../../components/header/MobileMenu";
@@ -22,7 +21,7 @@ const HeaderFive = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Flone
+              Qadri Meat
             </a>
             .All Rights Reserved.
           </p>

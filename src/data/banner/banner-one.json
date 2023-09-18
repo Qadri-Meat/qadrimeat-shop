@@ -1,24 +1,24 @@
 [
   {
     "id": 1,
-    "image": "/assets/img/banner/banner-1.jpg",
-    "title": "Watches",
+    "image": "/assets/img/banner/chicken3.jpg",
+    "title": "Chicken",
     "subtitle": "Starting at",
     "price": "$99.00",
     "link": "/shop"
   },
   {
     "id": 2,
-    "image": "/assets/img/banner/banner-2.jpg",
-    "title": "Plo Bag",
+    "image": "/assets/img/banner/beef.jpg",
+    "title": "Beef",
     "subtitle": "Starting at",
     "price": "$79.00",
     "link": "/shop"
   },
   {
     "id": 3,
-    "image": "/assets/img/banner/banner-3.jpg",
-    "title": "Sunglass",
+    "image": "/assets/img/banner/mutton.jpg",
+    "title": "Mutton",
     "subtitle": "Starting at",
     "price": "$29.00",
     "link": "/shop"

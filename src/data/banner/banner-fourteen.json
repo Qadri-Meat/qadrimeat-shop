@@ -2,25 +2,25 @@
   {
     "id": 1,
     "image": "/assets/images/others/chicken.jpeg",
-    "title": "Male Kids",
+    "title": "Chicken",
     "subtitle": "Starting at",
     "price": "$99.00",
-    "link": "/shop"
+    "link": "/shop?category=chicken"
   },
   {
     "id": 2,
     "image": "/assets/images/others/beef.jpeg",
-    "title": "Female kids",
+    "title": "Mutton",
     "subtitle": "Starting at",
     "price": "$79.00",
-    "link": "/shop"
+    "link": "/shop?category=mutton"
   },
   {
     "id": 3,
     "image": "/assets/images/others/mutton.jpeg",
-    "title": "Featured",
+    "title": "Beef",
     "subtitle": "Starting at",
     "price": "$29.00",
-    "link": "/shop"
+    "link": "/shop?category=beef"
   }
 ]

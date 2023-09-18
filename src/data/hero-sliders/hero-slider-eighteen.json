@@ -1,15 +1,15 @@
 [
   {
     "id": 1,
-    "title": "Enjoy This Offer Today",
-    "subtitle": "New Collection <br>Sale 40%",
-    "image": "/assets/images/others/slider1.png",
+    "title": "Enjoy Today",
+    "subtitle": "Fresh and hygienic meat for you",
+    "image": "/assets/images/others/home-photo.jpg",
     "url": "/shop"
   },
   {
     "id": 2,
-    "title": "Enjoy This Offer Today",
-    "subtitle": "New Collection <br>Sale 20%",
+    "title": "Enjoy Today",
+    "subtitle": "Fresh and hygienic meat for you",
     "image": "/assets/images/others/slider2.png",
     "url": "/shop"
   }

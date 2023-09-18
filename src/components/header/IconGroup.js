@@ -5,7 +5,7 @@ import clsx from "clsx";
 import MenuCart from "./sub-components/MenuCart";
 
 const IconGroup = ({ iconWhiteClass }) => {
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
 
@@ -20,45 +20,7 @@ const IconGroup = ({ iconWhiteClass }) => {
   const { cartItems } = useSelector((state) => state.cart);
 
   return (
-    <div className={clsx("header-right-wrap", iconWhiteClass)} >
-      <div className="same-style header-search d-none d-lg-block">
-        <button className="search-active" onClick={e => handleClick(e)}>
-          <i className="pe-7s-search" />
-        </button>
-        <div className="search-content">
-          <form action="#">
-            <input type="text" placeholder="Search" />
-            <button className="button-search">
-              <i className="pe-7s-search" />
-            </button>
-          </form>
-        </div>
-      </div>
-      <div className="same-style account-setting d-none d-lg-block">
-        <button
-          className="account-setting-active"
-          onClick={e => handleClick(e)}
-        >
-          <i className="pe-7s-user-female" />
-        </button>
-        <div className="account-dropdown">
-          <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                my account
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div className={clsx("header-right-wrap", iconWhiteClass)}>
       <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
@@ -76,7 +38,7 @@ const IconGroup = ({ iconWhiteClass }) => {
         </Link>
       </div>
       <div className="same-style cart-wrap d-none d-lg-block">
-        <button className="icon-cart" onClick={e => handleClick(e)}>
+        <button className="icon-cart" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
             {cartItems && cartItems.length ? cartItems.length : 0}
@@ -108,7 +70,5 @@ const IconGroup = ({ iconWhiteClass }) => {
 IconGroup.propTypes = {
   iconWhiteClass: PropTypes.string,
 };
-
-
 
 export default IconGroup;

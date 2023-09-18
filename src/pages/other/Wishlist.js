@@ -81,7 +81,7 @@ const Wishlist = ({ customProp }) => {
                                     <img
                                       className="img-fluid"
                                       src={
-                                        process.env.PUBLIC_URL +
+                                        process.env.REACT_APP_IMAGE_URL +
                                         wishlistItem.image[0]
                                       }
                                       alt=""

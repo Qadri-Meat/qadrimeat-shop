@@ -35,10 +35,17 @@ const FooterOne = ({
               sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
             }`}
           >
-            <p className="my-2"><i className="fa fa-phone me-2" /> +92 304 4014345</p>
-            <p className="my-2"><i className="fa fa-inbox me-2" />qadrimeat@gmail.com</p>
-            <p className="my-2"><i className="fa fa-location-arrow me-2" />Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
-              Pakistan.
+            <p className="my-2">
+              <i className="fa fa-phone me-2" /> 03024000719/04238651881
+            </p>
+            <p className="my-2">
+              <i className="fa fa-inbox me-2" />
+              qadrimeat@gmail.com
+            </p>
+            <p className="my-2">
+              <i className="fa fa-location-arrow me-2" />
+              11-N Commercial, DHA Phase 1, Near Qadri Catering, Lahore, Punjab
+              54030, Pakistan.
             </p>
             <Logo imageUrl="/assets/images/logo/logo.png" logoClass="logo" />
             <p className="my-2">
@@ -86,15 +93,10 @@ const FooterOne = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>Returns</Link>
+                    <Link to={process.env.PUBLIC_URL + "/return"}>Returns</Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>
-                      Support Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>FAQs</Link>
+                    <Link to={process.env.PUBLIC_URL + "/faqs"}>FAQs</Link>
                   </li>
                 </ul>
               </div>
@@ -112,12 +114,18 @@ const FooterOne = ({
               <div className="footer-social">
                 <ul className="d-flex gap-4 justify-content-center">
                   <li>
-                    <a href="//www.facebook.com">
+                    <a
+                      target="_blank"
+                      href="https://www.facebook.com/people/Qadri_Meat/100093388459885/"
+                    >
                       <i className="fa fa-facebook" />
                     </a>
                   </li>
                   <li>
-                    <a href="//www.instagram.com/">
+                    <a
+                      target="_blank"
+                      href="https://www.instagram.com/qadrimeat/"
+                    >
                       <i className="fa fa-instagram" />
                     </a>
                   </li>

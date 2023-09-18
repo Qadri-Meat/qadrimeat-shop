@@ -1,11 +1,23 @@
 import { Fragment } from "react";
 import { useLocation } from "react-router-dom";
+import { useForm, Controller } from "react-hook-form";
 import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
 const Contact = () => {
   let { pathname } = useLocation();
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <Fragment>
@@ -31,23 +43,19 @@ const Contact = () => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>+92 304 4014345</p>
-                      <p>+92 304 4014345</p>
+                      <p>03024000719</p>
+                      <p>04238651881</p>
                     </div>
                   </div>
                   <div className="single-contact-info">
                     <div className="contact-icon">
-                      <i className="fa fa-globe" />
+                      <i className="fa fa-envelope" />
                     </div>
+
                     <div className="contact-info-dec">
                       <p>
                         <a href="mailto:qadrimeat@gmail.com">
                           qadrimeat@gmail.com
-                        </a>
-                      </p>
-                      <p>
-                        <a href="https://yourwebsitename.com">
-                          yourwebsitename.com
                         </a>
                       </p>
                     </div>
@@ -57,10 +65,9 @@ const Contact = () => {
                       <i className="fa fa-map-marker" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>Address goes here, </p>
                       <p>
-                        Street 113, Sector N Dha Phase 1, Lahore, Punjab 54030,
-                        Pakistan.
+                        11-N Commercial, DHA Phase 1, Near Qadri Catering,
+                        Lahore, Punjab 54030, Pakistan.
                       </p>
                     </div>
                   </div>
@@ -68,28 +75,19 @@ const Contact = () => {
                     <h3>Follow Us</h3>
                     <ul>
                       <li>
-                        <a href="//facebook.com">
+                        <a
+                          target="_blank"
+                          href="https://www.facebook.com/people/Qadri_Meat/100093388459885/"
+                        >
                           <i className="fa fa-facebook" />
                         </a>
                       </li>
                       <li>
-                        <a href="//pinterest.com">
-                          <i className="fa fa-pinterest-p" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//thumblr.com">
-                          <i className="fa fa-tumblr" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//vimeo.com">
-                          <i className="fa fa-vimeo" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//twitter.com">
-                          <i className="fa fa-twitter" />
+                        <a
+                          target="_blank"
+                          href="https://www.instagram.com/qadrimeat/"
+                        >
+                          <i className="fa fa-instagram" />
                         </a>
                       </li>
                     </ul>
@@ -101,34 +99,96 @@ const Contact = () => {
                   <div className="contact-title mb-30">
                     <h2>Get In Touch</h2>
                   </div>
-                  <form className="contact-form-style">
+                  <form
+                    className="contact-form-style"
+                    onSubmit={handleSubmit(onSubmit)}
+                  >
                     <div className="row">
                       <div className="col-lg-6">
-                        <input name="name" placeholder="Name*" type="text" />
+                        {errors.name && (
+                          <p style={{ color: "red" }}>{errors.name.message}</p>
+                        )}
+                        <Controller
+                          name="name"
+                          control={control}
+                          defaultValue=""
+                          rules={{ required: "Name is required" }}
+                          render={({ field }) => (
+                            <input {...field} placeholder="Name*" type="text" />
+                          )}
+                        />
                       </div>
                       <div className="col-lg-6">
-                        <input name="email" placeholder="Email*" type="email" />
+                        {errors.email && (
+                          <p style={{ color: "red" }}>{errors.email.message}</p>
+                        )}
+                        <Controller
+                          name="email"
+                          control={control}
+                          defaultValue=""
+                          rules={{
+                            required: "Email is required",
+                            pattern: {
+                              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                              message: "Invalid email address",
+                            },
+                          }}
+                          render={({ field }) => (
+                            <input
+                              {...field}
+                              placeholder="Email*"
+                              type="email"
+                            />
+                          )}
+                        />
                       </div>
                       <div className="col-lg-12">
-                        <input
+                        {errors.subject && (
+                          <p style={{ color: "red" }}>
+                            {errors.subject.message}
+                          </p>
+                        )}
+                        <Controller
                           name="subject"
-                          placeholder="Subject*"
-                          type="text"
+                          control={control}
+                          defaultValue=""
+                          rules={{ required: "Subject is required" }}
+                          render={({ field }) => (
+                            <input
+                              {...field}
+                              placeholder="Subject*"
+                              type="text"
+                            />
+                          )}
                         />
                       </div>
                       <div className="col-lg-12">
-                        <textarea
+                        {errors.message && (
+                          <p style={{ color: "red" }}>
+                            {errors.message.message}
+                          </p>
+                        )}
+                        <Controller
                           name="message"
-                          placeholder="Your Message*"
-                          defaultValue={""}
+                          control={control}
+                          defaultValue=""
+                          rules={{ required: "Message is required" }}
+                          render={({ field }) => (
+                            <textarea {...field} placeholder="Your Message*" />
+                          )}
                         />
+
                         <button className="submit" type="submit">
                           SEND
                         </button>
+                        {isSubmitSuccessful && (
+                          <p className="form-message">
+                            Form submitted successfully!
+                          </p>
+                        )}
                       </div>
                     </div>
                   </form>
-                  <p className="form-message" />
                 </div>
               </div>
             </div>

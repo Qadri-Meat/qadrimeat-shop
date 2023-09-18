@@ -7,10 +7,17 @@ import FooterNewsletter from "../../components/footer/FooterNewsletter";
 const FooterThree = ({
   backgroundColorClass,
   spaceTopClass,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
   return (
-    <footer className={clsx("footer-area", backgroundColorClass, spaceTopClass, spaceBottomClass)}>
+    <footer
+      className={clsx(
+        "footer-area",
+        backgroundColorClass,
+        spaceTopClass,
+        spaceBottomClass
+      )}
+    >
       <div className="container">
         <div className="footer-border pt-100">
           <div className="row">
@@ -141,7 +148,7 @@ const FooterThree = ({
 FooterThree.propTypes = {
   backgroundColorClass: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
+  spaceTopClass: PropTypes.string,
 };
 
 export default FooterThree;

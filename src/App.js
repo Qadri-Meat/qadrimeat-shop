@@ -3,10 +3,16 @@ import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // home pages
-const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
+const Home = lazy(() => import("./pages/home/Home"));
+
+//FAQs Pages
+const Faqs = lazy(() => import("./pages/other/Faqs"));
+
+//Return Pages
+const Return = lazy(() => import("./pages/other/Return"));
 
 // shop pages
-const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
+const Shop = lazy(() => import("./pages/shop/Shop"));
 
 // product pages
 const Product = lazy(() => import("./pages/shop-product/Product"));
@@ -30,6 +36,7 @@ const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const Compare = lazy(() => import("./pages/other/Compare"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
+const Order = lazy(() => import("./pages/other/Order"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
@@ -48,14 +55,17 @@ const App = () => {
           }
         >
           <Routes>
-            <Route
-              path={process.env.PUBLIC_URL + "/"}
-              element={<HomeFashion />}
-            />
+            <Route path={process.env.PUBLIC_URL + "/"} element={<Home />} />
             {/* Shop pages */}
+            <Route path={process.env.PUBLIC_URL + "/shop"} element={<Shop />} />
+
+            {/* FAQs pages */}
+            <Route path={process.env.PUBLIC_URL + "/faqs"} element={<Faqs />} />
+
+            {/* FAQs pages */}
             <Route
-              path={process.env.PUBLIC_URL + "/shop"}
-              element={<ShopGridStandard />}
+              path={process.env.PUBLIC_URL + "/return"}
+              element={<Return />}
             />
 
             {/* Shop product pages */}
@@ -109,6 +119,10 @@ const App = () => {
             <Route
               path={process.env.PUBLIC_URL + "/checkout"}
               element={<Checkout customProp={"mutton"} />}
+            />
+            <Route
+              path={process.env.PUBLIC_URL + "/order/:id"}
+              element={<Order />}
             />
 
             <Route path="*" element={<NotFound />} />

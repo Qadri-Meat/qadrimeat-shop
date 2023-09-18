@@ -32,15 +32,17 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/cart"}>{t("Beef")}</Link>
+                <Link to={process.env.PUBLIC_URL + "/shop?category=beef"}>
+                  {t("Beef")}
+                </Link>
               </li>
               <li>
-                <Link to={process.env.PUBLIC_URL + "/checkout"}>
+                <Link to={process.env.PUBLIC_URL + "/shop?category=mutton"}>
                   {t("Mutton")}
                 </Link>
               </li>
               <li>
-                <Link to={process.env.PUBLIC_URL + "/wishlist"}>
+                <Link to={process.env.PUBLIC_URL + "/shop?category=chicken"}>
                   {t("Chicken")}
                 </Link>
               </li>
@@ -50,7 +52,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             <Link to={process.env.PUBLIC_URL + "/about"}>{t("About")}</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/contact"}>{t("contact")}</Link>
+            <Link to={process.env.PUBLIC_URL + "/contact"}>{t("Contact")}</Link>
           </li>
         </ul>
       </nav>
