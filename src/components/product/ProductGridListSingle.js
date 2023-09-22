@@ -29,7 +29,10 @@ const ProductGridListSingle = ({
   return (
     <Fragment>
       <div className={clsx("product-wrap", spaceBottomClass)}>
-        <div className="product-img">
+        <div
+          style={{ height: "221px", width: "276px" }}
+          className="product-img"
+        >
           {product.image.length === 0 ? (
             <img
               className="default-img"
