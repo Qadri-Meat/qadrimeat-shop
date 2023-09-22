@@ -30,22 +30,29 @@ const ProductGridListSingle = ({
     <Fragment>
       <div className={clsx("product-wrap", spaceBottomClass)}>
         <div className="product-img">
-          <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+          {product.image.length === 0 ? (
             <img
               className="default-img"
-              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
-              alt=""
+              src="/assets/images/others/default.png"
+              alt="Default"
             />
-            {product.image.length > 1 ? (
+          ) : (
+            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
               <img
-                className="hover-img"
-                src={process.env.REACT_APP_IMAGE_URL + product.image[1]}
+                className="default-img"
+                src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
                 alt=""
               />
-            ) : (
-              ""
-            )}
-          </Link>
+              {product.image.length > 1 && (
+                <img
+                  className="hover-img"
+                  src={process.env.REACT_APP_IMAGE_URL + product.image[1]}
+                  alt=""
+                />
+              )}
+            </Link>
+          )}
+
           {product.discount || product.new ? (
             <div className="product-img-badges">
               {product.discount ? (
