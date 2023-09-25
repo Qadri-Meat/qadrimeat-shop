@@ -69,6 +69,7 @@ const Checkout = ({ customProp }) => {
         discount: i.discount,
         image: i.image,
         product: i.id,
+        weight: i.weight,
       };
     });
     const newData = {
