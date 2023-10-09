@@ -15,22 +15,12 @@ const IconGroup = ({ iconWhiteClass }) => {
     );
     offcanvasMobileMenu.classList.add('active');
   };
-  const { compareItems } = useSelector((state) => state.compare);
   const { wishlistItems } = useSelector((state) => state.wishlist);
   const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <div className={clsx('header-right-wrap', iconWhiteClass)}>
-      <div className="same-style header-compare">
-        <Link to={process.env.PUBLIC_URL + '/compare'}>
-          <i className="pe-7s-shuffle" />
-          <span className="count-style">
-            {compareItems && compareItems.length
-              ? compareItems.length
-              : 0}
-          </span>
-        </Link>
-      </div>
+      <div className="same-style header-compare"></div>
       <div className="same-style header-wishlist">
         <Link to={process.env.PUBLIC_URL + '/wishlist'}>
           <i className="pe-7s-like" />

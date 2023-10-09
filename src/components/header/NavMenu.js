@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import clsx from "clsx";
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import clsx from 'clsx';
 
 const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
   const { t } = useTranslation();
@@ -10,18 +10,18 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
     <div
       className={clsx(
         sidebarMenu
-          ? "sidebar-menu"
-          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`
+          ? 'sidebar-menu'
+          : `main-menu ${menuWhiteClass ? menuWhiteClass : ''}`
       )}
     >
       <nav>
         <ul>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/"}>{t("home")}</Link>
+            <Link to={process.env.PUBLIC_URL + '/'}>{t('home')}</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop"}>
-              {t("Shop")}
+            <Link to={process.env.PUBLIC_URL + '/shop'}>
+              {t('Shop')}
               {sidebarMenu ? (
                 <span>
                   <i className="fa fa-angle-right"></i>
@@ -32,27 +32,41 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/shop?category=beef"}>
-                  {t("Beef")}
+                <Link
+                  to={process.env.PUBLIC_URL + '/shop?category=beef'}
+                >
+                  {t('Beef')}
                 </Link>
               </li>
               <li>
-                <Link to={process.env.PUBLIC_URL + "/shop?category=mutton"}>
-                  {t("Mutton")}
+                <Link
+                  to={
+                    process.env.PUBLIC_URL + '/shop?category=mutton'
+                  }
+                >
+                  {t('Mutton')}
                 </Link>
               </li>
               <li>
-                <Link to={process.env.PUBLIC_URL + "/shop?category=chicken"}>
-                  {t("Chicken")}
+                <Link
+                  to={
+                    process.env.PUBLIC_URL + '/shop?category=chicken'
+                  }
+                >
+                  {t('Chicken')}
                 </Link>
               </li>
             </ul>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/about"}>{t("About")}</Link>
+            <Link to={process.env.PUBLIC_URL + '/about'}>
+              {t('About')}
+            </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/contact"}>{t("Contact")}</Link>
+            <Link to={process.env.PUBLIC_URL + '/contact'}>
+              {t('Contact')}
+            </Link>
           </li>
         </ul>
       </nav>
