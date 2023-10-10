@@ -10,17 +10,16 @@ const IconGroup = ({ iconWhiteClass }) => {
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
-      if (cartRef.current && !cartRef.current.contains(e.target)) {
-        console.log('Click outside cart detected');
-        const offcanvasMobileMenu = document.querySelector(
-          '#offcanvas-mobile-menu'
-        );
-        offcanvasMobileMenu.classList.remove('active');
+      if (cartRef.current) {
+        const nextSibling = cartRef.current.nextSibling;
+        if (nextSibling) {
+          console.log('Click outside cart detected');
+          nextSibling.classList.toggle('active');
+        }
       }
     };
 
     document.addEventListener('click', handleOutsideClick);
-
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
