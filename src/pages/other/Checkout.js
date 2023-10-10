@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscountPrice } from '../../helpers/product';
@@ -60,6 +60,15 @@ const Checkout = ({ customProp }) => {
     },
     resolver: yupResolver(schema),
   });
+  const [shippingPrice, setShippingPrice] = useState('');
+
+  const handleShippingPriceChange = (e) => {
+    // Get the input value as a string
+    const inputValue = e.target.value;
+
+    // Update the state with the input value as a string
+    setShippingPrice(inputValue);
+  };
 
   useEffect(() => {
     if (success) {
@@ -326,7 +335,13 @@ const Checkout = ({ customProp }) => {
                               <li className="your-order-shipping">
                                 Shipping
                               </li>
-                              <li>Free shipping</li>
+                              <li>
+                                <input
+                                  placeholder="Shipping Price"
+                                  onChange={handleShippingPriceChange}
+                                  value={shippingPrice}
+                                />
+                              </li>
                             </ul>
                           </div>
                           <div className="your-order-total">
@@ -334,7 +349,13 @@ const Checkout = ({ customProp }) => {
                               <li className="order-total">Total</li>
                               <li>
                                 {currency.currencySymbol +
-                                  cartTotalPrice.toFixed(2)}
+                                  (shippingPrice
+                                    ? parseFloat(
+                                        cartTotalPrice.toFixed(2)
+                                      ) + parseFloat(shippingPrice)
+                                    : parseFloat(
+                                        cartTotalPrice.toFixed(2)
+                                      ))}
                               </li>
                             </ul>
                           </div>
