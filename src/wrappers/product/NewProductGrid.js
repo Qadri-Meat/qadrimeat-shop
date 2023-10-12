@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import ProductGridTwo from "./ProductGridTwo";
-import SectionTitleTwo from "../../components/section-title/SectionTitleTwo";
+import ProductGridTwo from './ProductGridTwo';
+import SectionTitleTwo from '../../components/section-title/SectionTitleTwo';
 
 const NewProductGrid = ({ category, limit }) => {
   return (

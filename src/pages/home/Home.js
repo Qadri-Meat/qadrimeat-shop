@@ -1,11 +1,11 @@
-import { Fragment } from "react";
-import SEO from "../../components/seo";
-import LayoutOne from "../../layouts/LayoutOne";
-import HeroSliderEighteen from "wrappers/hero-slider/HeroSliderEighteen";
-import BannerFourteen from "wrappers/banner/BannerFourteen";
-import FeatureIconTwo from "wrappers/feature-icon/FeatureIconTwo";
-import ImageSliderOne from "wrappers/image-slider/ImageSliderOne";
-import NewProductGrid from "wrappers/product/NewProductGrid";
+import { Fragment } from 'react';
+import SEO from '../../components/seo';
+import LayoutOne from '../../layouts/LayoutOne';
+import HeroSliderEighteen from 'wrappers/hero-slider/HeroSliderEighteen';
+import BannerFourteen from 'wrappers/banner/BannerFourteen';
+import FeatureIconTwo from 'wrappers/feature-icon/FeatureIconTwo';
+import ImageSliderOne from 'wrappers/image-slider/ImageSliderOne';
+import NewProductGrid from 'wrappers/product/NewProductGrid';
 
 const Home = () => {
   return (
@@ -22,13 +22,19 @@ const Home = () => {
         <HeroSliderEighteen />
 
         {/* banner */}
-        <BannerFourteen spaceTopClass="pt-95" spaceBottomClass="pb-70" />
+        <BannerFourteen
+          spaceTopClass="pt-95"
+          spaceBottomClass="pb-70"
+        />
 
         {/* product grid */}
         <NewProductGrid limit={5} />
 
         {/* feature icon */}
-        <FeatureIconTwo spaceTopClass="pt-100" spaceBottomClass="pb-60" />
+        <FeatureIconTwo
+          spaceTopClass="pt-100"
+          spaceBottomClass="pb-60"
+        />
 
         {/* image slider */}
         <ImageSliderOne />
