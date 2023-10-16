@@ -1,11 +1,11 @@
-import { Fragment, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useParams } from "react-router-dom";
-import SEO from "../../components/seo";
-import { getDiscountPrice } from "../../helpers/product";
-import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { getOrder } from "store/slices/order-slice";
+import { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import SEO from '../../components/seo';
+import { getDiscountPrice } from '../../helpers/product';
+import LayoutOne from '../../layouts/LayoutOne';
+import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
+import { getOrder } from 'store/slices/order-slice';
 
 const Order = () => {
   let { pathname } = useLocation();
@@ -30,8 +30,11 @@ const Order = () => {
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Order", path: process.env.PUBLIC_URL + pathname },
+            { label: 'Home', path: process.env.PUBLIC_URL + '/' },
+            {
+              label: 'Order',
+              path: process.env.PUBLIC_URL + pathname,
+            },
           ]}
         />
         <div className="cart-main-area pt-40">
@@ -42,14 +45,18 @@ const Order = () => {
                   <div className="container">
                     <Fragment>
                       <h3 className="cart-page-title">
-                        <b>Name:</b> {order.shippingDetails.firstName}{" "}
+                        <b>Name:</b> {order.shippingDetails.firstName}{' '}
                         {order.shippingDetails.lastName}
                       </h3>
                       <h5 className="cart-page-title">
-                        <b>Address:</b> {order.shippingDetails.address}
+                        <b>Address:</b>{' '}
+                        {order.shippingDetails.address}
                       </h5>
                       <h5 className="cart-page-title">
                         <b>Phone:</b> {order.shippingDetails.phone}
+                      </h5>
+                      <h5 className="cart-page-title">
+                        <b>Note:</b> {order.shippingDetails.notes}
                       </h5>
                       <div className="row">
                         <div className="col-12">
@@ -66,15 +73,18 @@ const Order = () => {
                               </thead>
                               <tbody>
                                 {order.orderItems.map((orderItem) => {
-                                  const discountedPrice = getDiscountPrice(
-                                    orderItem.price,
-                                    orderItem.discount
-                                  );
+                                  const discountedPrice =
+                                    getDiscountPrice(
+                                      orderItem.price,
+                                      orderItem.discount
+                                    );
                                   const finalProductPrice = (
-                                    orderItem.price * currency.currencyRate
+                                    orderItem.price *
+                                    currency.currencyRate
                                   ).toFixed(2);
                                   const finalDiscountedPrice = (
-                                    discountedPrice * currency.currencyRate
+                                    discountedPrice *
+                                    currency.currencyRate
                                   ).toFixed(2);
 
                                   discountedPrice != null
@@ -82,21 +92,23 @@ const Order = () => {
                                         finalDiscountedPrice *
                                         orderItem.quantity)
                                     : (cartTotalPrice +=
-                                        finalProductPrice * orderItem.quantity);
+                                        finalProductPrice *
+                                        orderItem.quantity);
                                   return (
                                     <tr key={orderItem.id}>
                                       <td className="product-thumbnail">
                                         <Link
                                           to={
                                             process.env.PUBLIC_URL +
-                                            "/product/" +
+                                            '/product/' +
                                             orderItem.id
                                           }
                                         >
                                           <img
                                             className="img-fluid"
                                             src={
-                                              process.env.REACT_APP_IMAGE_URL +
+                                              process.env
+                                                .REACT_APP_IMAGE_URL +
                                               orderItem.image[0]
                                             }
                                             alt=""
@@ -107,7 +119,7 @@ const Order = () => {
                                         <Link
                                           to={
                                             process.env.PUBLIC_URL +
-                                            "/product/" +
+                                            '/product/' +
                                             orderItem.id
                                           }
                                         >
@@ -117,26 +129,32 @@ const Order = () => {
                                         orderItem.selectedProductSize ? (
                                           <div className="cart-item-variation">
                                             <span>
-                                              Color:{" "}
-                                              {orderItem.selectedProductColor}
+                                              Color:{' '}
+                                              {
+                                                orderItem.selectedProductColor
+                                              }
                                             </span>
                                             <span>
-                                              Size:{" "}
-                                              {orderItem.selectedProductSize}
+                                              Size:{' '}
+                                              {
+                                                orderItem.selectedProductSize
+                                              }
                                             </span>
                                           </div>
                                         ) : (
-                                          ""
+                                          ''
                                         )}
                                       </td>
                                       <td className="product-subtotal">
                                         {discountedPrice !== null
-                                          ? (0.25 * orderItem.quantity).toFixed(
-                                              2
-                                            )
-                                          : (0.25 * orderItem.quantity).toFixed(
-                                              2
-                                            )}
+                                          ? (
+                                              0.25 *
+                                              orderItem.quantity
+                                            ).toFixed(2)
+                                          : (
+                                              0.25 *
+                                              orderItem.quantity
+                                            ).toFixed(2)}
                                       </td>
                                       <td className="product-price-cart">
                                         {discountedPrice !== null ? (
@@ -187,7 +205,7 @@ const Order = () => {
                               </h4>
                             </div>
                             <h5>
-                              Total products{" "}
+                              Total products{' '}
                               <span>
                                 {currency.currencySymbol +
                                   cartTotalPrice.toFixed(2)}
@@ -195,7 +213,7 @@ const Order = () => {
                             </h5>
 
                             <h4 className="grand-totall-title">
-                              Grand Total{" "}
+                              Grand Total{' '}
                               <span>
                                 {currency.currencySymbol +
                                   cartTotalPrice.toFixed(2)}

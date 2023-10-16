@@ -1,33 +1,41 @@
-import { Fragment, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getDiscountPrice } from "../../helpers/product";
-import SEO from "../../components/seo";
-import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { createOrder, resetOrder } from "store/slices/order-slice";
-import { Form } from "react-bootstrap";
-import { deleteAllFromCart } from "store/slices/cart-slice";
+import { Fragment, useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDiscountPrice } from '../../helpers/product';
+import SEO from '../../components/seo';
+import LayoutOne from '../../layouts/LayoutOne';
+import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { createOrder, resetOrder } from 'store/slices/order-slice';
+import { Form } from 'react-bootstrap';
+import { deleteAllFromCart } from 'store/slices/cart-slice';
 
 const schema = yup.object().shape({
-  firstName: yup.string().required("First Name is Required"),
-  lastName: yup.string().required("Last Name is Required"),
+  firstName: yup.string().required('First Name is Required'),
+  lastName: yup.string().required('Last Name is Required'),
   country: yup
     .string()
-    .required("Please Select Country")
-    .matches(/^[A-Za-z ]*$/, "Please enter a valid country"), // Validate that the country name contains only letters and spaces
-  address: yup.string().required("Please enter Address"),
-  phone: yup.string().required("Please enter Phone Number"),
+    .required('Please Select Country')
+    .matches(/^[A-Za-z ]*$/, 'Please enter a valid country'),
+  address: yup.string().required('Please enter Address'),
+  phone: yup
+    .string()
+    .required('Please enter Phone Number')
+    .matches(
+      /^[0-9+]*$/,
+      'Please enter a valid numeric phone number'
+    ),
   postalCode: yup
     .string()
-    .required("Postal is Required")
-    .matches(/^[0-9]{5}$/, "Please enter a valid postalCode code"), // Validate postalCode code with 5 digits
+    .required('Postal is Required')
+    .matches(/^[0-9]{5}$/, 'Please enter a valid postal code'),
   state: yup.string(),
   city: yup.string().required(),
-  notes: yup.string().max(200, "Message must be at most 200 characters"),
+  notes: yup
+    .string()
+    .max(200, 'Message must be at most 200 characters'),
 });
 
 const Checkout = ({ customProp }) => {
@@ -36,7 +44,9 @@ const Checkout = ({ customProp }) => {
 
   const currency = useSelector((state) => state.currency);
   const { cartItems } = useSelector((state) => state.cart);
-  const { success, details: order } = useSelector((state) => state.order);
+  const { success, details: order } = useSelector(
+    (state) => state.order
+  );
 
   const {
     register,
@@ -44,12 +54,21 @@ const Checkout = ({ customProp }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      country: "Pakistan",
-      postalCode: "54660",
-      city: "Lahore",
+      country: 'Pakistan',
+      postalCode: '54660',
+      city: 'Lahore',
     },
     resolver: yupResolver(schema),
   });
+  const [shippingPrice, setShippingPrice] = useState('');
+
+  const handleShippingPriceChange = (e) => {
+    // Get the input value as a string
+    const inputValue = e.target.value;
+
+    // Update the state with the input value as a string
+    setShippingPrice(inputValue);
+  };
 
   useEffect(() => {
     if (success) {
@@ -69,6 +88,7 @@ const Checkout = ({ customProp }) => {
         discount: i.discount,
         image: i.image,
         product: i.id,
+        weight: i.weight,
       };
     });
     const newData = {
@@ -78,7 +98,7 @@ const Checkout = ({ customProp }) => {
       deliveryTime: Date.now(),
       orderItems,
       shippingDetails: data,
-      type: "online",
+      type: 'online',
       discount: 0,
     };
 
@@ -99,8 +119,11 @@ const Checkout = ({ customProp }) => {
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Checkout", path: process.env.PUBLIC_URL + pathname },
+            { label: 'Home', path: process.env.PUBLIC_URL + '/' },
+            {
+              label: 'Checkout',
+              path: process.env.PUBLIC_URL + pathname,
+            },
           ]}
         />
         <div className="checkout-area pt-95 pb-100">
@@ -115,39 +138,41 @@ const Checkout = ({ customProp }) => {
                         <div className="row">
                           <div className="col-lg-12">
                             <Form.Group controlId="phone">
-                              <Form.Label>{["Phone"]}</Form.Label>
+                              <Form.Label>{['Phone']}</Form.Label>
                               <Form.Control
-                                {...register("phone")}
+                                {...register('phone')}
                                 placeholder="Phone"
                               ></Form.Control>
                             </Form.Group>
 
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.phone?.message}
                             </p>
                           </div>
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="firstName">
-                              <Form.Label>{["First Name"]}</Form.Label>
+                              <Form.Label>
+                                {['First Name']}
+                              </Form.Label>
                               <Form.Control
-                                {...register("firstName")}
+                                {...register('firstName')}
                                 placeholder="First Name"
                               ></Form.Control>
                             </Form.Group>
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.firstName?.message}
                             </p>
                           </div>
 
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="lastName">
-                              <Form.Label>{["Last Name"]}</Form.Label>
+                              <Form.Label>{['Last Name']}</Form.Label>
                               <Form.Control
-                                {...register("lastName")}
+                                {...register('lastName')}
                                 placeholder="Last Name"
                               ></Form.Control>
                             </Form.Group>
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.lastName?.message}
                             </p>
                           </div>
@@ -155,13 +180,13 @@ const Checkout = ({ customProp }) => {
                         <div className="row">
                           <div className="col-lg-12">
                             <Form.Group controlId="address">
-                              <Form.Label>{["Address"]}</Form.Label>
+                              <Form.Label>{['Address']}</Form.Label>
                               <Form.Control
-                                {...register("address")}
+                                {...register('address')}
                                 placeholder="Address"
                               ></Form.Control>
                             </Form.Group>
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.address?.message}
                             </p>
                           </div>
@@ -170,29 +195,29 @@ const Checkout = ({ customProp }) => {
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="city">
-                              <Form.Label>{["City"]}</Form.Label>
+                              <Form.Label>{['City']}</Form.Label>
                               <Form.Control
-                                {...register("city")}
+                                {...register('city')}
                                 disabled
                                 defaultValue="Lahore"
                               ></Form.Control>
                             </Form.Group>
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.city?.message}
                             </p>
                           </div>
 
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="state">
-                              <Form.Label>{["State"]}</Form.Label>
+                              <Form.Label>{['State']}</Form.Label>
                               <Form.Control
-                                {...register("state")}
+                                {...register('state')}
                                 placeholder="State"
                                 disabled
                                 defaultValue="Punjab"
                               ></Form.Control>
                             </Form.Group>
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.state?.message}
                             </p>
                           </div>
@@ -200,29 +225,31 @@ const Checkout = ({ customProp }) => {
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="postalCode">
-                              <Form.Label>{["Postal/ Zip code"]}</Form.Label>
+                              <Form.Label>
+                                {['Postal/ Zip code']}
+                              </Form.Label>
                               <Form.Control
-                                {...register("postalCode")}
+                                {...register('postalCode')}
                                 placeholder="Postal/ Zip code"
                                 disabled
                                 defaultValue="54660"
                               ></Form.Control>
                             </Form.Group>
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.postalCode?.message}
                             </p>
                           </div>
                           <div className="col-lg-6 col-md-6">
                             <Form.Group controlId="country">
-                              <Form.Label>{["Country"]}</Form.Label>
+                              <Form.Label>{['Country']}</Form.Label>
                               <Form.Control
-                                {...register("country")}
+                                {...register('country')}
                                 placeholder="Country"
                                 disabled
                                 defaultValue="Pakistan"
                               ></Form.Control>
                             </Form.Group>
-                            <p style={{ color: "red" }}>
+                            <p style={{ color: 'red' }}>
                               {errors.country?.message}
                             </p>
                           </div>
@@ -233,13 +260,15 @@ const Checkout = ({ customProp }) => {
                         <div className="additional-info">
                           <label>Order notes</label>
                           <textarea
-                            {...register("notes")}
+                            {...register('notes')}
                             placeholder="Notes about your order, e.g. special notes for delivery. "
                             name="notes"
-                            defaultValue={""}
+                            defaultValue={''}
                           />
                         </div>
-                        <p style={{ color: "red" }}>{errors.notes?.message}</p>
+                        <p style={{ color: 'red' }}>
+                          {errors.notes?.message}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -257,26 +286,32 @@ const Checkout = ({ customProp }) => {
                           <div className="your-order-middle">
                             <ul>
                               {cartItems.map((cartItem, key) => {
-                                const discountedPrice = getDiscountPrice(
-                                  cartItem.price,
-                                  cartItem.discount
-                                );
+                                const discountedPrice =
+                                  getDiscountPrice(
+                                    cartItem.price,
+                                    cartItem.discount
+                                  );
                                 const finalProductPrice = (
-                                  cartItem.price * currency.currencyRate
+                                  cartItem.price *
+                                  currency.currencyRate
                                 ).toFixed(2);
                                 const finalDiscountedPrice = (
-                                  discountedPrice * currency.currencyRate
+                                  discountedPrice *
+                                  currency.currencyRate
                                 ).toFixed(2);
                                 discountedPrice != null
                                   ? (cartTotalPrice +=
-                                      finalDiscountedPrice * cartItem.quantity)
+                                      finalDiscountedPrice *
+                                      cartItem.quantity)
                                   : (cartTotalPrice +=
-                                      finalProductPrice * cartItem.quantity);
+                                      finalProductPrice *
+                                      cartItem.quantity);
                                 return (
                                   <li key={key}>
                                     <span className="order-middle-left">
-                                      {cartItem.name} X {cartItem.quantity}
-                                    </span>{" "}
+                                      {cartItem.name} X{' '}
+                                      {cartItem.quantity}
+                                    </span>{' '}
                                     <span className="order-price">
                                       {discountedPrice !== null
                                         ? currency.currencySymbol +
@@ -297,8 +332,16 @@ const Checkout = ({ customProp }) => {
                           </div>
                           <div className="your-order-bottom">
                             <ul>
-                              <li className="your-order-shipping">Shipping</li>
-                              <li>Free shipping</li>
+                              <li className="your-order-shipping">
+                                Shipping
+                              </li>
+                              <li>
+                                <input
+                                  placeholder="Shipping Price"
+                                  onChange={handleShippingPriceChange}
+                                  value={shippingPrice}
+                                />
+                              </li>
                             </ul>
                           </div>
                           <div className="your-order-total">
@@ -306,7 +349,13 @@ const Checkout = ({ customProp }) => {
                               <li className="order-total">Total</li>
                               <li>
                                 {currency.currencySymbol +
-                                  cartTotalPrice.toFixed(2)}
+                                  (shippingPrice
+                                    ? parseFloat(
+                                        cartTotalPrice.toFixed(2)
+                                      ) + parseFloat(shippingPrice)
+                                    : parseFloat(
+                                        cartTotalPrice.toFixed(2)
+                                      ))}
                               </li>
                             </ul>
                           </div>
@@ -330,8 +379,8 @@ const Checkout = ({ customProp }) => {
                       <i className="pe-7s-cash"></i>
                     </div>
                     <div className="item-empty-area__text">
-                      No items found in cart to checkout <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop"}>
+                      No items found in cart to checkout <br />{' '}
+                      <Link to={process.env.PUBLIC_URL + '/shop'}>
                         Shop Now
                       </Link>
                     </div>

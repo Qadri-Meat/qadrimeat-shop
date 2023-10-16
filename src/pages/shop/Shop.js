@@ -1,36 +1,46 @@
-import { Fragment, useState, useEffect } from "react";
-import Paginator from "react-hooks-paginator";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { getSortedProducts, searchProducts } from "../../helpers/product";
-import SEO from "../../components/seo";
-import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import ShopSidebar from "../../wrappers/product/ShopSidebar";
-import ShopTopbar from "../../wrappers/product/ShopTopbar";
-import ShopProducts from "../../wrappers/product/ShopProducts";
+import { Fragment, useState, useEffect } from 'react';
+import Paginator from 'react-hooks-paginator';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import {
+  getSortedProducts,
+  searchProducts,
+} from '../../helpers/product';
+import SEO from '../../components/seo';
+import LayoutOne from '../../layouts/LayoutOne';
+import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
+import ShopSidebar from '../../wrappers/product/ShopSidebar';
+import ShopTopbar from '../../wrappers/product/ShopTopbar';
+import ShopProducts from '../../wrappers/product/ShopProducts';
 
 const Shop = () => {
   const pageLimit = 15;
   let { pathname, search } = useLocation();
 
   const queryParams = new URLSearchParams(search);
-  const category = queryParams.get("category") || "";
+  const category = queryParams.get('category') || '';
 
-  const [layout, setLayout] = useState("grid three-column");
-  const [sortType, setSortType] = useState("category");
+  const [layout, setLayout] = useState('grid three-column');
+  const [sortType, setSortType] = useState('category');
   const [sortValue, setSortValue] = useState(category);
-  const [filterSortType, setFilterSortType] = useState("");
-  const [filterSortValue, setFilterSortValue] = useState("");
+  const [filterSortType, setFilterSortType] = useState('');
+  const [filterSortValue, setFilterSortValue] = useState('');
   const [offset, setOffset] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const { products } = useSelector((state) => state.product);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const getLayout = (layout) => {
     setLayout(layout);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+    const newOffset = (newPage - 1) * pageLimit;
+    setOffset(newOffset);
+    window.scrollTo(0, 0);
   };
 
   const getSortParams = (sortType, sortValue) => {
@@ -47,7 +57,11 @@ const Shop = () => {
   };
 
   useEffect(() => {
-    let sortedProducts = getSortedProducts(products, sortType, sortValue);
+    let sortedProducts = getSortedProducts(
+      products,
+      sortType,
+      sortValue
+    );
     const filterSortedProducts = getSortedProducts(
       sortedProducts,
       filterSortType,
@@ -56,10 +70,21 @@ const Shop = () => {
     sortedProducts = filterSortedProducts;
     setSortedProducts(sortedProducts);
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-  }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
+  }, [
+    offset,
+    products,
+    sortType,
+    sortValue,
+    filterSortType,
+    filterSortValue,
+  ]);
 
   useEffect(() => {
-    let sortedProducts = getSortedProducts(products, "category", category);
+    let sortedProducts = getSortedProducts(
+      products,
+      'category',
+      category
+    );
     const filterSortedProducts = getSortedProducts(
       sortedProducts,
       filterSortType,
@@ -70,13 +95,22 @@ const Shop = () => {
     sortedProducts = filterSortedProducts;
     setSortedProducts(sortedProducts);
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-  }, [offset, products, category, filterSortType, filterSortValue, name]);
+  }, [
+    offset,
+    products,
+    category,
+    filterSortType,
+    filterSortValue,
+    name,
+  ]);
 
   useEffect(() => {
     let searchedProducts = searchProducts(products, name);
     console.log(searchedProducts, name);
     setSortedProducts(searchedProducts);
-    setCurrentData(searchedProducts.slice(offset, offset + pageLimit));
+    setCurrentData(
+      searchedProducts.slice(offset, offset + pageLimit)
+    );
   }, [products, name, offset]);
 
   return (
@@ -90,8 +124,11 @@ const Shop = () => {
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Shop", path: process.env.PUBLIC_URL + pathname },
+            { label: 'Home', path: process.env.PUBLIC_URL + '/' },
+            {
+              label: 'Shop',
+              path: process.env.PUBLIC_URL + pathname,
+            },
           ]}
         />
 
@@ -117,7 +154,10 @@ const Shop = () => {
                 />
 
                 {/* shop page content default */}
-                <ShopProducts layout={layout} products={currentData} />
+                <ShopProducts
+                  layout={layout}
+                  products={currentData}
+                />
 
                 {/* shop product pagination */}
                 <div className="pro-pagination-style text-center mt-30">
@@ -127,7 +167,7 @@ const Shop = () => {
                     pageNeighbours={2}
                     setOffset={setOffset}
                     currentPage={currentPage}
-                    setCurrentPage={setCurrentPage}
+                    setCurrentPage={handlePageChange}
                     pageContainerClass="mb-0 mt-0"
                     pagePrevText="«"
                     pageNextText="»"
