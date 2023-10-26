@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscountPrice } from '../../helpers/product';
@@ -89,6 +89,7 @@ const Checkout = ({ customProp }) => {
         image: i.image,
         product: i.id,
         weight: i.weight,
+        category: i.category[0],
       };
     });
     const newData = {
@@ -330,32 +331,14 @@ const Checkout = ({ customProp }) => {
                               })}
                             </ul>
                           </div>
-                          <div className="your-order-bottom">
-                            <ul>
-                              <li className="your-order-shipping">
-                                Shipping
-                              </li>
-                              <li>
-                                <input
-                                  placeholder="Shipping Price"
-                                  onChange={handleShippingPriceChange}
-                                  value={shippingPrice}
-                                />
-                              </li>
-                            </ul>
-                          </div>
                           <div className="your-order-total">
                             <ul>
                               <li className="order-total">Total</li>
                               <li>
                                 {currency.currencySymbol +
-                                  (shippingPrice
-                                    ? parseFloat(
-                                        cartTotalPrice.toFixed(2)
-                                      ) + parseFloat(shippingPrice)
-                                    : parseFloat(
-                                        cartTotalPrice.toFixed(2)
-                                      ))}
+                                  parseFloat(
+                                    cartTotalPrice.toFixed(2)
+                                  )}
                               </li>
                             </ul>
                           </div>
