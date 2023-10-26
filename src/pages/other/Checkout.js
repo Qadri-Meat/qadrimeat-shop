@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscountPrice } from '../../helpers/product';
@@ -80,6 +80,7 @@ const Checkout = ({ customProp }) => {
         image: i.image,
         product: i.id,
         weight: i.weight,
+        category: i.category[0],
       };
     });
     const newData = {
