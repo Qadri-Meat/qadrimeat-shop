@@ -8,14 +8,12 @@ import Rating from './sub-components/ProductRating';
 import ProductModal from './ProductModal';
 import { addToCart } from '../../store/slices/cart-slice';
 import { addToWishlist } from '../../store/slices/wishlist-slice';
-import { addToCompare } from '../../store/slices/compare-slice';
 
 const ProductGridListSingle = ({
   product,
   currency,
   cartItem,
   wishlistItem,
-  compareItem,
   spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
@@ -194,27 +192,35 @@ const ProductGridListSingle = ({
                     process.env.PUBLIC_URL + '/product/' + product.id
                   }
                 >
-                  <img
-                    className="default-img img-fluid"
-                    src={
-                      process.env.REACT_APP_IMAGE_URL +
-                      product.image[0]
-                    }
-                    alt=""
-                  />
-                  {product.image.length > 1 ? (
+                  {product.image[0] ? ( // Check if the first image is available
                     <img
-                      className="hover-img img-fluid"
+                      className="default-img img-fluid"
                       src={
-                        process.env.PUREACT_APP_IMAGE_URLBLIC_URL +
-                        product.image[1]
+                        process.env.REACT_APP_IMAGE_URL +
+                        product.image[0]
                       }
                       alt=""
                     />
                   ) : (
-                    ''
+                    <img
+                      className="default-img img-fluid"
+                      src="/assets/images/others/default.png"
+                      alt=""
+                    />
                   )}
+
+                  {product.image.length > 1 && product.image[1] ? (
+                    <img
+                      className="hover-img img-fluid"
+                      src={
+                        process.env.REACT_APP_IMAGE_URL +
+                        product.image[1]
+                      }
+                      alt=""
+                    />
+                  ) : null}
                 </Link>
+
                 {product.discount || product.new ? (
                   <div className="product-img-badges">
                     {product.discount ? (
@@ -344,22 +350,6 @@ const ProductGridListSingle = ({
                     <i className="pe-7s-like" />
                   </button>
                 </div>
-                <div className="shop-list-compare ml-10">
-                  <button
-                    className={
-                      compareItem !== undefined ? 'active' : ''
-                    }
-                    disabled={compareItem !== undefined}
-                    title={
-                      compareItem !== undefined
-                        ? 'Added to compare'
-                        : 'Add to compare'
-                    }
-                    onClick={() => dispatch(addToCompare(product))}
-                  >
-                    <i className="pe-7s-shuffle" />
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -375,7 +365,6 @@ const ProductGridListSingle = ({
         finalProductPrice={finalProductPrice}
         finalDiscountedPrice={finalDiscountedPrice}
         wishlistItem={wishlistItem}
-        compareItem={compareItem}
       />
     </Fragment>
   );
