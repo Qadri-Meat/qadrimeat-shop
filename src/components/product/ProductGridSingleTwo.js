@@ -7,7 +7,6 @@ import { getDiscountPrice } from '../../helpers/product';
 import ProductModal from './ProductModal';
 import { addToCart } from '../../store/slices/cart-slice';
 import { addToWishlist } from '../../store/slices/wishlist-slice';
-import { addToCompare } from '../../store/slices/compare-slice';
 
 const ProductGridSingleTwo = ({
   product,
@@ -130,19 +129,6 @@ const ProductGridSingleTwo = ({
               title="Quick View"
             >
               <i className="fa fa-eye"></i>
-            </button>
-
-            <button
-              className={compareItem !== undefined ? 'active' : ''}
-              disabled={compareItem !== undefined}
-              title={
-                compareItem !== undefined
-                  ? 'Added to compare'
-                  : 'Add to compare'
-              }
-              onClick={() => dispatch(addToCompare(product))}
-            >
-              <i className="fa fa-retweet"></i>
             </button>
           </div>
         </div>
