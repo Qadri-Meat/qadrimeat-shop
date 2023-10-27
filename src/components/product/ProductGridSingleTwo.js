@@ -44,12 +44,23 @@ const ProductGridSingleTwo = ({
           <Link
             to={process.env.PUBLIC_URL + '/product/' + product.id}
           >
-            <img
-              className="default-img"
-              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
-              alt=""
-              style={{ width: '350px', height: '250px' }}
-            />
+            {product.image && product.image.length > 0 ? (
+              <img
+                className="default-img"
+                src={
+                  process.env.REACT_APP_IMAGE_URL + product.image[0]
+                }
+                alt=""
+                style={{ width: '350px', height: '250px' }}
+              />
+            ) : (
+              <img
+                className="default-img"
+                src="/assets/images/others/default.png"
+                alt="by default"
+                style={{ width: '350px', height: '250px' }}
+              />
+            )}
             {product.image.length > 1 ? (
               <img
                 className="hover-img"
@@ -59,10 +70,9 @@ const ProductGridSingleTwo = ({
                 alt=""
                 style={{ width: '350px', height: '250px' }}
               />
-            ) : (
-              ''
-            )}
+            ) : null}
           </Link>
+
           {product.discount || product.new ? (
             <div className="product-img-badges">
               {product.discount ? (
