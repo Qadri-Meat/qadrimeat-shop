@@ -8,14 +8,12 @@ import Rating from './sub-components/ProductRating';
 import ProductModal from './ProductModal';
 import { addToCart } from '../../store/slices/cart-slice';
 import { addToWishlist } from '../../store/slices/wishlist-slice';
-import { addToCompare } from '../../store/slices/compare-slice';
 
 const ProductGridListSingle = ({
   product,
   currency,
   cartItem,
   wishlistItem,
-  compareItem,
   spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
@@ -344,22 +342,6 @@ const ProductGridListSingle = ({
                     <i className="pe-7s-like" />
                   </button>
                 </div>
-                <div className="shop-list-compare ml-10">
-                  <button
-                    className={
-                      compareItem !== undefined ? 'active' : ''
-                    }
-                    disabled={compareItem !== undefined}
-                    title={
-                      compareItem !== undefined
-                        ? 'Added to compare'
-                        : 'Add to compare'
-                    }
-                    onClick={() => dispatch(addToCompare(product))}
-                  >
-                    <i className="pe-7s-shuffle" />
-                  </button>
-                </div>
               </div>
             </div>
           </div>
@@ -375,7 +357,6 @@ const ProductGridListSingle = ({
         finalProductPrice={finalProductPrice}
         finalDiscountedPrice={finalDiscountedPrice}
         wishlistItem={wishlistItem}
-        compareItem={compareItem}
       />
     </Fragment>
   );
