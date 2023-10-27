@@ -60,6 +60,15 @@ const Checkout = ({ customProp }) => {
     },
     resolver: yupResolver(schema),
   });
+  const [shippingPrice, setShippingPrice] = useState('');
+
+  const handleShippingPriceChange = (e) => {
+    // Get the input value as a string
+    const inputValue = e.target.value;
+
+    // Update the state with the input value as a string
+    setShippingPrice(inputValue);
+  };
 
   useEffect(() => {
     if (success) {
