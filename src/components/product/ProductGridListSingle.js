@@ -192,27 +192,35 @@ const ProductGridListSingle = ({
                     process.env.PUBLIC_URL + '/product/' + product.id
                   }
                 >
-                  <img
-                    className="default-img img-fluid"
-                    src={
-                      process.env.REACT_APP_IMAGE_URL +
-                      product.image[0]
-                    }
-                    alt=""
-                  />
-                  {product.image.length > 1 ? (
+                  {product.image[0] ? ( // Check if the first image is available
                     <img
-                      className="hover-img img-fluid"
+                      className="default-img img-fluid"
                       src={
-                        process.env.PUREACT_APP_IMAGE_URLBLIC_URL +
-                        product.image[1]
+                        process.env.REACT_APP_IMAGE_URL +
+                        product.image[0]
                       }
                       alt=""
                     />
                   ) : (
-                    ''
+                    <img
+                      className="default-img img-fluid"
+                      src="/assets/images/others/default.png"
+                      alt=""
+                    />
                   )}
+
+                  {product.image.length > 1 && product.image[1] ? (
+                    <img
+                      className="hover-img img-fluid"
+                      src={
+                        process.env.REACT_APP_IMAGE_URL +
+                        product.image[1]
+                      }
+                      alt=""
+                    />
+                  ) : null}
                 </Link>
+
                 {product.discount || product.new ? (
                   <div className="product-img-badges">
                     {product.discount ? (
