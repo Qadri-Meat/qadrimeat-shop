@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDiscountPrice } from '../../helpers/product';
@@ -20,6 +20,7 @@ const schema = yup.object().shape({
     .required('Please Select Country')
     .matches(/^[A-Za-z ]*$/, 'Please enter a valid country'),
   address: yup.string().required('Please enter Address'),
+  phase: yup.string().required('Please Select Phase'),
   phone: yup
     .string()
     .required('Please enter Phone Number')
@@ -58,15 +59,6 @@ const Checkout = ({ customProp }) => {
     },
     resolver: yupResolver(schema),
   });
-  const [shippingPrice, setShippingPrice] = useState('');
-
-  const handleShippingPriceChange = (e) => {
-    // Get the input value as a string
-    const inputValue = e.target.value;
-
-    // Update the state with the input value as a string
-    setShippingPrice(inputValue);
-  };
 
   useEffect(() => {
     if (success) {
@@ -187,6 +179,50 @@ const Checkout = ({ customProp }) => {
                             </Form.Group>
                             <p style={{ color: 'red' }}>
                               {errors.address?.message}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-lg-12">
+                            <Form.Group controlId="phase">
+                              <Form.Label>
+                                Select DHA Phase
+                              </Form.Label>
+                              <Form.Control
+                                as="select"
+                                {...register('phase')}
+                              >
+                                <option value="">
+                                  Select an option
+                                </option>
+                                <option value="phase-1">
+                                  Phase 1
+                                </option>
+                                <option value="phase-2">
+                                  Phase 2
+                                </option>
+                                <option value="phase-3">
+                                  Phase 3
+                                </option>
+                                <option value="phase-4">
+                                  Phase 4
+                                </option>
+                                <option value="phase-5">
+                                  Phase 5
+                                </option>
+                                <option value="phase-6">
+                                  Phase 6
+                                </option>
+                                <option value="phase-7">
+                                  Phase 7
+                                </option>
+                                <option value="phase-8">
+                                  Phase 8
+                                </option>
+                              </Form.Control>
+                            </Form.Group>
+                            <p style={{ color: 'red' }}>
+                              {errors.phase?.message}
                             </p>
                           </div>
                         </div>
