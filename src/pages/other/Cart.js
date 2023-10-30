@@ -188,10 +188,12 @@ const Cart = ({ customProp }) => {
                                 <td className="product-subtotal">
                                   {discountedPrice !== null
                                     ? (
-                                        0.25 * cartItem.quantity
+                                        cartItem.weight *
+                                        cartItem.quantity
                                       ).toFixed(2)
                                     : (
-                                        0.25 * cartItem.quantity
+                                        cartItem.weight *
+                                        cartItem.quantity
                                       ).toFixed(2)}
                                 </td>
                                 <td className="product-subtotal">
