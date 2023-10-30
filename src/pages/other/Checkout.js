@@ -72,7 +72,7 @@ const Checkout = ({ customProp }) => {
   const onSubmitHandler = (data) => {
     const orderItems = cartItems.map((i) => {
       return {
-        name: i.name, // Assuming cartItems is an array and you want to access the first item
+        name: i.name,
         quantity: i.quantity,
         price: i.price,
         discount: i.discount,
