@@ -15,23 +15,13 @@ import { deleteAllFromCart } from 'store/slices/cart-slice';
 const schema = yup.object().shape({
   firstName: yup.string().required('First Name is Required'),
   lastName: yup.string().required('Last Name is Required'),
-  country: yup
-    .string()
-    .required('Please Select Country')
-    .matches(/^[A-Za-z ]*$/, 'Please enter a valid country'),
   address: yup.string().required('Please enter Address'),
-  phase: yup.string().required('Please Select Phase'),
+  area: yup.string().required('Please Select Area'),
   phone: yup
     .string()
     .required('Please enter Phone Number')
     .matches(/^[0-9+]*$/, 'Please enter a valid numeric phone number')
     .max(11, 'Phone number must be at most 11 digits long'),
-  postalCode: yup
-    .string()
-    .required('Postal is Required')
-    .matches(/^[0-9]{5}$/, 'Please enter a valid postal code'),
-  state: yup.string(),
-  city: yup.string().required(),
   notes: yup
     .string()
     .max(200, 'Message must be at most 200 characters'),
@@ -46,6 +36,15 @@ const Checkout = ({ customProp }) => {
   const { success, details: order } = useSelector(
     (state) => state.order
   );
+
+  const areas = [
+    'DHA - Phase 1',
+    'DHA - Phase 2',
+    'DHA - Phase 3',
+    'DHA - Phase 4',
+    'DHA - Phase 5',
+    'DHA - Phase 6',
+  ];
 
   const {
     register,
@@ -184,33 +183,18 @@ const Checkout = ({ customProp }) => {
                         </div>
                         <div className="row">
                           <div className="col-lg-12">
-                            <Form.Group controlId="phase">
+                            <Form.Group controlId="area">
                               <Form.Label>Area</Form.Label>
                               <Form.Control
                                 as="select"
-                                {...register('phase')}
+                                {...register('area')}
                               >
                                 <option value="">
                                   Select an option
                                 </option>
-                                <option value="phase-1">
-                                  DHA-Phase 1
-                                </option>
-                                <option value="phase-2">
-                                  DHA-Phase 2
-                                </option>
-                                <option value="phase-3">
-                                  DHA-Phase 3
-                                </option>
-                                <option value="phase-4">
-                                  DHA-Phase 4
-                                </option>
-                                <option value="phase-5">
-                                  DHA-Phase 5
-                                </option>
-                                <option value="phase-6">
-                                  DHA-Phase 6
-                                </option>
+                                {areas.map((a) => (
+                                  <option value={a}>{a}</option>
+                                ))}
                               </Form.Control>
                             </Form.Group>
                             <p style={{ color: 'red' }}>
@@ -250,23 +234,7 @@ const Checkout = ({ customProp }) => {
                           </div>
                         </div>
                         <div className="row">
-                          <div className="col-lg-6 col-md-6">
-                            <Form.Group controlId="postalCode">
-                              <Form.Label>
-                                {['Postal/ Zip code']}
-                              </Form.Label>
-                              <Form.Control
-                                {...register('postalCode')}
-                                placeholder="Postal/ Zip code"
-                                disabled
-                                defaultValue="54660"
-                              ></Form.Control>
-                            </Form.Group>
-                            <p style={{ color: 'red' }}>
-                              {errors.postalCode?.message}
-                            </p>
-                          </div>
-                          <div className="col-lg-6 col-md-6">
+                          <div className="col-lg-12 col-md-12">
                             <Form.Group controlId="country">
                               <Form.Label>{['Country']}</Form.Label>
                               <Form.Control

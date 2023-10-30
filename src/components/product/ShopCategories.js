@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import { setActiveSort } from "../../helpers/product";
+import { setActiveSort } from '../../helpers/product';
 
 const ShopCategories = ({ categories, getSortParams }) => {
   return (
@@ -12,8 +12,8 @@ const ShopCategories = ({ categories, getSortParams }) => {
             <li>
               <div className="sidebar-widget-list-left">
                 <button
-                  onClick={e => {
-                    getSortParams("category", "");
+                  onClick={(e) => {
+                    getSortParams('category', '');
                     setActiveSort(e);
                   }}
                 >
@@ -26,13 +26,13 @@ const ShopCategories = ({ categories, getSortParams }) => {
                 <li key={key}>
                   <div className="sidebar-widget-list-left">
                     <button
-                      onClick={e => {
-                        getSortParams("category", category);
+                      onClick={(e) => {
+                        getSortParams('category', category);
                         setActiveSort(e);
                       }}
                     >
-                      {" "}
-                      <span className="checkmark" /> {category}{" "}
+                      {' '}
+                      <span className="checkmark" /> {category}{' '}
                     </button>
                   </div>
                 </li>
@@ -40,7 +40,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
             })}
           </ul>
         ) : (
-          "No categories found"
+          'No categories found'
         )}
       </div>
     </div>
@@ -49,7 +49,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
 
 ShopCategories.propTypes = {
   categories: PropTypes.array,
-  getSortParams: PropTypes.func
+  getSortParams: PropTypes.func,
 };
 
 export default ShopCategories;

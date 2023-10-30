@@ -1,7 +1,7 @@
 import { Fragment, useState, useEffect } from 'react';
 import Paginator from 'react-hooks-paginator';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import {
   getSortedProducts,
   searchProducts,
@@ -14,12 +14,11 @@ import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 
 const Shop = () => {
-  const pageLimit = 15;
-  let { pathname, search } = useLocation();
-
-  const queryParams = new URLSearchParams(search);
+  let location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
   const category = queryParams.get('category') || '';
 
+  const [search, setSearch] = useState('');
   const [layout, setLayout] = useState('grid three-column');
   const [sortType, setSortType] = useState('category');
   const [sortValue, setSortValue] = useState(category);
@@ -30,17 +29,11 @@ const Shop = () => {
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
   const { products } = useSelector((state) => state.product);
-  const [name, setName] = useState('');
+
+  const pageLimit = 15;
 
   const getLayout = (layout) => {
     setLayout(layout);
-  };
-
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-    const newOffset = (newPage - 1) * pageLimit;
-    setOffset(newOffset);
-    window.scrollTo(0, 0);
   };
 
   const getSortParams = (sortType, sortValue) => {
@@ -52,11 +45,9 @@ const Shop = () => {
     setFilterSortType(sortType);
     setFilterSortValue(sortValue);
   };
-  const handleSearchName = (newMessage) => {
-    setName(newMessage);
-  };
 
   useEffect(() => {
+    console.log(search);
     let sortedProducts = getSortedProducts(
       products,
       sortType,
@@ -68,6 +59,8 @@ const Shop = () => {
       filterSortValue
     );
     sortedProducts = filterSortedProducts;
+    const searchedProducts = searchProducts(sortedProducts, search);
+    sortedProducts = searchedProducts;
     setSortedProducts(sortedProducts);
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
   }, [
@@ -77,41 +70,8 @@ const Shop = () => {
     sortValue,
     filterSortType,
     filterSortValue,
+    search,
   ]);
-
-  useEffect(() => {
-    let sortedProducts = getSortedProducts(
-      products,
-      'category',
-      category
-    );
-    const filterSortedProducts = getSortedProducts(
-      sortedProducts,
-      filterSortType,
-      filterSortValue
-    );
-    let searchedProducts = searchProducts(products, name);
-    console.log(searchedProducts, name);
-    sortedProducts = filterSortedProducts;
-    setSortedProducts(sortedProducts);
-    setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
-  }, [
-    offset,
-    products,
-    category,
-    filterSortType,
-    filterSortValue,
-    name,
-  ]);
-
-  useEffect(() => {
-    let searchedProducts = searchProducts(products, name);
-    console.log(searchedProducts, name);
-    setSortedProducts(searchedProducts);
-    setCurrentData(
-      searchedProducts.slice(offset, offset + pageLimit)
-    );
-  }, [products, name, offset]);
 
   return (
     <Fragment>
@@ -127,7 +87,7 @@ const Shop = () => {
             { label: 'Home', path: process.env.PUBLIC_URL + '/' },
             {
               label: 'Shop',
-              path: process.env.PUBLIC_URL + pathname,
+              path: process.env.PUBLIC_URL + location.pathname,
             },
           ]}
         />
@@ -141,7 +101,8 @@ const Shop = () => {
                   products={products}
                   getSortParams={getSortParams}
                   sideSpaceClass="mr-30"
-                  searchValue={handleSearchName}
+                  search={search}
+                  setSearch={setSearch}
                 />
               </div>
               <div className="col-lg-9 order-1 order-lg-2">
@@ -167,7 +128,7 @@ const Shop = () => {
                     pageNeighbours={2}
                     setOffset={setOffset}
                     currentPage={currentPage}
-                    setCurrentPage={handlePageChange}
+                    setCurrentPage={setCurrentPage}
                     pageContainerClass="mb-0 mt-0"
                     pagePrevText="«"
                     pageNextText="»"
