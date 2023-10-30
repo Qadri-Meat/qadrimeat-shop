@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     .required('Please Select Country')
     .matches(/^[A-Za-z ]*$/, 'Please enter a valid country'),
   address: yup.string().required('Please enter Address'),
-  phase: yup.string().required('Please Select Phase'),
+  // phase: yup.string().required('Please Select Phase'),
   phone: yup
     .string()
     .required('Please enter Phone Number')
@@ -182,7 +182,7 @@ const Checkout = ({ customProp }) => {
                             </p>
                           </div>
                         </div>
-                        <div className="row">
+                        {/* <div className="row">
                           <div className="col-lg-12">
                             <Form.Group controlId="phase">
                               <Form.Label>Area</Form.Label>
@@ -217,7 +217,7 @@ const Checkout = ({ customProp }) => {
                               {errors.phase?.message}
                             </p>
                           </div>
-                        </div>
+                        </div> */}
 
                         <div className="row">
                           <div className="col-lg-6 col-md-6">
