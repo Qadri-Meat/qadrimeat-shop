@@ -1,21 +1,20 @@
-import { Fragment, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import SEO from "../../components/seo";
-import { getDiscountPrice } from "../../helpers/product";
-import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { Fragment, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import SEO from '../../components/seo';
+import { getDiscountPrice } from '../../helpers/product';
+import LayoutOne from '../../layouts/LayoutOne';
+import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import {
   addToCart,
   decreaseQuantity,
   deleteFromCart,
   deleteAllFromCart,
-} from "../../store/slices/cart-slice";
-import { cartItemStock } from "../../helpers/product";
+} from '../../store/slices/cart-slice';
 
 const Cart = ({ customProp }) => {
   let cartTotalPrice = 0;
-  console.log("Props....", customProp);
+  console.log('Props....', customProp);
 
   const [quantityCount] = useState(1);
   const dispatch = useDispatch();
@@ -35,8 +34,11 @@ const Cart = ({ customProp }) => {
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Cart", path: process.env.PUBLIC_URL + pathname },
+            { label: 'Home', path: process.env.PUBLIC_URL + '/' },
+            {
+              label: 'Cart',
+              path: process.env.PUBLIC_URL + pathname,
+            },
           ]}
         />
         <div className="cart-main-area pt-90 pb-100">
@@ -74,23 +76,26 @@ const Cart = ({ customProp }) => {
 
                             discountedPrice != null
                               ? (cartTotalPrice +=
-                                  finalDiscountedPrice * cartItem.quantity)
+                                  finalDiscountedPrice *
+                                  cartItem.quantity)
                               : (cartTotalPrice +=
-                                  finalProductPrice * cartItem.quantity);
+                                  finalProductPrice *
+                                  cartItem.quantity);
                             return (
                               <tr key={key}>
                                 <td className="product-thumbnail">
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
+                                      '/product/' +
                                       cartItem.id
                                     }
                                   >
                                     <img
                                       className="img-fluid"
                                       src={
-                                        process.env.REACT_APP_IMAGE_URL +
+                                        process.env
+                                          .REACT_APP_IMAGE_URL +
                                         cartItem.image[0]
                                       }
                                       alt=""
@@ -102,7 +107,7 @@ const Cart = ({ customProp }) => {
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
+                                      '/product/' +
                                       cartItem.id
                                     }
                                   >
@@ -112,14 +117,18 @@ const Cart = ({ customProp }) => {
                                   cartItem.selectedProductSize ? (
                                     <div className="cart-item-variation">
                                       <span>
-                                        Color: {cartItem.selectedProductColor}
+                                        Color:{' '}
+                                        {
+                                          cartItem.selectedProductColor
+                                        }
                                       </span>
                                       <span>
-                                        Size: {cartItem.selectedProductSize}
+                                        Size:{' '}
+                                        {cartItem.selectedProductSize}
                                       </span>
                                     </div>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </td>
 
@@ -148,7 +157,9 @@ const Cart = ({ customProp }) => {
                                     <button
                                       className="dec qtybutton"
                                       onClick={() =>
-                                        dispatch(decreaseQuantity(cartItem))
+                                        dispatch(
+                                          decreaseQuantity(cartItem)
+                                        )
                                       }
                                     >
                                       -
@@ -169,16 +180,6 @@ const Cart = ({ customProp }) => {
                                           })
                                         )
                                       }
-                                      disabled={
-                                        cartItem !== undefined &&
-                                        cartItem.quantity &&
-                                        cartItem.quantity >=
-                                          cartItemStock(
-                                            cartItem,
-                                            cartItem.selectedProductColor,
-                                            cartItem.selectedProductSize
-                                          )
-                                      }
                                     >
                                       +
                                     </button>
@@ -186,18 +187,26 @@ const Cart = ({ customProp }) => {
                                 </td>
                                 <td className="product-subtotal">
                                   {discountedPrice !== null
-                                    ? (0.25 * cartItem.quantity).toFixed(2)
-                                    : (0.25 * cartItem.quantity).toFixed(2)}
+                                    ? (
+                                        cartItem.weight *
+                                        cartItem.quantity
+                                      ).toFixed(2)
+                                    : (
+                                        cartItem.weight *
+                                        cartItem.quantity
+                                      ).toFixed(2)}
                                 </td>
                                 <td className="product-subtotal">
                                   {discountedPrice !== null
                                     ? currency.currencySymbol +
                                       (
-                                        finalDiscountedPrice * cartItem.quantity
+                                        finalDiscountedPrice *
+                                        cartItem.quantity
                                       ).toFixed(2)
                                     : currency.currencySymbol +
                                       (
-                                        finalProductPrice * cartItem.quantity
+                                        finalProductPrice *
+                                        cartItem.quantity
                                       ).toFixed(2)}
                                 </td>
 
@@ -205,7 +214,9 @@ const Cart = ({ customProp }) => {
                                   <button
                                     onClick={() =>
                                       dispatch(
-                                        deleteFromCart(cartItem.cartItemId)
+                                        deleteFromCart(
+                                          cartItem.cartItemId
+                                        )
                                       )
                                     }
                                   >
@@ -224,12 +235,16 @@ const Cart = ({ customProp }) => {
                   <div className="col-lg-12">
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
-                        <Link to={process.env.PUBLIC_URL + "/shop"}>
+                        <Link to={process.env.PUBLIC_URL + '/shop'}>
                           Continue Shopping
                         </Link>
                       </div>
                       <div className="cart-clear">
-                        <button onClick={() => dispatch(deleteAllFromCart())}>
+                        <button
+                          onClick={() =>
+                            dispatch(deleteAllFromCart())
+                          }
+                        >
                           Clear Shopping Cart
                         </button>
                       </div>
@@ -250,12 +265,13 @@ const Cart = ({ customProp }) => {
                       </h5>
 
                       <h4 className="grand-totall-title">
-                        Grand Total{" "}
+                        Grand Total{' '}
                         <span>
-                          {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                          {currency.currencySymbol +
+                            cartTotalPrice.toFixed(2)}
                         </span>
                       </h4>
-                      <Link to={process.env.PUBLIC_URL + "/checkout"}>
+                      <Link to={process.env.PUBLIC_URL + '/checkout'}>
                         Proceed to Checkout
                       </Link>
                     </div>
@@ -270,8 +286,8 @@ const Cart = ({ customProp }) => {
                       <i className="pe-7s-cart"></i>
                     </div>
                     <div className="item-empty-area__text">
-                      No items found in cart <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop"}>
+                      No items found in cart <br />{' '}
+                      <Link to={process.env.PUBLIC_URL + '/shop'}>
                         Shop Now
                       </Link>
                     </div>

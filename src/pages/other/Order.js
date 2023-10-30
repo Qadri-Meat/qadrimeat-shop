@@ -148,11 +148,11 @@ const Order = () => {
                                       <td className="product-subtotal">
                                         {discountedPrice !== null
                                           ? (
-                                              0.25 *
+                                              orderItem.weight *
                                               orderItem.quantity
                                             ).toFixed(2)
                                           : (
-                                              0.25 *
+                                              orderItem.weight *
                                               orderItem.quantity
                                             ).toFixed(2)}
                                       </td>
