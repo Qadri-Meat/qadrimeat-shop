@@ -185,9 +185,7 @@ const Checkout = ({ customProp }) => {
                         <div className="row">
                           <div className="col-lg-12">
                             <Form.Group controlId="phase">
-                              <Form.Label>
-                                Select DHA Phase
-                              </Form.Label>
+                              <Form.Label>Area</Form.Label>
                               <Form.Control
                                 as="select"
                                 {...register('phase')}
@@ -196,22 +194,22 @@ const Checkout = ({ customProp }) => {
                                   Select an option
                                 </option>
                                 <option value="phase-1">
-                                  Phase 1
+                                  DHA-Phase 1
                                 </option>
                                 <option value="phase-2">
-                                  Phase 2
+                                  DHA-Phase 2
                                 </option>
                                 <option value="phase-3">
-                                  Phase 3
+                                  DHA-Phase 3
                                 </option>
                                 <option value="phase-4">
-                                  Phase 4
+                                  DHA-Phase 4
                                 </option>
                                 <option value="phase-5">
-                                  Phase 5
+                                  DHA-Phase 5
                                 </option>
                                 <option value="phase-6">
-                                  Phase 6
+                                  DHA-Phase 6
                                 </option>
                               </Form.Control>
                             </Form.Group>
