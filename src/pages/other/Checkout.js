@@ -213,12 +213,6 @@ const Checkout = ({ customProp }) => {
                                 <option value="phase-6">
                                   Phase 6
                                 </option>
-                                <option value="phase-7">
-                                  Phase 7
-                                </option>
-                                <option value="phase-8">
-                                  Phase 8
-                                </option>
                               </Form.Control>
                             </Form.Group>
                             <p style={{ color: 'red' }}>
