@@ -23,10 +23,8 @@ const schema = yup.object().shape({
   phone: yup
     .string()
     .required('Please enter Phone Number')
-    .matches(
-      /^[0-9+]*$/,
-      'Please enter a valid numeric phone number'
-    ),
+    .matches(/^[0-9+]*$/, 'Please enter a valid numeric phone number')
+    .max(11, 'Phone number must be at most 11 digits long'),
   postalCode: yup
     .string()
     .required('Postal is Required')
