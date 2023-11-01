@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import SEO from '../../components/seo';
@@ -6,6 +6,7 @@ import { getDiscountPrice } from '../../helpers/product';
 import LayoutOne from '../../layouts/LayoutOne';
 import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import { getOrder } from 'store/slices/order-slice';
+import Swal from 'sweetalert2'; // Import SweetAlert
 
 const Order = () => {
   let { pathname } = useLocation();
@@ -14,9 +15,21 @@ const Order = () => {
   const currency = useSelector((state) => state.currency);
   const { details: order } = useSelector((state) => state.order);
   let cartTotalPrice = 0;
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    dispatch(getOrder(id));
+    dispatch(getOrder(id))
+      .then(() => {
+        setSuccess(true);
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Order has been retrieved successfully!',
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [dispatch, id]);
 
   return (
