@@ -1,9 +1,9 @@
-import { Fragment } from "react";
-import { useLocation } from "react-router-dom";
-import { useForm, Controller } from "react-hook-form";
-import SEO from "../../components/seo";
-import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { Fragment } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
+import SEO from '../../components/seo';
+import LayoutOne from '../../layouts/LayoutOne';
+import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 
 const Contact = () => {
   let { pathname } = useLocation();
@@ -29,8 +29,11 @@ const Contact = () => {
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Contact", path: process.env.PUBLIC_URL + pathname },
+            { label: 'Home', path: process.env.PUBLIC_URL + '/' },
+            {
+              label: 'Contact',
+              path: process.env.PUBLIC_URL + pathname,
+            },
           ]}
         />
         <div className="contact-area pt-100 pb-100">
@@ -66,8 +69,8 @@ const Contact = () => {
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        11-N Commercial, DHA Phase 1, Near Qadri Catering,
-                        Lahore, Punjab 54030, Pakistan.
+                        11-N Commercial, DHA Phase 1, Near Qadri
+                        Catering, Lahore, Punjab 54030, Pakistan.
                       </p>
                     </div>
                   </div>
@@ -76,6 +79,7 @@ const Contact = () => {
                     <ul>
                       <li>
                         <a
+                          rel="noreferrer"
                           target="_blank"
                           href="https://www.facebook.com/people/Qadri_Meat/100093388459885/"
                         >
@@ -84,6 +88,7 @@ const Contact = () => {
                       </li>
                       <li>
                         <a
+                          rel="noreferrer"
                           target="_blank"
                           href="https://www.instagram.com/qadrimeat/"
                         >
@@ -106,31 +111,40 @@ const Contact = () => {
                     <div className="row">
                       <div className="col-lg-6">
                         {errors.name && (
-                          <p style={{ color: "red" }}>{errors.name.message}</p>
+                          <p style={{ color: 'red' }}>
+                            {errors.name.message}
+                          </p>
                         )}
                         <Controller
                           name="name"
                           control={control}
                           defaultValue=""
-                          rules={{ required: "Name is required" }}
+                          rules={{ required: 'Name is required' }}
                           render={({ field }) => (
-                            <input {...field} placeholder="Name*" type="text" />
+                            <input
+                              {...field}
+                              placeholder="Name*"
+                              type="text"
+                            />
                           )}
                         />
                       </div>
                       <div className="col-lg-6">
                         {errors.email && (
-                          <p style={{ color: "red" }}>{errors.email.message}</p>
+                          <p style={{ color: 'red' }}>
+                            {errors.email.message}
+                          </p>
                         )}
                         <Controller
                           name="email"
                           control={control}
                           defaultValue=""
                           rules={{
-                            required: "Email is required",
+                            required: 'Email is required',
                             pattern: {
-                              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                              message: "Invalid email address",
+                              value:
+                                /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                              message: 'Invalid email address',
                             },
                           }}
                           render={({ field }) => (
@@ -144,7 +158,7 @@ const Contact = () => {
                       </div>
                       <div className="col-lg-12">
                         {errors.subject && (
-                          <p style={{ color: "red" }}>
+                          <p style={{ color: 'red' }}>
                             {errors.subject.message}
                           </p>
                         )}
@@ -152,7 +166,7 @@ const Contact = () => {
                           name="subject"
                           control={control}
                           defaultValue=""
-                          rules={{ required: "Subject is required" }}
+                          rules={{ required: 'Subject is required' }}
                           render={({ field }) => (
                             <input
                               {...field}
@@ -164,7 +178,7 @@ const Contact = () => {
                       </div>
                       <div className="col-lg-12">
                         {errors.message && (
-                          <p style={{ color: "red" }}>
+                          <p style={{ color: 'red' }}>
                             {errors.message.message}
                           </p>
                         )}
@@ -172,9 +186,12 @@ const Contact = () => {
                           name="message"
                           control={control}
                           defaultValue=""
-                          rules={{ required: "Message is required" }}
+                          rules={{ required: 'Message is required' }}
                           render={({ field }) => (
-                            <textarea {...field} placeholder="Your Message*" />
+                            <textarea
+                              {...field}
+                              placeholder="Your Message*"
+                            />
                           )}
                         />
 
