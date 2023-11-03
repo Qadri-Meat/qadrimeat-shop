@@ -16,7 +16,7 @@ const Order = () => {
   const { details: order } = useSelector((state) => state.order);
   let cartTotalPrice = 0;
   const [success, setSuccess] = useState(false);
-
+  console.log(success);
   useEffect(() => {
     dispatch(getOrder(id))
       .then(() => {
