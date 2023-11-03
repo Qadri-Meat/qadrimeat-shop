@@ -33,8 +33,11 @@ const BannerFourteenSingle = ({ data, spaceBottomClass }) => {
         >
           {data.title}
         </h3>
-        <Link to={data.link}>
-          <i className="fa fa-long-arrow-right" />
+        <Link style={{ color: 'white' }} to={data.link}>
+          <i
+            style={{ color: 'white' }}
+            className="fa fa-long-arrow-right"
+          />
         </Link>
       </div>
     </div>
