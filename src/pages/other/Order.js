@@ -234,6 +234,14 @@ const Order = () => {
                             </h4>
                           </div>
                         </div>
+                        <div className="shopping-cart-btn btn-hover text-center">
+                          <Link
+                            className="default-btn"
+                            to={process.env.PUBLIC_URL + '/shop'}
+                          >
+                            CONTINUE SHOPPING
+                          </Link>
+                        </div>
                       </div>
                     </Fragment>
                   </div>
