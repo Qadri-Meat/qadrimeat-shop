@@ -38,7 +38,6 @@ const ProductGridListSingle = ({
               className="default-img"
               src="/assets/images/others/default.png"
               alt="Default"
-              style={{ height: '221px', width: '276px' }}
             />
           ) : (
             <Link
@@ -50,7 +49,6 @@ const ProductGridListSingle = ({
                   process.env.REACT_APP_IMAGE_URL + product.image[0]
                 }
                 alt=""
-                style={{ height: '221px', width: '276px' }}
               />
               {product.image.length > 1 && (
                 <img
@@ -59,7 +57,6 @@ const ProductGridListSingle = ({
                     process.env.REACT_APP_IMAGE_URL + product.image[1]
                   }
                   alt=""
-                  style={{ height: '221px', width: '276px' }}
                 />
               )}
             </Link>
