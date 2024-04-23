@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 import {
   getIndividualCategories,
@@ -6,7 +6,7 @@ import {
   getIndividualColors,
   getProductsIndividualSizes,
   setActiveSort,
-} from "../../helpers/product";
+} from '../../helpers/product';
 
 const ShopTopFilter = ({ products, getSortParams }) => {
   const uniqueCategories = getIndividualCategories(products);
@@ -15,7 +15,10 @@ const ShopTopFilter = ({ products, getSortParams }) => {
   const uniqueTags = getIndividualTags(products);
 
   return (
-    <div className="product-filter-wrapper" id="product-filter-wrapper">
+    <div
+      className="product-filter-wrapper"
+      id="product-filter-wrapper"
+    >
       <div className="product-filter-wrapper__inner">
         <div className="row">
           {/* Product Filter */}
@@ -29,7 +32,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                       <li key={key}>
                         <button
                           onClick={(e) => {
-                            getSortParams("category", category);
+                            getSortParams('category', category);
                             setActiveSort(e);
                           }}
                         >
@@ -40,7 +43,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                   })}
                 </ul>
               ) : (
-                "No categories found"
+                'No categories found'
               )}
             </div>
           </div>
@@ -56,7 +59,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                       <li key={key}>
                         <button
                           onClick={(e) => {
-                            getSortParams("color", color);
+                            getSortParams('color', color);
                             setActiveSort(e);
                           }}
                         >
@@ -67,7 +70,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                   })}
                 </ul>
               ) : (
-                "No colors found"
+                'No colors found'
               )}
             </div>
           </div>
@@ -83,7 +86,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                         <button
                           className="text-uppercase"
                           onClick={(e) => {
-                            getSortParams("size", size);
+                            getSortParams('size', size);
                             setActiveSort(e);
                           }}
                         >
@@ -94,7 +97,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                   })}
                 </ul>
               ) : (
-                "No sizes found"
+                'No sizes found'
               )}
             </div>
           </div>
@@ -109,7 +112,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                       <li key={key}>
                         <button
                           onClick={(e) => {
-                            getSortParams("tag", tag);
+                            getSortParams('tag', tag);
                             setActiveSort(e);
                           }}
                         >
@@ -120,7 +123,7 @@ const ShopTopFilter = ({ products, getSortParams }) => {
                   })}
                 </ul>
               ) : (
-                "No tags found"
+                'No tags found'
               )}
             </div>
           </div>

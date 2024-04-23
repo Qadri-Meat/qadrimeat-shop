@@ -198,7 +198,6 @@ const ProductGridSingleTwo = ({
         finalProductPrice={finalProductPrice}
         finalDiscountedPrice={finalDiscountedPrice}
         wishlistItem={wishlistItem}
-        compareItem={compareItem}
       />
     </Fragment>
   );

@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import { Link } from "react-router-dom";
-import Logo from "components/header/Logo";
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+import Logo from 'components/header/Logo';
 
 const FooterOne = ({
   backgroundColorClass,
@@ -16,7 +16,7 @@ const FooterOne = ({
   return (
     <footer
       className={clsx(
-        "footer-area",
+        'footer-area',
         backgroundColorClass,
         spaceTopClass,
         spaceBottomClass,
@@ -25,18 +25,21 @@ const FooterOne = ({
         spaceRightClass
       )}
     >
-      <div className={`${containerClass ? containerClass : "container"}`}>
+      <div
+        className={`${containerClass ? containerClass : 'container'}`}
+      >
         <div className="row">
           <div
             // className={`${
             //   sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
             // }`}
             className={`${
-              sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
+              sideMenu ? 'col-xl-3 col-sm-8' : 'col-lg-4 col-sm-6'
             }`}
           >
             <p className="my-2">
-              <i className="fa fa-phone me-2" /> 03024000719/04238651881
+              <i className="fa fa-phone me-2" />{' '}
+              03024000719/04238651881
             </p>
             <p className="my-2">
               <i className="fa fa-inbox me-2" />
@@ -44,17 +47,21 @@ const FooterOne = ({
             </p>
             <p className="my-2">
               <i className="fa fa-location-arrow me-2" />
-              11-N Commercial, DHA Phase 1, Near Qadri Catering, Lahore, Punjab
-              54030, Pakistan.
+              11-N Commercial, DHA Phase 1, Near Qadri Catering,
+              Lahore, Punjab 54030, Pakistan.
             </p>
-            <Logo imageUrl="/assets/images/logo/logo.png" logoClass="logo" />
+            <Logo
+              imageUrl="/assets/images/logo/logo.png"
+              logoClass="logo"
+            />
             <p className="my-2">
-              &copy; {new Date().getFullYear()} Qadri Meat. All Rights Reserved
+              &copy; {new Date().getFullYear()} Qadri Meat. All Rights
+              Reserved
             </p>
           </div>
           <div
             className={`${
-              sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
+              sideMenu ? 'col-xl-2 col-sm-4' : 'col-lg-2 col-sm-4'
             }`}
           >
             <div className="footer-widget mb-30 ml-30">
@@ -64,10 +71,12 @@ const FooterOne = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/about"}>About us</Link>
+                    <Link to={process.env.PUBLIC_URL + '/about'}>
+                      About us
+                    </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/contact"}>
+                    <Link to={process.env.PUBLIC_URL + '/contact'}>
                       Contact
                     </Link>
                   </li>
@@ -77,14 +86,14 @@ const FooterOne = ({
           </div>
           <div
             className={`${
-              sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
+              sideMenu ? 'col-xl-2 col-sm-4' : 'col-lg-2 col-sm-4'
             }`}
           >
             <div
               className={`${
                 sideMenu
-                  ? "footer-widget mb-30 ml-95"
-                  : "footer-widget mb-30 ml-50"
+                  ? 'footer-widget mb-30 ml-95'
+                  : 'footer-widget mb-30 ml-50'
               }`}
             >
               <div className="footer-title">
@@ -93,10 +102,14 @@ const FooterOne = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/return"}>Returns</Link>
+                    <Link to={process.env.PUBLIC_URL + '/return'}>
+                      Returns
+                    </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/faqs"}>FAQs</Link>
+                    <Link to={process.env.PUBLIC_URL + '/faqs'}>
+                      FAQs
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -104,7 +117,7 @@ const FooterOne = ({
           </div>
           <div
             className={`${
-              sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
+              sideMenu ? 'col-xl-3 col-sm-8' : 'col-lg-4 col-sm-6'
             }`}
           >
             <div className="container d-flex flex-column justify-content-center align-items-center h-100">
@@ -115,6 +128,7 @@ const FooterOne = ({
                 <ul className="d-flex gap-4 justify-content-center">
                   <li>
                     <a
+                      rel="noreferrer"
                       target="_blank"
                       href="https://www.facebook.com/people/Qadri_Meat/100093388459885/"
                     >
@@ -123,6 +137,7 @@ const FooterOne = ({
                   </li>
                   <li>
                     <a
+                      rel="noreferrer"
                       target="_blank"
                       href="https://www.instagram.com/qadrimeat/"
                     >
