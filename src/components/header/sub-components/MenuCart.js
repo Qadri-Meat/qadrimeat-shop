@@ -55,10 +55,7 @@ const MenuCart = () => {
                       >
                         <img
                           alt=""
-                          src={
-                            process.env.REACT_APP_IMAGE_URL +
-                            item.image[0]
-                          }
+                          src={item.image[0]}
                           className="img-fluid"
                         />
                       </Link>

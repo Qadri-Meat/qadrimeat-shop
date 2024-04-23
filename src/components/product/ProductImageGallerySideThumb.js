@@ -1,12 +1,12 @@
-import { Fragment, useState } from "react";
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import { EffectFade, Thumbs } from "swiper";
-import AnotherLightbox from "yet-another-react-lightbox";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Swiper, { SwiperSlide } from "../../components/swiper";
+import { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import { EffectFade, Thumbs } from 'swiper';
+import AnotherLightbox from 'yet-another-react-lightbox';
+import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
+import Swiper, { SwiperSlide } from '../../components/swiper';
 
 const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -20,7 +20,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
   const gallerySwiperParams = {
     spaceBetween: 10,
     loop: true,
-    effect: "fade",
+    effect: 'fade',
     fadeEffect: {
       crossFade: true,
     },
@@ -35,27 +35,27 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
     touchRatio: 0.2,
     loop: true,
     slideToClickedSlide: true,
-    direction: "vertical",
+    direction: 'vertical',
     breakpoints: {
       320: {
         slidesPerView: 4,
-        direction: "horizontal",
+        direction: 'horizontal',
       },
       640: {
         slidesPerView: 4,
-        direction: "horizontal",
+        direction: 'horizontal',
       },
       768: {
         slidesPerView: 4,
-        direction: "horizontal",
+        direction: 'horizontal',
       },
       992: {
         slidesPerView: 4,
-        direction: "horizontal",
+        direction: 'horizontal',
       },
       1200: {
         slidesPerView: 4,
-        direction: "vertical",
+        direction: 'vertical',
       },
     },
   };
@@ -65,9 +65,9 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
       <div className="row row-5 test">
         <div
           className={clsx(
-            thumbPosition && thumbPosition === "left"
-              ? "col-xl-10 order-1 order-xl-2"
-              : "col-xl-10"
+            thumbPosition && thumbPosition === 'left'
+              ? 'col-xl-10 order-1 order-xl-2'
+              : 'col-xl-10'
           )}
         >
           <div className="product-large-image-wrapper">
@@ -76,12 +76,16 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                 {product.discount ? (
                   <span className="pink">-{product.discount}%</span>
                 ) : (
-                  ""
+                  ''
                 )}
-                {product.new ? <span className="purple">New</span> : ""}
+                {product.new ? (
+                  <span className="purple">New</span>
+                ) : (
+                  ''
+                )}
               </div>
             ) : (
-              ""
+              ''
             )}
             {product?.image?.length ? (
               <Swiper options={gallerySwiperParams}>
@@ -95,7 +99,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                     </button>
                     <div className="single-image">
                       <img
-                        src={process.env.REACT_APP_IMAGE_URL + single}
+                        src={single}
                         className="img-fluid"
                         alt=""
                       />
@@ -115,9 +119,9 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
         </div>
         <div
           className={clsx(
-            thumbPosition && thumbPosition === "left"
-              ? "col-xl-2 order-2 order-xl-1"
-              : "col-xl-2"
+            thumbPosition && thumbPosition === 'left'
+              ? 'col-xl-2 order-2 order-xl-1'
+              : 'col-xl-2'
           )}
         >
           <div className="product-small-image-wrapper product-small-image-wrapper--side-thumb">
@@ -127,7 +131,7 @@ const ProductImageGalleryLeftThumb = ({ product, thumbPosition }) => {
                   <SwiperSlide key={key}>
                     <div className="single-image">
                       <img
-                        src={process.env.REACT_APP_IMAGE_URL + single}
+                        src={single}
                         className="img-fluid"
                         alt=""
                       />

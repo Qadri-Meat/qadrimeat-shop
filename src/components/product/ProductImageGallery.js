@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
-import PropTypes from "prop-types";
-import { EffectFade, Thumbs } from "swiper";
-import AnotherLightbox from "yet-another-react-lightbox";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Swiper, { SwiperSlide } from "../../components/swiper";
+import React, { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
+import { EffectFade, Thumbs } from 'swiper';
+import AnotherLightbox from 'yet-another-react-lightbox';
+import Thumbnails from 'yet-another-react-lightbox/plugins/thumbnails';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
+import Swiper, { SwiperSlide } from '../../components/swiper';
 
 const ProductImageGallery = ({ product }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -19,7 +19,7 @@ const ProductImageGallery = ({ product }) => {
   const gallerySwiperParams = {
     spaceBetween: 10,
     loop: true,
-    effect: "fade",
+    effect: 'fade',
     fadeEffect: {
       crossFade: true,
     },
@@ -46,12 +46,12 @@ const ProductImageGallery = ({ product }) => {
             {product.discount ? (
               <span className="pink">-{product.discount}%</span>
             ) : (
-              ""
+              ''
             )}
-            {product.new ? <span className="purple">New</span> : ""}
+            {product.new ? <span className="purple">New</span> : ''}
           </div>
         ) : (
-          ""
+          ''
         )}
         {product?.image?.length ? (
           <Swiper options={gallerySwiperParams}>
@@ -64,11 +64,7 @@ const ProductImageGallery = ({ product }) => {
                   <i className="pe-7s-expand1"></i>
                 </button>
                 <div className="single-image">
-                  <img
-                    src={process.env.REACT_APP_IMAGE_URL + single}
-                    className="img-fluid"
-                    alt=""
-                  />
+                  <img src={single} className="img-fluid" alt="" />
                 </div>
               </SwiperSlide>
             ))}
@@ -88,11 +84,7 @@ const ProductImageGallery = ({ product }) => {
             {product.image.map((single, key) => (
               <SwiperSlide key={key}>
                 <div className="single-image">
-                  <img
-                    src={process.env.REACT_APP_IMAGE_URL + single}
-                    className="img-fluid"
-                    alt=""
-                  />
+                  <img src={single} className="img-fluid" alt="" />
                 </div>
               </SwiperSlide>
             ))}

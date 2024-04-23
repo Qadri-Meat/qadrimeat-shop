@@ -119,11 +119,7 @@ const Order = () => {
                                         >
                                           <img
                                             className="img-fluid"
-                                            src={
-                                              process.env
-                                                .REACT_APP_IMAGE_URL +
-                                              orderItem.image[0]
-                                            }
+                                            src={orderItem.image[0]}
                                             alt=""
                                           />
                                         </Link>

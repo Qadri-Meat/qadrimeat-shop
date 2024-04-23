@@ -93,11 +93,7 @@ const Cart = ({ customProp }) => {
                                   >
                                     <img
                                       className="img-fluid"
-                                      src={
-                                        process.env
-                                          .REACT_APP_IMAGE_URL +
-                                        cartItem.image[0]
-                                      }
+                                      src={cartItem.image[0]}
                                       alt=""
                                     />
                                   </Link>

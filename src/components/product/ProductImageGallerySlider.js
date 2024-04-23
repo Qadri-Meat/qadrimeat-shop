@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import Swiper, { SwiperSlide } from "../../components/swiper";
+import Swiper, { SwiperSlide } from '../../components/swiper';
 
 const ProductImageGallerySlider = ({ product }) => {
   // swiper slider settings
@@ -31,11 +31,7 @@ const ProductImageGallerySlider = ({ product }) => {
           {product.image.map((single, key) => (
             <SwiperSlide key={key}>
               <div className="single-image">
-                <img
-                  src={process.env.REACT_APP_IMAGE_URL + single}
-                  className="img-fluid"
-                  alt=""
-                />
+                <img src={single} className="img-fluid" alt="" />
               </div>
             </SwiperSlide>
           ))}

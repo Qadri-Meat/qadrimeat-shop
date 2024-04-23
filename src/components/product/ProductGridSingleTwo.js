@@ -47,9 +47,7 @@ const ProductGridSingleTwo = ({
             {product.image && product.image.length > 0 ? (
               <img
                 className="default-img"
-                src={
-                  process.env.REACT_APP_IMAGE_URL + product.image[0]
-                }
+                src={product.image[0]}
                 alt=""
                 style={{ width: '350px', height: '250px' }}
               />
@@ -64,9 +62,7 @@ const ProductGridSingleTwo = ({
             {product.image.length > 1 ? (
               <img
                 className="hover-img"
-                src={
-                  process.env.REACT_APP_IMAGE_URL + product.image[1]
-                }
+                src={product.image[1]}
                 alt=""
                 style={{ width: '350px', height: '250px' }}
               />

@@ -1,21 +1,21 @@
-import { Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
-import { getDiscountPrice } from "../../helpers/product";
-import SEO from "../../components/seo";
-import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { addToCart } from "../../store/slices/cart-slice";
+import { Fragment } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLocation } from 'react-router-dom';
+import { getDiscountPrice } from '../../helpers/product';
+import SEO from '../../components/seo';
+import LayoutOne from '../../layouts/LayoutOne';
+import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
+import { addToCart } from '../../store/slices/cart-slice';
 import {
   deleteFromWishlist,
   deleteAllFromWishlist,
-} from "../../store/slices/wishlist-slice";
+} from '../../store/slices/wishlist-slice';
 
 const Wishlist = ({ customProp }) => {
   const dispatch = useDispatch();
   let { pathname } = useLocation();
 
-  console.log("Props....", customProp);
+  console.log('Props....', customProp);
 
   const currency = useSelector((state) => state.currency);
   const { wishlistItems } = useSelector((state) => state.wishlist);
@@ -31,15 +31,20 @@ const Wishlist = ({ customProp }) => {
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Wishlist", path: process.env.PUBLIC_URL + pathname },
+            { label: 'Home', path: process.env.PUBLIC_URL + '/' },
+            {
+              label: 'Wishlist',
+              path: process.env.PUBLIC_URL + pathname,
+            },
           ]}
         />
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {wishlistItems && wishlistItems.length >= 1 ? (
               <Fragment>
-                <h3 className="cart-page-title">Your wishlist items</h3>
+                <h3 className="cart-page-title">
+                  Your wishlist items
+                </h3>
                 <div className="row">
                   <div className="col-12">
                     <div className="table-content table-responsive cart-table-content">
@@ -60,7 +65,8 @@ const Wishlist = ({ customProp }) => {
                               wishlistItem.discount
                             );
                             const finalProductPrice = (
-                              wishlistItem.price * currency.currencyRate
+                              wishlistItem.price *
+                              currency.currencyRate
                             ).toFixed(2);
                             const finalDiscountedPrice = (
                               discountedPrice * currency.currencyRate
@@ -74,16 +80,13 @@ const Wishlist = ({ customProp }) => {
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
+                                      '/product/' +
                                       wishlistItem.id
                                     }
                                   >
                                     <img
                                       className="img-fluid"
-                                      src={
-                                        process.env.REACT_APP_IMAGE_URL +
-                                        wishlistItem.image[0]
-                                      }
+                                      src={wishlistItem.image[0]}
                                       alt=""
                                     />
                                   </Link>
@@ -93,7 +96,7 @@ const Wishlist = ({ customProp }) => {
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
+                                      '/product/' +
                                       wishlistItem.id
                                     }
                                   >
@@ -124,15 +127,18 @@ const Wishlist = ({ customProp }) => {
                                 <td className="product-wishlist-cart">
                                   {wishlistItem.affiliateLink ? (
                                     <a
-                                      href={wishlistItem.affiliateLink}
+                                      href={
+                                        wishlistItem.affiliateLink
+                                      }
                                       rel="noopener noreferrer"
                                       target="_blank"
                                     >
-                                      {" "}
-                                      Buy now{" "}
+                                      {' '}
+                                      Buy now{' '}
                                     </a>
                                   ) : wishlistItem.variation &&
-                                    wishlistItem.variation.length >= 1 ? (
+                                    wishlistItem.variation.length >=
+                                      1 ? (
                                     <Link
                                       to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
                                     >
@@ -142,13 +148,15 @@ const Wishlist = ({ customProp }) => {
                                     wishlistItem.stock > 0 ? (
                                     <button
                                       onClick={() =>
-                                        dispatch(addToCart(wishlistItem))
+                                        dispatch(
+                                          addToCart(wishlistItem)
+                                        )
                                       }
                                       className={
                                         cartItem !== undefined &&
                                         cartItem.quantity > 0
-                                          ? "active"
-                                          : ""
+                                          ? 'active'
+                                          : ''
                                       }
                                       disabled={
                                         cartItem !== undefined &&
@@ -156,17 +164,20 @@ const Wishlist = ({ customProp }) => {
                                       }
                                       title={
                                         wishlistItem !== undefined
-                                          ? "Added to cart"
-                                          : "Add to cart"
+                                          ? 'Added to cart'
+                                          : 'Add to cart'
                                       }
                                     >
                                       {cartItem !== undefined &&
                                       cartItem.quantity > 0
-                                        ? "Added"
-                                        : "Add to cart"}
+                                        ? 'Added'
+                                        : 'Add to cart'}
                                     </button>
                                   ) : (
-                                    <button disabled className="active">
+                                    <button
+                                      disabled
+                                      className="active"
+                                    >
                                       Out of stock
                                     </button>
                                   )}
@@ -176,7 +187,9 @@ const Wishlist = ({ customProp }) => {
                                   <button
                                     onClick={() =>
                                       dispatch(
-                                        deleteFromWishlist(wishlistItem.id)
+                                        deleteFromWishlist(
+                                          wishlistItem.id
+                                        )
                                       )
                                     }
                                   >
@@ -196,13 +209,15 @@ const Wishlist = ({ customProp }) => {
                   <div className="col-lg-12">
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
-                        <Link to={process.env.PUBLIC_URL + "/shop"}>
+                        <Link to={process.env.PUBLIC_URL + '/shop'}>
                           Continue Shopping
                         </Link>
                       </div>
                       <div className="cart-clear">
                         <button
-                          onClick={() => dispatch(deleteAllFromWishlist())}
+                          onClick={() =>
+                            dispatch(deleteAllFromWishlist())
+                          }
                         >
                           Clear Wishlist
                         </button>
@@ -219,8 +234,8 @@ const Wishlist = ({ customProp }) => {
                       <i className="pe-7s-like"></i>
                     </div>
                     <div className="item-empty-area__text">
-                      No items found in wishlist <br />{" "}
-                      <Link to={process.env.PUBLIC_URL + "/shop"}>
+                      No items found in wishlist <br />{' '}
+                      <Link to={process.env.PUBLIC_URL + '/shop'}>
                         Add Items
                       </Link>
                     </div>

@@ -45,17 +45,13 @@ const ProductGridListSingle = ({
             >
               <img
                 className="default-img"
-                src={
-                  process.env.REACT_APP_IMAGE_URL + product.image[0]
-                }
+                src={product.image[0]}
                 alt=""
               />
               {product.image.length > 1 && (
                 <img
                   className="hover-img"
-                  src={
-                    process.env.REACT_APP_IMAGE_URL + product.image[1]
-                  }
+                  src={product.image[1]}
                   alt=""
                 />
               )}
@@ -192,10 +188,7 @@ const ProductGridListSingle = ({
                   {product.image[0] ? ( // Check if the first image is available
                     <img
                       className="default-img img-fluid"
-                      src={
-                        process.env.REACT_APP_IMAGE_URL +
-                        product.image[0]
-                      }
+                      src={product.image[0]}
                       alt=""
                     />
                   ) : (
@@ -209,10 +202,7 @@ const ProductGridListSingle = ({
                   {product.image.length > 1 && product.image[1] ? (
                     <img
                       className="hover-img img-fluid"
-                      src={
-                        process.env.REACT_APP_IMAGE_URL +
-                        product.image[1]
-                      }
+                      src={product.image[1]}
                       alt=""
                     />
                   ) : null}

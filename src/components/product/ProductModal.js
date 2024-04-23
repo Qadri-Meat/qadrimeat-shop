@@ -88,9 +88,7 @@ function ProductModal({
                       <SwiperSlide key={i}>
                         <div className="single-image">
                           <img
-                            src={
-                              process.env.REACT_APP_IMAGE_URL + img
-                            }
+                            src={img}
                             className="img-fluid"
                             alt="Product"
                           />
@@ -108,9 +106,7 @@ function ProductModal({
                       <SwiperSlide key={i}>
                         <div className="single-image">
                           <img
-                            src={
-                              process.env.REACT_APP_IMAGE_URL + img
-                            }
+                            src={img}
                             className="img-fluid"
                             alt=""
                           />

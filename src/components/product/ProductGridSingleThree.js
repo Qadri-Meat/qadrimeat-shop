@@ -1,13 +1,13 @@
-import PropTypes from "prop-types";
-import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import clsx from "clsx";
-import { getDiscountPrice } from "../../helpers/product";
-import ProductModal from "./ProductModal";
-import { addToCart } from "../../store/slices/cart-slice";
-import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { addToCompare } from "../../store/slices/compare-slice";
+import PropTypes from 'prop-types';
+import { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import clsx from 'clsx';
+import { getDiscountPrice } from '../../helpers/product';
+import ProductModal from './ProductModal';
+import { addToCart } from '../../store/slices/cart-slice';
+import { addToWishlist } from '../../store/slices/wishlist-slice';
+import { addToCompare } from '../../store/slices/compare-slice';
 
 const ProductGridSingleThree = ({
   product,
@@ -18,8 +18,13 @@ const ProductGridSingleThree = ({
   spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
-  const discountedPrice = getDiscountPrice(product.price, product.discount);
-  const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
+  const discountedPrice = getDiscountPrice(
+    product.price,
+    product.discount
+  );
+  const finalProductPrice = +(
+    product.price * currency.currencyRate
+  ).toFixed(2);
   const finalDiscountedPrice = +(
     discountedPrice * currency.currencyRate
   ).toFixed(2);
@@ -28,23 +33,28 @@ const ProductGridSingleThree = ({
   return (
     <Fragment>
       <div
-        className={clsx("product-wrap-2 pro-glaucous-color", spaceBottomClass)}
+        className={clsx(
+          'product-wrap-2 pro-glaucous-color',
+          spaceBottomClass
+        )}
       >
         <div className="product-img">
-          <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+          <Link
+            to={process.env.PUBLIC_URL + '/product/' + product.id}
+          >
             <img
               className="default-img"
-              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
+              src={product.image[0]}
               alt=""
             />
             {product.image.length > 1 ? (
               <img
                 className="hover-img"
-                src={process.env.REACT_APP_IMAGE_URL + product.image[1]}
+                src={product.image[1]}
                 alt=""
               />
             ) : (
-              ""
+              ''
             )}
           </Link>
           {product.discount || product.new ? (
@@ -52,12 +62,12 @@ const ProductGridSingleThree = ({
               {product.discount ? (
                 <span className="pink">-{product.discount}%</span>
               ) : (
-                ""
+                ''
               )}
-              {product.new ? <span className="purple">New</span> : ""}
+              {product.new ? <span className="purple">New</span> : ''}
             </div>
           ) : (
-            ""
+            ''
           )}
 
           <div className="product-action-2">
@@ -68,8 +78,8 @@ const ProductGridSingleThree = ({
                 target="_blank"
                 title="Buy now"
               >
-                {" "}
-                <i className="fa fa-shopping-cart"></i>{" "}
+                {' '}
+                <i className="fa fa-shopping-cart"></i>{' '}
               </a>
             ) : product.variation && product.variation.length >= 1 ? (
               <Link
@@ -83,32 +93,45 @@ const ProductGridSingleThree = ({
                 onClick={() => dispatch(addToCart(product))}
                 className={
                   cartItem !== undefined && cartItem.quantity > 0
-                    ? "active"
-                    : ""
+                    ? 'active'
+                    : ''
                 }
-                disabled={cartItem !== undefined && cartItem.quantity > 0}
-                title={cartItem !== undefined ? "Added to cart" : "Add to cart"}
+                disabled={
+                  cartItem !== undefined && cartItem.quantity > 0
+                }
+                title={
+                  cartItem !== undefined
+                    ? 'Added to cart'
+                    : 'Add to cart'
+                }
               >
-                {" "}
-                <i className="fa fa-shopping-cart"></i>{" "}
+                {' '}
+                <i className="fa fa-shopping-cart"></i>{' '}
               </button>
             ) : (
-              <button disabled className="active" title="Out of stock">
+              <button
+                disabled
+                className="active"
+                title="Out of stock"
+              >
                 <i className="fa fa-shopping-cart"></i>
               </button>
             )}
 
-            <button onClick={() => setModalShow(true)} title="Quick View">
+            <button
+              onClick={() => setModalShow(true)}
+              title="Quick View"
+            >
               <i className="fa fa-eye"></i>
             </button>
 
             <button
-              className={compareItem !== undefined ? "active" : ""}
+              className={compareItem !== undefined ? 'active' : ''}
               disabled={compareItem !== undefined}
               title={
                 compareItem !== undefined
-                  ? "Added to compare"
-                  : "Add to compare"
+                  ? 'Added to compare'
+                  : 'Add to compare'
               }
               onClick={() => dispatch(addToCompare(product))}
             >
@@ -119,31 +142,37 @@ const ProductGridSingleThree = ({
         <div className="product-content-2">
           <div className="title-price-wrap-2">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+              <Link
+                to={process.env.PUBLIC_URL + '/product/' + product.id}
+              >
                 {product.name}
               </Link>
             </h3>
             <div className="price-2">
               {discountedPrice !== null ? (
                 <Fragment>
-                  <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+                  <span>
+                    {currency.currencySymbol + finalDiscountedPrice}
+                  </span>{' '}
                   <span className="old">
                     {currency.currencySymbol + finalProductPrice}
                   </span>
                 </Fragment>
               ) : (
-                <span>{currency.currencySymbol + finalProductPrice} </span>
+                <span>
+                  {currency.currencySymbol + finalProductPrice}{' '}
+                </span>
               )}
             </div>
           </div>
           <div className="pro-wishlist-2">
             <button
-              className={wishlistItem !== undefined ? "active" : ""}
+              className={wishlistItem !== undefined ? 'active' : ''}
               disabled={wishlistItem !== undefined}
               title={
                 wishlistItem !== undefined
-                  ? "Added to wishlist"
-                  : "Add to wishlist"
+                  ? 'Added to wishlist'
+                  : 'Add to wishlist'
               }
               onClick={() => dispatch(addToWishlist(product))}
             >

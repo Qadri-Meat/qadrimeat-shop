@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const ProductImageFixed = ({ product }) => {
   return (
@@ -8,23 +8,19 @@ const ProductImageFixed = ({ product }) => {
           {product.discount ? (
             <span className="pink">-{product.discount}%</span>
           ) : (
-            ""
+            ''
           )}
-          {product.new ? <span className="purple">New</span> : ""}
+          {product.new ? <span className="purple">New</span> : ''}
         </div>
       ) : (
-        ""
+        ''
       )}
 
       <div className="product-fixed-image">
         {product.image ? (
-          <img
-            src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
-            alt=""
-            className="img-fluid"
-          />
+          <img src={product.image[0]} alt="" className="img-fluid" />
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>

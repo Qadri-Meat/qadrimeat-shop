@@ -1,14 +1,14 @@
-import PropTypes from "prop-types";
-import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import clsx from "clsx";
-import { getDiscountPrice } from "../../helpers/product";
-import Rating from "./sub-components/ProductRating";
-import ProductModal from "./ProductModal";
-import { addToCart } from "../../store/slices/cart-slice";
-import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { addToCompare } from "../../store/slices/compare-slice";
+import PropTypes from 'prop-types';
+import { Fragment, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import clsx from 'clsx';
+import { getDiscountPrice } from '../../helpers/product';
+import Rating from './sub-components/ProductRating';
+import ProductModal from './ProductModal';
+import { addToCart } from '../../store/slices/cart-slice';
+import { addToWishlist } from '../../store/slices/wishlist-slice';
+import { addToCompare } from '../../store/slices/compare-slice';
 
 const ProductGridSingleEight = ({
   product,
@@ -20,8 +20,13 @@ const ProductGridSingleEight = ({
   colorClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
-  const discountedPrice = getDiscountPrice(product.price, product.discount);
-  const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
+  const discountedPrice = getDiscountPrice(
+    product.price,
+    product.discount
+  );
+  const finalProductPrice = +(
+    product.price * currency.currencyRate
+  ).toFixed(2);
   const finalDiscountedPrice = +(
     discountedPrice * currency.currencyRate
   ).toFixed(2);
@@ -29,12 +34,20 @@ const ProductGridSingleEight = ({
 
   return (
     <Fragment>
-      <div className={clsx("product-wrap-8", spaceBottomClass, colorClass)}>
+      <div
+        className={clsx(
+          'product-wrap-8',
+          spaceBottomClass,
+          colorClass
+        )}
+      >
         <div className="product-img">
-          <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+          <Link
+            to={process.env.PUBLIC_URL + '/product/' + product.id}
+          >
             <img
               className="default-img img-fluid"
-              src={process.env.REACT_APP_IMAGE_URL + product.image[0]}
+              src={product.image[0]}
               alt=""
             />
           </Link>
@@ -43,17 +56,19 @@ const ProductGridSingleEight = ({
               {product.discount ? (
                 <span className="pink">-{product.discount}%</span>
               ) : (
-                ""
+                ''
               )}
-              {product.new ? <span className="purple">New</span> : ""}
+              {product.new ? <span className="purple">New</span> : ''}
             </div>
           ) : (
-            ""
+            ''
           )}
         </div>
         <div className="product-content">
           <h3>
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+            <Link
+              to={process.env.PUBLIC_URL + '/product/' + product.id}
+            >
               {product.name}
             </Link>
           </h3>
@@ -64,10 +79,14 @@ const ProductGridSingleEight = ({
                 <span className="old">
                   {currency.currencySymbol + finalProductPrice}
                 </span>
-                <span>{currency.currencySymbol + finalDiscountedPrice}</span>
+                <span>
+                  {currency.currencySymbol + finalDiscountedPrice}
+                </span>
               </Fragment>
             ) : (
-              <span>{currency.currencySymbol + finalProductPrice} </span>
+              <span>
+                {currency.currencySymbol + finalProductPrice}{' '}
+              </span>
             )}
           </div>
 
@@ -76,18 +95,18 @@ const ProductGridSingleEight = ({
               <Rating ratingValue={product.rating} />
             </div>
           ) : (
-            ""
+            ''
           )}
 
           <div className="product-action">
             <div className="pro-same-action pro-wishlist">
               <button
-                className={wishlistItem !== undefined ? "active" : ""}
+                className={wishlistItem !== undefined ? 'active' : ''}
                 disabled={wishlistItem !== undefined}
                 title={
                   wishlistItem !== undefined
-                    ? "Added to wishlist"
-                    : "Add to wishlist"
+                    ? 'Added to wishlist'
+                    : 'Add to wishlist'
                 }
                 onClick={() => dispatch(addToWishlist(product))}
               >
@@ -104,7 +123,8 @@ const ProductGridSingleEight = ({
                 >
                   <i className="pe-7s-cart"></i>
                 </a>
-              ) : product.variation && product.variation.length >= 1 ? (
+              ) : product.variation &&
+                product.variation.length >= 1 ? (
                 <Link
                   to={`${process.env.PUBLIC_URL}/product/${product.id}`}
                   title="Select option"
@@ -116,30 +136,38 @@ const ProductGridSingleEight = ({
                   onClick={() => dispatch(addToCart(product))}
                   className={
                     cartItem !== undefined && cartItem.quantity > 0
-                      ? "active"
-                      : ""
+                      ? 'active'
+                      : ''
                   }
-                  disabled={cartItem !== undefined && cartItem.quantity > 0}
+                  disabled={
+                    cartItem !== undefined && cartItem.quantity > 0
+                  }
                   title={
-                    cartItem !== undefined ? "Added to cart" : "Add to cart"
+                    cartItem !== undefined
+                      ? 'Added to cart'
+                      : 'Add to cart'
                   }
                 >
                   <i className="pe-7s-cart"></i>
                 </button>
               ) : (
-                <button disabled className="active" title="Out of stock">
+                <button
+                  disabled
+                  className="active"
+                  title="Out of stock"
+                >
                   <i className="pe-7s-cart"></i>
                 </button>
               )}
             </div>
             <div className="pro-same-action pro-compare">
               <button
-                className={compareItem !== undefined ? "active" : ""}
+                className={compareItem !== undefined ? 'active' : ''}
                 disabled={compareItem !== undefined}
                 title={
                   compareItem !== undefined
-                    ? "Added to compare"
-                    : "Add to compare"
+                    ? 'Added to compare'
+                    : 'Add to compare'
                 }
                 onClick={() => dispatch(addToCompare(product))}
               >
