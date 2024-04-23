@@ -29,6 +29,15 @@ const ShopSidebar = ({
         getSortParams={getSortParams}
       />
 
+      {/* filter by color */}
+      <ShopColor
+        colors={uniqueColors}
+        getSortParams={getSortParams}
+      />
+
+      {/* filter by size */}
+      <ShopSize sizes={uniqueSizes} getSortParams={getSortParams} />
+
       {/* filter by tag */}
       <ShopTag tags={uniqueTags} getSortParams={getSortParams} />
     </div>
